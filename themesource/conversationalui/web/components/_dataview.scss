@@ -1,0 +1,13 @@
+.chat-dataview--display-contents {
+    display: contents;
+
+    &>div {
+        display: contents;
+    }
+}
+
+.dataview--display-contents {
+    &>div {
+        display: contents;
+    }
+}
