@@ -1,2 +1,29 @@
 @import '../../../theme/web/custom-variables';
 
+//custom color shades for icons and badges
+
+$brand-primary-light: rgba($brand-primary, 0.90);
+$brand-primary-lighter: rgba($brand-primary, 0.60);
+$brand-warning-light: rgba($brand-warning, 0.90);
+$brand-warning-lighter: rgba($brand-warning, 0.60);
+
+
+.badge {
+    &.badge--primary-light {
+        background-color: $brand-primary-light;
+    }
+
+    &.badge--primary-lighter {
+        background-color: $brand-primary-lighter;
+    }
+
+    &.badge--warning-light {
+        background-color: $brand-warning-light;
+        color: rgba($font-color-default, 0.8);
+    }
+
+    &.badge--warning-lighter {
+        background-color: $brand-warning-lighter;
+        color: rgba($font-color-default, 0.8);
+    }
+}

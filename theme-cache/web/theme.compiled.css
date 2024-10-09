@@ -24152,6 +24152,21 @@ Do not render = "none"
   z-index: 1000001;
 }
 
+.badge.badge--primary-light {
+  background-color: rgba(38, 74, 229, 0.9);
+}
+.badge.badge--primary-lighter {
+  background-color: rgba(38, 74, 229, 0.6);
+}
+.badge.badge--warning-light {
+  background-color: rgba(236, 165, 28, 0.9);
+  color: rgba(10, 19, 37, 0.8);
+}
+.badge.badge--warning-lighter {
+  background-color: rgba(236, 165, 28, 0.6);
+  color: rgba(10, 19, 37, 0.8);
+}
+
 .mx-layoutgrid.card-container > .row {
   padding-bottom: 24px;
 }
