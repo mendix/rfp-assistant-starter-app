@@ -24171,6 +24171,11 @@ Do not render = "none"
   color: rgba(10, 19, 37, 0.8);
 }
 
+.popup-menu-item.mx-link {
+  color: rgba(10, 19, 37, 0.8);
+  text-decoration: none;
+}
+
 .mx-layoutgrid.card-container > .row {
   padding-bottom: 24px;
 }

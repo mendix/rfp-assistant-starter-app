@@ -8,6 +8,7 @@ $brand-warning-light: rgba($brand-warning, 0.90);
 $brand-warning-lighter: rgba($brand-warning, 0.60);
 $brand-danger-light: rgba($brand-danger, 0.90);
 $brand-danger-lighter: rgba($brand-danger, 0.60);
+$font-color-light: rgba($font-color-default, 0.8);
 
 
 .badge {
@@ -21,16 +22,21 @@ $brand-danger-lighter: rgba($brand-danger, 0.60);
 
     &.badge--warning-light {
         background-color: $brand-warning-light;
-        color: rgba($font-color-default, 0.8);
+        color: $font-color-light;
     }
 
     &.badge--warning-lighter {
         background-color: $brand-warning-lighter;
-        color: rgba($font-color-default, 0.8);
+        color: $font-color-light;
     }
 
     &.badge--danger-light {
         background-color: $brand-danger-light;
-        color: rgba($font-color-default, 0.8);
+        color: $font-color-light;
     }
+}
+
+.popup-menu-item.mx-link {
+    color:rgba($font-color-default, 0.8);
+    text-decoration: none;
 }
