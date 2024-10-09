@@ -24166,6 +24166,10 @@ Do not render = "none"
   background-color: rgba(236, 165, 28, 0.6);
   color: rgba(10, 19, 37, 0.8);
 }
+.badge.badge--danger-light {
+  background-color: rgba(227, 63, 78, 0.9);
+  color: rgba(10, 19, 37, 0.8);
+}
 
 .mx-layoutgrid.card-container > .row {
   padding-bottom: 24px;
