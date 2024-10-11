@@ -2,41 +2,53 @@
 
 //custom color shades for icons and badges
 
-$brand-primary-light: rgba($brand-primary, 0.90);
-$brand-primary-lighter: rgba($brand-primary, 0.60);
-$brand-warning-light: rgba($brand-warning, 0.90);
-$brand-warning-lighter: rgba($brand-warning, 0.60);
-$brand-danger-light: rgba($brand-danger, 0.90);
-$brand-danger-lighter: rgba($brand-danger, 0.60);
+$brand-primary-light: rgba($brand-primary, 0.15);
+$brand-warning-light: rgba($brand-warning, 0.15);
+$brand-danger-light: rgba($brand-danger, 0.15);
+$brand-success-lighter: rgba($brand-success, 0.15);
 $font-color-light: rgba($font-color-default, 0.8);
 
 
 .badge {
+    font-weight: normal;
+
     &.badge--primary-light {
         background-color: $brand-primary-light;
-    }
-
-    &.badge--primary-lighter {
-        background-color: $brand-primary-lighter;
+        color: $brand-primary;
     }
 
     &.badge--warning-light {
         background-color: $brand-warning-light;
-        color: $font-color-light;
-    }
-
-    &.badge--warning-lighter {
-        background-color: $brand-warning-lighter;
-        color: $font-color-light;
+        color: $brand-warning;
     }
 
     &.badge--danger-light {
         background-color: $brand-danger-light;
-        color: $font-color-light;
+        color: $brand-danger;
+    }
+
+    &.badge--success-light {
+        background-color: $brand-success-lighter;
+        color: $brand-success;
     }
 }
 
 .popup-menu-item.mx-link {
     color:rgba($font-color-default, 0.8);
     text-decoration: none;
+}
+
+.label-with-text {
+    > label {
+        overflow: hidden;
+        margin-bottom: 4px;
+        text-align: left;
+        text-overflow: ellipsis;
+        color: $form-label-color;
+        font-size: $form-label-size;
+        font-weight: $form-label-weight;
+    }
+    .mx-text {
+        margin-bottom: 4px;
+    }
 }

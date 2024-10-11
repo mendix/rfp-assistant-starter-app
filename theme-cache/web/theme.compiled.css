@@ -24152,28 +24152,42 @@ Do not render = "none"
   z-index: 1000001;
 }
 
-.badge.badge--primary-light {
-  background-color: rgba(38, 74, 229, 0.9);
+.badge {
+  font-weight: normal;
 }
-.badge.badge--primary-lighter {
-  background-color: rgba(38, 74, 229, 0.6);
+.badge.badge--primary-light {
+  background-color: rgba(38, 74, 229, 0.15);
+  color: #264ae5;
 }
 .badge.badge--warning-light {
-  background-color: rgba(236, 165, 28, 0.9);
-  color: rgba(10, 19, 37, 0.8);
-}
-.badge.badge--warning-lighter {
-  background-color: rgba(236, 165, 28, 0.6);
-  color: rgba(10, 19, 37, 0.8);
+  background-color: rgba(236, 165, 28, 0.15);
+  color: #eca51c;
 }
 .badge.badge--danger-light {
-  background-color: rgba(227, 63, 78, 0.9);
-  color: rgba(10, 19, 37, 0.8);
+  background-color: rgba(227, 63, 78, 0.15);
+  color: #e33f4e;
+}
+.badge.badge--success-light {
+  background-color: rgba(60, 179, 61, 0.15);
+  color: #3cb33d;
 }
 
 .popup-menu-item.mx-link {
   color: rgba(10, 19, 37, 0.8);
   text-decoration: none;
+}
+
+.label-with-text > label {
+  overflow: hidden;
+  margin-bottom: 4px;
+  text-align: left;
+  text-overflow: ellipsis;
+  color: #0a1325;
+  font-size: 14px;
+  font-weight: 600;
+}
+.label-with-text .mx-text {
+  margin-bottom: 4px;
 }
 
 .mx-layoutgrid.card-container > .row {
