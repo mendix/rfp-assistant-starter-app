@@ -81,6 +81,9 @@ public class Connection
 		if (com.mendix.core.Core.isSubClassOf("PgVectorKnowledgeBase.PgVectorKnowledgeBaseConnection", mendixObject.getType())) {
 			return pgvectorknowledgebase.proxies.PgVectorKnowledgeBaseConnection.initialize(context, mendixObject);
 		}
+		if (com.mendix.core.Core.isSubClassOf("SynthiaConnector.SynthiaConnection", mendixObject.getType())) {
+			return synthiaconnector.proxies.SynthiaConnection.initialize(context, mendixObject);
+		}
 		return new genaicommons.proxies.Connection(context, mendixObject);
 	}
 

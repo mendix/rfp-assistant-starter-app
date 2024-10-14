@@ -34,12 +34,12 @@ $font-color-light: rgba($font-color-default, 0.8);
 }
 
 .popup-menu-item.mx-link {
-    color:rgba($font-color-default, 0.8);
+    color:$font-color-light;
     text-decoration: none;
 }
 
 .label-with-text {
-    > label {
+    > label { //from .form-group .control-label
         overflow: hidden;
         margin-bottom: 4px;
         text-align: left;
