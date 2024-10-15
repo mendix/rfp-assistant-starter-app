@@ -7,6 +7,7 @@ $brand-warning-light: rgba($brand-warning, 0.15);
 $brand-danger-light: rgba($brand-danger, 0.15);
 $brand-success-lighter: rgba($brand-success, 0.15);
 $font-color-light: rgba($font-color-default, 0.8);
+$border-radius-large: 20px;
 
 
 .badge {
@@ -47,8 +48,23 @@ $font-color-light: rgba($font-color-default, 0.8);
         color: $form-label-color;
         font-size: $form-label-size;
         font-weight: $form-label-weight;
+        display: block;
     }
     .mx-text {
         margin-bottom: 4px;
+        line-height: $line-height-base;
+        display: block;
     }
+}
+
+.rounded-btn.btn {
+    border-radius: $border-radius-large;
+}
+
+.show-validation-feedback{
+    margin: 0;
+        > input {
+            display: none;
+        }
+    
 }

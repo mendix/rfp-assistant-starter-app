@@ -24185,9 +24185,23 @@ Do not render = "none"
   color: #0a1325;
   font-size: 14px;
   font-weight: 600;
+  display: block;
 }
 .label-with-text .mx-text {
   margin-bottom: 4px;
+  line-height: 1.428571429;
+  display: block;
+}
+
+.rounded-btn.btn {
+  border-radius: 20px;
+}
+
+.show-validation-feedback {
+  margin: 0;
+}
+.show-validation-feedback > input {
+  display: none;
 }
 
 .mx-layoutgrid.card-container > .row {
