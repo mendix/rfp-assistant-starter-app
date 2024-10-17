@@ -21923,440 +21923,342 @@ html div.dj_ios .widget-switch.auto .widget-switch-btn-wrapper.checked.widget-sw
   opacity: 0.6;
 }
 
-.hover-trigger .show-on-hover {
-  visibility: hidden;
-}
-.hover-trigger:hover .show-on-hover {
-  display: inline;
-  visibility: visible;
-}
+/* 
+    ==| Variables |=========================================================================================
+*/
+/* 
+    ==| Widget blocks |=====================================================================================
+    These blocks contains styles directly related to the widget's appearance and are mostly unique styles
+    needed to display the widget's UI correctly.
+*/
+/* 
+About: =========================================================
+----------------------------------------------------------------
+This styling targets the main Feedback Button rendered on your page.
+The Feedback widget button can be rendered on page in 3 formats.
 
-.text-break-word {
-  word-break: break-word;
-}
+Render Modes: ==================================================
+----------------------------------------------------------------
+Each render mode can be selected by double clicking the Feedback widget settings in Studio Pro.
 
-.spacing-inner-top-smaller {
-  padding-top: 4px;
-}
+'Side Tab' - Fixes the button to the right hand margin and rotates by 270 degrees.
+'Button' - Mimics a normal Mendix button.
+'Do not render' - Hides the button on the live website but is still visible in the page editor for developers.
 
-.text-clamp--2-lines {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  line-clamp: 2;
-}
+CSS BEM Enumeration values: ====================================
+----------------------------------------------------------------
+At a code level each render mode selected has a coresspoinding CSS BEM modifier value.
+Use these BEM modifiers to custom style each render mode.
 
-.line-height--1 {
-  line-height: 1;
-}
+Side Tab = "side"
+Button = "normal"
+Do not render = "none"
 
-.accordion-chat-sources .widget-accordion-group {
-  background: transparent;
-}
-.accordion-chat-sources .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button {
-  display: inline-flex;
-  background: transparent;
-  padding: 0;
-}
-.accordion-chat-sources .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:hover, .accordion-chat-sources .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:focus {
-  color: #0a1325;
-  background: transparent;
-}
-.accordion-chat-sources .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button .widget-accordion-group-header-button-icon {
-  align-self: left;
-  display: inline-flex;
-  fill: #0a1325;
-}
-.accordion-chat-sources .widget-accordion-group .widget-accordion-group-content-wrapper .widget-accordion-group-content {
-  padding-left: 0;
-  padding-bottom: 0;
-}
-
-.chat-card--full-height {
-  height: 100%;
-}
-
-.card-border {
-  border: 1px solid #f3f3f4;
-}
-
-.card-border-top {
-  border-top: 1px solid #f3f3f4;
-}
-
-.card-statistics {
-  width: fit-content;
-}
-.card-statistics .mx-text.statistic {
-  min-width: 200px;
-}
-
-.card--sticky-content {
-  overflow: unset;
-  padding-top: 0;
-}
-
-.sticky-header {
-  position: sticky;
-  background-color: inherit;
-  top: 0px;
-  padding-top: 24px;
-  z-index: 101;
-}
-
-.chat-loading-wrapper {
-  display: flex;
-  justify-content: left;
-  padding: 8px;
-}
-.chat-loading-wrapper .loading-dot {
-  border-radius: 100%;
-  background-color: #0a1325;
-  width: 4.6666666667px;
-  height: 4.6666666667px;
-}
-.chat-loading-wrapper .loading-dot:nth-child(1) {
-  animation: preloader 0.9s ease-in-out alternate infinite;
-}
-.chat-loading-wrapper .loading-dot:nth-child(2) {
-  margin: 0 14px;
-  animation: preloader 0.9s ease-in-out alternate 0.2s infinite;
-}
-.chat-loading-wrapper .loading-dot:nth-child(3) {
-  animation: preloader 0.9s ease-in-out alternate 0.4s infinite;
-}
-@keyframes preloader {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-.chat-container .messages-container {
-  flex: 1 1 auto;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-.chat-container--center {
-  max-width: 900px;
-  margin: 0 auto;
-  height: 100%;
-}
-
-.chat-input-wrapper {
-  position: relative;
-}
-.chat-input-wrapper .form-group {
-  width: 100%;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-.chat-input-wrapper .form-group .form-control {
-  padding-right: 64px;
-  max-height: 400px;
-  overflow: auto;
-}
-.chat-input-wrapper .has-error .alert {
+*/
+.mxfeedback-start-button--none {
   display: none !important;
 }
-.chat-input-wrapper .send-btn {
-  position: absolute;
-  right: 15px;
-  bottom: 15px;
+.mxfeedback-start-button--side {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%) rotate(270deg);
+  transform-origin: bottom center;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px 4px 0 0;
+  background-color: #264ae5;
+  color: #fff;
+  font-size: 16px;
+  box-shadow: -2px 0 4px 0 rgba(0, 0, 0, 0.3);
+  z-index: 999998;
+}
+.mxfeedback-start-button--side:focus, .mxfeedback-start-button--side:hover {
+  background-color: #1e3bb7;
+}
+
+.mxfeedback-annotation-canvas {
+  z-index: 1000003;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration-line: none;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  position: fixed;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
-.chat-input-wrapper .send-btn .glyphicon {
+.mxfeedback-annotation-canvas__canvas {
+  position: fixed;
+  margin-top: 48px;
+}
+
+.mxfeedback-annotation-frame {
+  position: fixed;
   top: 0;
-  font-size: 14px;
-  left: -2px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000004;
 }
 
-.chat-bubble-wrapper {
-  margin-top: 8px;
+/* 
+    ==| Generic blocks |====================================================================================
+    These blocks are generic blocks. These styles are styles that apply to the widget's entire UI and
+    outline the basic styles of the widget (in accordance with Atlas UI).
+*/
+.mxfeedback-toolbar {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px 32px;
+  background-color: #fff;
+  border: 1px solid #ced0d3;
+  border-radius: 4px;
+  font-size: 12px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1000004;
 }
-.chat-bubble-wrapper .chat-message-card {
-  background: #d8f0d8;
-  border-radius: 8px 8px 8px 0;
-  margin: 0 10% 0 0;
-  text-align: left;
-  padding: 8px;
+.mxfeedback-toolbar--gap-md {
+  gap: 16px;
 }
-.chat-bubble-wrapper--user .chat-message-card {
-  background: #d4dbfa;
-  border-radius: 8px 8px 0 8px;
-  margin: 0 0 0 10%;
-}
-
-.chat-history-sidebar {
-  overflow-y: auto;
-}
-
-.chat-history-active {
-  border-left: 3px solid #264ae5;
-  font-weight: bold;
-}
-
-.chart-input.widget-chart .fills .js-fill,
-.chart-input.widget-chart .legendfill .js-fill {
-  fill: #8a9df1 !important;
-}
-.chart-input.widget-chart .lines .js-line,
-.chart-input.widget-chart .legendlines .js-line {
-  stroke: #3c5ce8 !important;
+.mxfeedback-toolbar--gap-lg {
+  gap: 32px;
 }
 
-.chart-output.widget-chart .fills .js-fill,
-.chart-output.widget-chart .legendfill .js-fill {
-  fill: #cbd4f9 !important;
-}
-.chart-output.widget-chart .lines .js-line,
-.chart-output.widget-chart .legendlines .js-line {
-  stroke: #a8b7f5 !important;
-}
-
-.conversationstarter.card {
-  margin-bottom: 8px;
-  padding: 8px;
-  border: 1px solid #e7e7e9;
+.mxfeedback-tool-button {
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-}
-.conversationstarter.card:hover {
-  background-color: #f5f6f6;
-}
-.conversationstarter.card .mx-link {
-  color: #264ae5;
-  margin-bottom: 8px;
-  margin-top: 8px;
-}
-
-.conversationstarter-container--vertical {
-  margin-top: 20%;
-}
-
-.conversationstarter-container--horizontal {
-  margin-top: 20%;
-}
-.conversationstarter-container--horizontal .mx-layoutgrid {
-  height: 100%;
-}
-.conversationstarter-container--horizontal .mx-layoutgrid > .row .col > .card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.conversationstarter-container--horizontal .conversationstarter.card {
-  height: 100%;
-}
-.conversationstarter-container--horizontal .conversationstarter.card div {
-  display: flex;
-  flex-direction: column;
-}
-.conversationstarter-container--horizontal .widget-gallery-item-button {
-  height: 100%;
-}
-.conversationstarter-container--horizontal .conversationstarter-arrow {
-  display: none;
-}
-
-.chat-dataview--display-contents {
-  display: contents;
-}
-.chat-dataview--display-contents > div {
-  display: contents;
-}
-
-.dataview--display-contents > div {
-  display: contents;
-}
-
-.datetime-inputs-wrapper {
-  display: flex;
-  justify-content: flex-end;
-}
-.datetime-inputs-wrapper .time-input {
-  max-width: 100px;
-  margin-left: -1px;
-  margin-bottom: 0;
-}
-.datetime-inputs-wrapper .date-input {
-  max-width: 150px;
-  margin-left: 16px;
-  margin-bottom: 0;
-}
-.datetime-inputs-wrapper .mx-compound-control .btn {
-  margin-left: -44px;
-  border: 1px solid transparent;
+  align-items: center;
   background: transparent;
+  border: 0;
+  padding: 0;
 }
-
-.input-container {
-  border-bottom: 1px solid #f3f3f4;
+.mxfeedback-tool-button--active {
+  color: #264ae5;
+}
+.mxfeedback-tool-button:focus-visible {
+  color: #1e3bb7;
+}
+.mxfeedback-tool-button__inner {
   display: flex;
-  justify-content: space-between;
-  align-items: start;
+  flex-direction: column;
+  align-items: center;
 }
-
-.combo-deployment-selection {
-  min-width: 360px;
+.mxfeedback-tool-button__icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
 }
-.combo-deployment-selection .deployment-selection {
+.mxfeedback-tool-button__label {
+  margin-top: 4px;
+  color: inherit;
+}
+.mxfeedback-tool-button__caret {
+  fill: #0a1325;
+  width: 8px;
+  height: 8px;
+}
+.mxfeedback-tool-button__dropdown {
+  position: relative;
   display: flex;
   align-items: center;
-  height: max-content;
-}
-.combo-deployment-selection .mx-image {
-  height: 14px;
-  margin-right: 8px;
-}
-
-.layoutgrid--full-height {
   height: 100%;
 }
-.layoutgrid--full-height .row {
-  height: 100%;
-}
-.layoutgrid--full-height .row > [class*=col] {
-  height: 100%;
-}
-
-.chat-listview-horizontal.mx-listview > ul {
-  display: contents;
-  margin-bottom: none;
-}
-.chat-listview-horizontal.mx-listview > ul > li {
-  display: inline-block;
-}
-.chat-listview-horizontal.mx-listview > ul > li:hover {
-  background-color: transparent;
-}
-
-.listview-hide-on-empty.mx-listview > ul > li.mx-listview-empty {
-  display: none;
-}
-
-.btn-chat-popup {
-  position: fixed;
-  right: 3vw;
-  bottom: 5vh;
-  z-index: 10;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-}
-.btn-chat-popup .glyphicon {
-  font-size: 24px;
-}
-.btn-chat-popup img {
-  height: 32px;
-  width: 32px;
-  margin: 0;
-}
-
-.layout-chat-popup.mx-window {
-  position: fixed;
-  right: 3vw !important;
-  bottom: 5vh !important;
-  left: unset !important;
-  top: unset !important;
-  width: 500px !important;
-  height: 65vh !important;
-  z-index: 100;
-}
-.layout-chat-popup.mx-window .mx-resizer-n, .layout-chat-popup.mx-window .mx-resizer-s, .layout-chat-popup.mx-window .mx-resizer-e, .layout-chat-popup.mx-window .mx-resizer-w, .layout-chat-popup.mx-window .mx-resizer-nw, .layout-chat-popup.mx-window .mx-resizer-ne, .layout-chat-popup.mx-window .mx-resizer-sw, .layout-chat-popup.mx-window .mx-resizer-se {
-  cursor: auto;
-}
-.layout-chat-popup.mx-window .mx-window-header {
-  background: #264ae5;
-  cursor: auto;
-}
-.layout-chat-popup.mx-window .mx-window-header h4 {
-  color: #fff;
-}
-.layout-chat-popup.mx-window .mx-window-header button.close {
-  color: transparent;
-}
-.layout-chat-popup.mx-window .mx-window-header button.close::after {
-  content: "-";
-  color: #fff;
-}
-.layout-chat-popup.mx-window .modal-body {
-  height: calc(100% - 50px);
-  overflow: hidden;
-  padding: 16px;
-}
-.layout-chat-popup.mx-window .modal-body .mx-placeholder {
-  height: 100%;
-}
-
-.segmented-control {
-  height: fit-content;
+.mxfeedback-tool-button__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  padding: 8px;
+  background: #fff;
   border: 1px solid #ced0d3;
   border-radius: 4px;
-  padding: 4px;
-  width: fit-content;
-  background-color: #f8f8f8;
+  width: 144px;
+  z-index: 1;
 }
-.segmented-control .btn.btn-default {
-  border: 1px solid transparent;
-  background: transparent;
+.mxfeedback-tool-button__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: calc(8px / 2);
+}
+.mxfeedback-tool-button__list--col-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.mxfeedback-tool-button__color {
+  position: relative;
+  padding: 0;
+  border: none;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+}
+.mxfeedback-tool-button__color:focus {
+  outline: 2px solid #264ae5;
+  outline-offset: 2px;
+}
+.mxfeedback-tool-button__color--midnight {
+  background-color: #2f3646;
+}
+.mxfeedback-tool-button__color--grey {
+  background-color: #c1c3c8;
+}
+.mxfeedback-tool-button__color--green {
+  background-color: #4fd84f;
+}
+.mxfeedback-tool-button__color--blue {
+  background-color: #47a9ff;
+}
+.mxfeedback-tool-button__color--purple {
+  background-color: #845eff;
+}
+.mxfeedback-tool-button__color--magenta {
+  background-color: #ca49f8;
+}
+.mxfeedback-tool-button__color--red {
+  background-color: #fb4a4c;
+}
+.mxfeedback-tool-button__color--yellow {
+  background-color: #fcc73a;
+}
+.mxfeedback-tool-button__color svg {
+  width: 10px;
+  height: 10px;
+  stroke: #fff;
+}
+.mxfeedback-tool-button__thickness {
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  aspect-ratio: 4/3;
+}
+.mxfeedback-tool-button__thickness:hover {
+  background-color: #a9acb3;
+}
+.mxfeedback-tool-button__thickness:focus {
+  outline: 2px solid #264ae5;
+  outline-offset: 2px;
+}
+.mxfeedback-tool-button__thickness--selected {
+  background-color: #787d87;
+}
+.mxfeedback-tool-button__thickness::before {
+  content: "";
+  display: block;
+  background-color: #2f3646;
+  width: 100%;
+  transform: rotate(-45deg);
+}
+.mxfeedback-tool-button__thickness--one::before {
+  height: 1px;
+}
+.mxfeedback-tool-button__thickness--two::before {
+  height: 2px;
+}
+.mxfeedback-tool-button__thickness--three::before {
+  height: 3px;
+}
+.mxfeedback-tool-button__thickness--four::before {
+  height: 4px;
+}
+.mxfeedback-tool-button__thickness--five::before {
+  height: 5px;
+}
+.mxfeedback-tool-button__thickness--six::before {
+  height: 6px;
 }
 
-.layout-chat-sidebar {
-  right: 0 !important;
-  top: 0 !important;
-  bottom: 0 !important;
-  left: unset !important;
-  height: unset !important;
-  width: 500px;
+.mxfeedback-button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
 }
-.layout-chat-sidebar .mx-window-content {
-  border-radius: 0;
-  border: none;
+.mxfeedback-button-group--screenshot-container {
+  flex-direction: row-reverse;
 }
-.layout-chat-sidebar .mx-window-content .mx-window-header {
-  background: #264ae5;
-  cursor: auto;
-  border: none;
+.mxfeedback-button-group--gap-md {
+  gap: 16px;
 }
-.layout-chat-sidebar .mx-window-content .mx-window-header h4 {
-  color: #fff;
+.mxfeedback-button-group--gap-lg {
+  gap: 32px;
 }
-.layout-chat-sidebar .mx-window-content .mx-window-header .close {
-  color: #fff;
+.mxfeedback-button-group--justify-start {
+  justify-content: flex-start;
 }
-.layout-chat-sidebar .mx-window-content .mx-window-body {
-  overflow: hidden;
-  padding: 16px;
-  height: calc(100% - 50px);
+.mxfeedback-button-group--justify-center {
+  justify-content: center;
 }
-.layout-chat-sidebar .mx-window-content .mx-window-body .mx-placeholder {
+.mxfeedback-button-group--row-xs {
+  flex-direction: column;
+}
+@media only screen and (min-width: 768px) {
+  .mxfeedback-button-group--row-xs {
+    flex-direction: row;
+  }
+}
+
+.mxfeedback-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.mxfeedback-button svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.mxfeedback-screenshot-preview {
+  display: flex;
+  justify-content: left;
+  position: relative;
+  margin: 24px auto;
+  cursor: pointer;
+}
+.mxfeedback-screenshot-preview__image > img {
+  display: block;
+  object-fit: contain;
   height: 100%;
+  aspect-ratio: 16/9;
+  border: 1px solid #787d87;
+  border-radius: 4px;
+}
+.mxfeedback-screenshot-preview__image > img:hover {
+  background-color: #f8f8f8;
+  border: 1px solid #474e5c;
+  border-radius: 4px;
+  opacity: 0.5;
+}
+.mxfeedback-screenshot-preview__preview-icon {
+  width: 20px;
+  height: 20px;
+  fill: #f8f8f8;
+}
+.mxfeedback-screenshot-preview__delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  z-index: 1;
+  color: #264ae5;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  font-size: 12px;
 }
 
-.text-italic {
-  font-style: italic;
+.mxfeedback-underlay {
+  inset: 0;
+  z-index: 1000001;
 }
 
 .table {
@@ -23814,342 +23716,440 @@ input[type=checkbox].three-state-checkbox + .control-label {
   border-width: 0;
 }
 
-/* 
-    ==| Variables |=========================================================================================
-*/
-/* 
-    ==| Widget blocks |=====================================================================================
-    These blocks contains styles directly related to the widget's appearance and are mostly unique styles
-    needed to display the widget's UI correctly.
-*/
-/* 
-About: =========================================================
-----------------------------------------------------------------
-This styling targets the main Feedback Button rendered on your page.
-The Feedback widget button can be rendered on page in 3 formats.
-
-Render Modes: ==================================================
-----------------------------------------------------------------
-Each render mode can be selected by double clicking the Feedback widget settings in Studio Pro.
-
-'Side Tab' - Fixes the button to the right hand margin and rotates by 270 degrees.
-'Button' - Mimics a normal Mendix button.
-'Do not render' - Hides the button on the live website but is still visible in the page editor for developers.
-
-CSS BEM Enumeration values: ====================================
-----------------------------------------------------------------
-At a code level each render mode selected has a coresspoinding CSS BEM modifier value.
-Use these BEM modifiers to custom style each render mode.
-
-Side Tab = "side"
-Button = "normal"
-Do not render = "none"
-
-*/
-.mxfeedback-start-button--none {
-  display: none !important;
+.hover-trigger .show-on-hover {
+  visibility: hidden;
 }
-.mxfeedback-start-button--side {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translate(50%, -50%) rotate(270deg);
-  transform-origin: bottom center;
-  padding: 4px 8px;
-  border: none;
-  border-radius: 4px 4px 0 0;
-  background-color: #264ae5;
-  color: #fff;
-  font-size: 16px;
-  box-shadow: -2px 0 4px 0 rgba(0, 0, 0, 0.3);
-  z-index: 999998;
-}
-.mxfeedback-start-button--side:focus, .mxfeedback-start-button--side:hover {
-  background-color: #1e3bb7;
+.hover-trigger:hover .show-on-hover {
+  display: inline;
+  visibility: visible;
 }
 
-.mxfeedback-annotation-canvas {
-  z-index: 1000003;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.mxfeedback-annotation-canvas__canvas {
-  position: fixed;
-  margin-top: 48px;
+.text-break-word {
+  word-break: break-word;
 }
 
-.mxfeedback-annotation-frame {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: 1000004;
+.spacing-inner-top-smaller {
+  padding-top: 4px;
 }
 
-/* 
-    ==| Generic blocks |====================================================================================
-    These blocks are generic blocks. These styles are styles that apply to the widget's entire UI and
-    outline the basic styles of the widget (in accordance with Atlas UI).
-*/
-.mxfeedback-toolbar {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  top: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 16px 32px;
-  background-color: #fff;
-  border: 1px solid #ced0d3;
-  border-radius: 4px;
-  font-size: 12px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-  z-index: 1000004;
-}
-.mxfeedback-toolbar--gap-md {
-  gap: 16px;
-}
-.mxfeedback-toolbar--gap-lg {
-  gap: 32px;
+.text-clamp--2-lines {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
 }
 
-.mxfeedback-tool-button {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.line-height--1 {
+  line-height: 1;
+}
+
+.accordion-chat-sources .widget-accordion-group {
   background: transparent;
-  border: 0;
+}
+.accordion-chat-sources .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button {
+  display: inline-flex;
+  background: transparent;
   padding: 0;
 }
-.mxfeedback-tool-button--active {
-  color: #264ae5;
+.accordion-chat-sources .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:hover, .accordion-chat-sources .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:focus {
+  color: #0a1325;
+  background: transparent;
 }
-.mxfeedback-tool-button:focus-visible {
-  color: #1e3bb7;
-}
-.mxfeedback-tool-button__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.mxfeedback-tool-button__icon {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-}
-.mxfeedback-tool-button__label {
-  margin-top: 4px;
-  color: inherit;
-}
-.mxfeedback-tool-button__caret {
+.accordion-chat-sources .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button .widget-accordion-group-header-button-icon {
+  align-self: left;
+  display: inline-flex;
   fill: #0a1325;
-  width: 8px;
-  height: 8px;
 }
-.mxfeedback-tool-button__dropdown {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-.mxfeedback-tool-button__menu {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  transform: translateX(-50%);
-  padding: 8px;
-  background: #fff;
-  border: 1px solid #ced0d3;
-  border-radius: 4px;
-  width: 144px;
-  z-index: 1;
-}
-.mxfeedback-tool-button__list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: calc(8px / 2);
-}
-.mxfeedback-tool-button__list--col-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-.mxfeedback-tool-button__color {
-  position: relative;
-  padding: 0;
-  border: none;
-  border-radius: 100%;
-  aspect-ratio: 1/1;
-}
-.mxfeedback-tool-button__color:focus {
-  outline: 2px solid #264ae5;
-  outline-offset: 2px;
-}
-.mxfeedback-tool-button__color--midnight {
-  background-color: #2f3646;
-}
-.mxfeedback-tool-button__color--grey {
-  background-color: #c1c3c8;
-}
-.mxfeedback-tool-button__color--green {
-  background-color: #4fd84f;
-}
-.mxfeedback-tool-button__color--blue {
-  background-color: #47a9ff;
-}
-.mxfeedback-tool-button__color--purple {
-  background-color: #845eff;
-}
-.mxfeedback-tool-button__color--magenta {
-  background-color: #ca49f8;
-}
-.mxfeedback-tool-button__color--red {
-  background-color: #fb4a4c;
-}
-.mxfeedback-tool-button__color--yellow {
-  background-color: #fcc73a;
-}
-.mxfeedback-tool-button__color svg {
-  width: 10px;
-  height: 10px;
-  stroke: #fff;
-}
-.mxfeedback-tool-button__thickness {
-  background-color: transparent;
-  border: none;
-  border-radius: 4px;
-  aspect-ratio: 4/3;
-}
-.mxfeedback-tool-button__thickness:hover {
-  background-color: #a9acb3;
-}
-.mxfeedback-tool-button__thickness:focus {
-  outline: 2px solid #264ae5;
-  outline-offset: 2px;
-}
-.mxfeedback-tool-button__thickness--selected {
-  background-color: #787d87;
-}
-.mxfeedback-tool-button__thickness::before {
-  content: "";
-  display: block;
-  background-color: #2f3646;
-  width: 100%;
-  transform: rotate(-45deg);
-}
-.mxfeedback-tool-button__thickness--one::before {
-  height: 1px;
-}
-.mxfeedback-tool-button__thickness--two::before {
-  height: 2px;
-}
-.mxfeedback-tool-button__thickness--three::before {
-  height: 3px;
-}
-.mxfeedback-tool-button__thickness--four::before {
-  height: 4px;
-}
-.mxfeedback-tool-button__thickness--five::before {
-  height: 5px;
-}
-.mxfeedback-tool-button__thickness--six::before {
-  height: 6px;
+.accordion-chat-sources .widget-accordion-group .widget-accordion-group-content-wrapper .widget-accordion-group-content {
+  padding-left: 0;
+  padding-bottom: 0;
 }
 
-.mxfeedback-button-group {
+.chat-card--full-height {
+  height: 100%;
+}
+
+.card-border {
+  border: 1px solid #f3f3f4;
+}
+
+.card-border-top {
+  border-top: 1px solid #f3f3f4;
+}
+
+.card-statistics {
+  width: fit-content;
+}
+.card-statistics .mx-text.statistic {
+  min-width: 200px;
+}
+
+.card--sticky-content {
+  overflow: unset;
+  padding-top: 0;
+}
+
+.sticky-header {
+  position: sticky;
+  background-color: inherit;
+  top: 0px;
+  padding-top: 24px;
+  z-index: 101;
+}
+
+.chat-loading-wrapper {
   display: flex;
-  justify-content: flex-end;
-  gap: 8px;
+  justify-content: left;
+  padding: 8px;
 }
-.mxfeedback-button-group--screenshot-container {
-  flex-direction: row-reverse;
+.chat-loading-wrapper .loading-dot {
+  border-radius: 100%;
+  background-color: #0a1325;
+  width: 4.6666666667px;
+  height: 4.6666666667px;
 }
-.mxfeedback-button-group--gap-md {
-  gap: 16px;
+.chat-loading-wrapper .loading-dot:nth-child(1) {
+  animation: preloader 0.9s ease-in-out alternate infinite;
 }
-.mxfeedback-button-group--gap-lg {
-  gap: 32px;
+.chat-loading-wrapper .loading-dot:nth-child(2) {
+  margin: 0 14px;
+  animation: preloader 0.9s ease-in-out alternate 0.2s infinite;
 }
-.mxfeedback-button-group--justify-start {
-  justify-content: flex-start;
+.chat-loading-wrapper .loading-dot:nth-child(3) {
+  animation: preloader 0.9s ease-in-out alternate 0.4s infinite;
 }
-.mxfeedback-button-group--justify-center {
-  justify-content: center;
-}
-.mxfeedback-button-group--row-xs {
-  flex-direction: column;
-}
-@media only screen and (min-width: 768px) {
-  .mxfeedback-button-group--row-xs {
-    flex-direction: row;
+@keyframes preloader {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
-.mxfeedback-button {
+.chat-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-.mxfeedback-button svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
-}
-
-.mxfeedback-screenshot-preview {
-  display: flex;
-  justify-content: left;
-  position: relative;
-  margin: 24px auto;
-  cursor: pointer;
-}
-.mxfeedback-screenshot-preview__image > img {
-  display: block;
-  object-fit: contain;
+  flex-direction: column;
+  width: 100%;
   height: 100%;
-  aspect-ratio: 16/9;
-  border: 1px solid #787d87;
-  border-radius: 4px;
 }
-.mxfeedback-screenshot-preview__image > img:hover {
-  background-color: #f8f8f8;
-  border: 1px solid #474e5c;
-  border-radius: 4px;
-  opacity: 0.5;
+.chat-container .messages-container {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
-.mxfeedback-screenshot-preview__preview-icon {
-  width: 20px;
-  height: 20px;
-  fill: #f8f8f8;
-}
-.mxfeedback-screenshot-preview__delete-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(50%, -50%);
-  z-index: 1;
-  color: #264ae5;
-  border-radius: 50%;
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  font-size: 12px;
+.chat-container--center {
+  max-width: 900px;
+  margin: 0 auto;
+  height: 100%;
 }
 
-.mxfeedback-underlay {
-  inset: 0;
-  z-index: 1000001;
+.chat-input-wrapper {
+  position: relative;
+}
+.chat-input-wrapper .form-group {
+  width: 100%;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.chat-input-wrapper .form-group .form-control {
+  padding-right: 64px;
+  max-height: 400px;
+  overflow: auto;
+}
+.chat-input-wrapper .has-error .alert {
+  display: none !important;
+}
+.chat-input-wrapper .send-btn {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration-line: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+}
+.chat-input-wrapper .send-btn .glyphicon {
+  top: 0;
+  font-size: 14px;
+  left: -2px;
+}
+
+.chat-bubble-wrapper {
+  margin-top: 8px;
+}
+.chat-bubble-wrapper .chat-message-card {
+  background: #d8f0d8;
+  border-radius: 8px 8px 8px 0;
+  margin: 0 10% 0 0;
+  text-align: left;
+  padding: 8px;
+}
+.chat-bubble-wrapper--user .chat-message-card {
+  background: #d4dbfa;
+  border-radius: 8px 8px 0 8px;
+  margin: 0 0 0 10%;
+}
+
+.chat-history-sidebar {
+  overflow-y: auto;
+}
+
+.chat-history-active {
+  border-left: 3px solid #264ae5;
+  font-weight: bold;
+}
+
+.chart-input.widget-chart .fills .js-fill,
+.chart-input.widget-chart .legendfill .js-fill {
+  fill: #8a9df1 !important;
+}
+.chart-input.widget-chart .lines .js-line,
+.chart-input.widget-chart .legendlines .js-line {
+  stroke: #3c5ce8 !important;
+}
+
+.chart-output.widget-chart .fills .js-fill,
+.chart-output.widget-chart .legendfill .js-fill {
+  fill: #cbd4f9 !important;
+}
+.chart-output.widget-chart .lines .js-line,
+.chart-output.widget-chart .legendlines .js-line {
+  stroke: #a8b7f5 !important;
+}
+
+.conversationstarter.card {
+  margin-bottom: 8px;
+  padding: 8px;
+  border: 1px solid #e7e7e9;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.conversationstarter.card:hover {
+  background-color: #f5f6f6;
+}
+.conversationstarter.card .mx-link {
+  color: #264ae5;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.conversationstarter-container--vertical {
+  margin-top: 20%;
+}
+
+.conversationstarter-container--horizontal {
+  margin-top: 20%;
+}
+.conversationstarter-container--horizontal .mx-layoutgrid {
+  height: 100%;
+}
+.conversationstarter-container--horizontal .mx-layoutgrid > .row .col > .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.conversationstarter-container--horizontal .conversationstarter.card {
+  height: 100%;
+}
+.conversationstarter-container--horizontal .conversationstarter.card div {
+  display: flex;
+  flex-direction: column;
+}
+.conversationstarter-container--horizontal .widget-gallery-item-button {
+  height: 100%;
+}
+.conversationstarter-container--horizontal .conversationstarter-arrow {
+  display: none;
+}
+
+.chat-dataview--display-contents {
+  display: contents;
+}
+.chat-dataview--display-contents > div {
+  display: contents;
+}
+
+.dataview--display-contents > div {
+  display: contents;
+}
+
+.datetime-inputs-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.datetime-inputs-wrapper .time-input {
+  max-width: 100px;
+  margin-left: -1px;
+  margin-bottom: 0;
+}
+.datetime-inputs-wrapper .date-input {
+  max-width: 150px;
+  margin-left: 16px;
+  margin-bottom: 0;
+}
+.datetime-inputs-wrapper .mx-compound-control .btn {
+  margin-left: -44px;
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.input-container {
+  border-bottom: 1px solid #f3f3f4;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.combo-deployment-selection {
+  min-width: 360px;
+}
+.combo-deployment-selection .deployment-selection {
+  display: flex;
+  align-items: center;
+  height: max-content;
+}
+.combo-deployment-selection .mx-image {
+  height: 14px;
+  margin-right: 8px;
+}
+
+.layoutgrid--full-height {
+  height: 100%;
+}
+.layoutgrid--full-height .row {
+  height: 100%;
+}
+.layoutgrid--full-height .row > [class*=col] {
+  height: 100%;
+}
+
+.chat-listview-horizontal.mx-listview > ul {
+  display: contents;
+  margin-bottom: none;
+}
+.chat-listview-horizontal.mx-listview > ul > li {
+  display: inline-block;
+}
+.chat-listview-horizontal.mx-listview > ul > li:hover {
+  background-color: transparent;
+}
+
+.listview-hide-on-empty.mx-listview > ul > li.mx-listview-empty {
+  display: none;
+}
+
+.btn-chat-popup {
+  position: fixed;
+  right: 3vw;
+  bottom: 5vh;
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.btn-chat-popup .glyphicon {
+  font-size: 24px;
+}
+.btn-chat-popup img {
+  height: 32px;
+  width: 32px;
+  margin: 0;
+}
+
+.layout-chat-popup.mx-window {
+  position: fixed;
+  right: 3vw !important;
+  bottom: 5vh !important;
+  left: unset !important;
+  top: unset !important;
+  width: 500px !important;
+  height: 65vh !important;
+  z-index: 100;
+}
+.layout-chat-popup.mx-window .mx-resizer-n, .layout-chat-popup.mx-window .mx-resizer-s, .layout-chat-popup.mx-window .mx-resizer-e, .layout-chat-popup.mx-window .mx-resizer-w, .layout-chat-popup.mx-window .mx-resizer-nw, .layout-chat-popup.mx-window .mx-resizer-ne, .layout-chat-popup.mx-window .mx-resizer-sw, .layout-chat-popup.mx-window .mx-resizer-se {
+  cursor: auto;
+}
+.layout-chat-popup.mx-window .mx-window-header {
+  background: #264ae5;
+  cursor: auto;
+}
+.layout-chat-popup.mx-window .mx-window-header h4 {
+  color: #fff;
+}
+.layout-chat-popup.mx-window .mx-window-header button.close {
+  color: transparent;
+}
+.layout-chat-popup.mx-window .mx-window-header button.close::after {
+  content: "-";
+  color: #fff;
+}
+.layout-chat-popup.mx-window .modal-body {
+  height: calc(100% - 50px);
+  overflow: hidden;
+  padding: 16px;
+}
+.layout-chat-popup.mx-window .modal-body .mx-placeholder {
+  height: 100%;
+}
+
+.segmented-control {
+  height: fit-content;
+  border: 1px solid #ced0d3;
+  border-radius: 4px;
+  padding: 4px;
+  width: fit-content;
+  background-color: #f8f8f8;
+}
+.segmented-control .btn.btn-default {
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.layout-chat-sidebar {
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: unset !important;
+  height: unset !important;
+  width: 500px;
+}
+.layout-chat-sidebar .mx-window-content {
+  border-radius: 0;
+  border: none;
+}
+.layout-chat-sidebar .mx-window-content .mx-window-header {
+  background: #264ae5;
+  cursor: auto;
+  border: none;
+}
+.layout-chat-sidebar .mx-window-content .mx-window-header h4 {
+  color: #fff;
+}
+.layout-chat-sidebar .mx-window-content .mx-window-header .close {
+  color: #fff;
+}
+.layout-chat-sidebar .mx-window-content .mx-window-body {
+  overflow: hidden;
+  padding: 16px;
+  height: calc(100% - 50px);
+}
+.layout-chat-sidebar .mx-window-content .mx-window-body .mx-placeholder {
+  height: 100%;
+}
+
+.text-italic {
+  font-style: italic;
 }
 
 .badge {
