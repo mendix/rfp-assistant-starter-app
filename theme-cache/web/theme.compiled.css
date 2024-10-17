@@ -24240,6 +24240,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   background-color: rgba(60, 179, 61, 0.15);
   color: #3cb33d;
 }
+.badge.badge--purple-light {
+  background-color: rgba(47, 0, 140, 0.15);
+  color: #2F008C;
+}
 
 .popup-menu-item.mx-link {
   color: rgba(10, 19, 37, 0.8);

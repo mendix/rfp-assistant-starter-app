@@ -5,7 +5,9 @@
 $brand-primary-light: rgba($brand-primary, 0.15);
 $brand-warning-light: rgba($brand-warning, 0.15);
 $brand-danger-light: rgba($brand-danger, 0.15);
-$brand-success-lighter: rgba($brand-success, 0.15);
+$brand-success-light: rgba($brand-success, 0.15);
+$brand-purple: #2F008C;
+$brand-purple-light:rgba($brand-purple, 0.15);
 $font-color-light: rgba($font-color-default, 0.8);
 $border-radius-large: 20px;
 
@@ -29,8 +31,13 @@ $border-radius-large: 20px;
     }
 
     &.badge--success-light {
-        background-color: $brand-success-lighter;
+        background-color: $brand-success-light;
         color: $brand-success;
+    }
+
+    &.badge--purple-light {
+        background-color: $brand-purple-light;
+        color: $brand-purple;
     }
 }
 
