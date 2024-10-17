@@ -24245,7 +24245,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
   color: #2F008C;
 }
 
-.popup-menu-item.mx-link {
+.btn-without-border.mx-link {
   color: rgba(10, 19, 37, 0.8);
   text-decoration: none;
 }
