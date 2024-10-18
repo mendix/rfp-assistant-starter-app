@@ -7,10 +7,10 @@ $brand-warning-light: rgba($brand-warning, 0.15);
 $brand-danger-light: rgba($brand-danger, 0.15);
 $brand-success-light: rgba($brand-success, 0.15);
 $brand-purple: #2F008C;
-$brand-purple-light:rgba($brand-purple, 0.15);
+$brand-purple-light: rgba($brand-purple, 0.15);
 $font-color-light: rgba($font-color-default, 0.8);
 $border-radius-large: 20px;
-
+$wizard-step-width: 180px;
 
 .badge {
     font-weight: normal;
@@ -42,12 +42,13 @@ $border-radius-large: 20px;
 }
 
 .btn-without-border.mx-link {
-    color:$font-color-light;
+    color: $font-color-light;
     text-decoration: none;
 }
 
 .label-with-text {
-    > label { //from .form-group .control-label
+    >label {
+        //from .form-group .control-label
         overflow: hidden;
         margin-bottom: 4px;
         text-align: left;
@@ -57,6 +58,7 @@ $border-radius-large: 20px;
         font-weight: $form-label-weight;
         display: block;
     }
+
     .mx-text {
         margin-bottom: 4px;
         line-height: $line-height-base;
@@ -68,10 +70,74 @@ $border-radius-large: 20px;
     border-radius: $border-radius-large;
 }
 
-.show-validation-feedback{
+.show-validation-feedback {
     margin: 0;
-        > input {
+
+    >input {
+        display: none;
+    }
+
+}
+
+.wizard {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .wizard-step {
+        width: $wizard-step-width;
+
+        &:first-child::before {
             display: none;
         }
-    
+
+        .wizard-step-number {
+            padding: 0;
+            height: $font-size-default;
+            width: $font-size-default;
+
+        }
+
+        &::before {
+            position: absolute;
+            z-index: 0;
+            top: $font-size-default / 2;
+            right: $wizard-step-width / 2;
+            display: block;
+            width: 100%;
+        }
+
+    }
+
+    .wizard-step-active {
+        .wizard-step-number {
+            color: $wizard-active-color;
+            border-color: $wizard-active-border-color;
+            background-color: $wizard-default-bg;
+        }
+
+        .wizard-step-text {
+            color: $wizard-active-step-color;
+        }
+    }
+
+    .wizard-step-visited {
+        .wizard-step-number {
+            color: $wizard-active-color;
+            border-color: $wizard-active-border-color;
+            background-color: $wizard-active-color;
+        }
+
+        .wizard-step-text {
+            color: $wizard-active-step-color;
+        }
+    }
+
+    .wizard-step-active,
+    .wizard-step-visited {
+        &::before {
+            background-color: $wizard-active-color;
+        }
+    }
+
 }

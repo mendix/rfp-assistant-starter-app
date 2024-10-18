@@ -24277,6 +24277,51 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: none;
 }
 
+.wizard {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.wizard .wizard-step {
+  width: 180px;
+}
+.wizard .wizard-step:first-child::before {
+  display: none;
+}
+.wizard .wizard-step .wizard-step-number {
+  padding: 0;
+  height: 14px;
+  width: 14px;
+}
+.wizard .wizard-step::before {
+  position: absolute;
+  z-index: 0;
+  top: 7px;
+  right: 90px;
+  display: block;
+  width: 100%;
+}
+.wizard .wizard-step-active .wizard-step-number {
+  color: #1b34a0;
+  border-color: #1b34a0;
+  background-color: #fff;
+}
+.wizard .wizard-step-active .wizard-step-text {
+  color: #1b34a0;
+}
+.wizard .wizard-step-visited .wizard-step-number {
+  color: #1b34a0;
+  border-color: #1b34a0;
+  background-color: #1b34a0;
+}
+.wizard .wizard-step-visited .wizard-step-text {
+  color: #1b34a0;
+}
+.wizard .wizard-step-active::before,
+.wizard .wizard-step-visited::before {
+  background-color: #1b34a0;
+}
+
 .mx-layoutgrid.card-container > .row {
   padding-bottom: 24px;
 }
