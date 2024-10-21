@@ -7,10 +7,53 @@
     .col>.card {
         height: 100%;
         margin-bottom: 0px;
-        .widget-datagrid{
+
+        .widget-datagrid {
             margin-right: -24px;
             margin-left: -24px;
         }
+    }
+}
+
+.rfp-view-container {
+    min-height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+
+    .rfp-container {
+        width: 100%;
+        max-width: 960px;
+        display: flex;
+        flex-direction: column;
+
+        .mx-dataview {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mx-dataview-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mx-layoutgrid {
+            padding: 0;
+        }
+
+    }
+}
+
+.btn-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid $border-color-default;
+
+    .btn {
+        margin-left: $spacing-small;
+        margin-top: $spacing-medium;
     }
 }
 
