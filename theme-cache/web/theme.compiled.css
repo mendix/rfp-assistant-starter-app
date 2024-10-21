@@ -24339,6 +24339,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
   padding: 0;
   height: 14px;
   width: 14px;
+  border: 1px solid #ced0d3;
 }
 .wizard .wizard-step::before {
   position: absolute;
