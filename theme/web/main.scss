@@ -21,3 +21,10 @@
         display: none;
     }
 }
+
+//Fix for listview-stylingless margin
+.listview-stylingless{
+    > ul{
+        margin-bottom: 0;
+    }
+}

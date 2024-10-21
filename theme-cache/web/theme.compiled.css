@@ -24386,4 +24386,8 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: none;
 }
 
+.listview-stylingless > ul {
+  margin-bottom: 0;
+}
+
 /*# sourceMappingURL=theme.compiled.css.map */
