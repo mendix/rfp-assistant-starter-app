@@ -24224,6 +24224,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .badge {
   font-weight: normal;
 }
+.badge .mx-image-viewer-responsive > img {
+  max-width: 14px;
+  max-height: 14px;
+}
 .badge.badge--primary-light {
   background-color: rgba(38, 74, 229, 0.15);
   color: #264ae5;
@@ -24372,6 +24376,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .btn-container .btn {
   margin-left: 8px;
   margin-top: 16px;
+}
+
+.gallery-hide-paging .widget-gallery-footer {
+  display: none;
 }
 
 /*# sourceMappingURL=theme.compiled.css.map */
