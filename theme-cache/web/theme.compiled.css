@@ -24347,6 +24347,9 @@ input[type=checkbox].three-state-checkbox + .control-label {
   width: 100%;
   max-width: 1200px;
 }
+.rfp-page-container .rfp-overview-container .td {
+  border-bottom: none;
+}
 .rfp-page-container .rfp-container {
   width: 100%;
   max-width: 960px;
