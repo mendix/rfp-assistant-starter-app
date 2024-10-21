@@ -24281,6 +24281,49 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: none;
 }
 
+.rfp-page-container {
+  min-height: -webkit-fill-available;
+  display: flex;
+  justify-content: center;
+}
+.rfp-page-container .rfp-overview-container {
+  width: 100%;
+  max-width: 1200px;
+}
+.rfp-page-container .rfp-overview-container .td {
+  border-bottom: none;
+}
+.rfp-page-container .rfp-container {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+}
+.rfp-page-container .mx-dataview {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.rfp-page-container .mx-dataview .mx-dataview-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.rfp-page-container .mx-layoutgrid.container-fluid {
+  padding: 0;
+}
+
+.btn-container {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #ced0d3;
+}
+.btn-container .btn {
+  margin-left: 8px;
+  margin-top: 16px;
+}
+
 .wizard {
   display: flex;
   justify-content: center;
@@ -24336,49 +24379,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .mx-layoutgrid.card-container > .row .col > .card .widget-datagrid {
   margin-right: -24px;
   margin-left: -24px;
-}
-
-.rfp-page-container {
-  min-height: -webkit-fill-available;
-  display: flex;
-  justify-content: center;
-}
-.rfp-page-container .rfp-overview-container {
-  width: 100%;
-  max-width: 1200px;
-}
-.rfp-page-container .rfp-overview-container .td {
-  border-bottom: none;
-}
-.rfp-page-container .rfp-container {
-  width: 100%;
-  max-width: 960px;
-  display: flex;
-  flex-direction: column;
-}
-.rfp-page-container .mx-dataview {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-.rfp-page-container .mx-dataview .mx-dataview-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-.rfp-page-container .mx-layoutgrid.container-fluid {
-  padding: 0;
-}
-
-.btn-container {
-  margin-top: auto;
-  display: flex;
-  justify-content: flex-end;
-  border-top: 1px solid #ced0d3;
-}
-.btn-container .btn {
-  margin-left: 8px;
-  margin-top: 16px;
 }
 
 .gallery-hide-paging .widget-gallery-footer {
