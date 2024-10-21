@@ -24338,28 +24338,35 @@ input[type=checkbox].three-state-checkbox + .control-label {
   margin-left: -24px;
 }
 
-.rfp-view-container {
+.rfp-page-container {
   min-height: -webkit-fill-available;
   display: flex;
   justify-content: center;
 }
-.rfp-view-container .rfp-container {
+.rfp-page-container .rfp-overview-container {
+  width: 100%;
+  max-width: 1200px;
+}
+.rfp-page-container .rfp-overview-container .td {
+  border-bottom: none;
+}
+.rfp-page-container .rfp-container {
   width: 100%;
   max-width: 960px;
   display: flex;
   flex-direction: column;
 }
-.rfp-view-container .rfp-container .mx-dataview {
+.rfp-page-container .mx-dataview {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
-.rfp-view-container .rfp-container .mx-dataview-content {
+.rfp-page-container .mx-dataview .mx-dataview-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
-.rfp-view-container .rfp-container .mx-layoutgrid {
+.rfp-page-container .mx-layoutgrid.container-fluid {
   padding: 0;
 }
 
