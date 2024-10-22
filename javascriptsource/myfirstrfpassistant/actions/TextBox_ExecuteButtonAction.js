@@ -27,13 +27,13 @@ function clickButton(buttonName) {
  * It is intended to create an event that listens to the user input in a textarea. Once either Enter or Shift+Enter is hitted, the specified button will be called. It is sufficient to call this action only once when the element is loaded.
  * 
  * Make sure that the names of the button and textarea match with the input parameters of this action. 
- * @param {string} textAreaName - Name of the textarea on the page that the event listens to. Can be changed under "Common".
+ * @param {string} textBoxName - Name of the textarea on the page that the event listens to. Can be changed under "Common".
  * @param {string} buttonName - Name of the button on the page that should be clicked. Can be changed under "Common".
  * @param {boolean} submitOnEnter - Button will be clicked when the users enters the enter key on their keyboard.
  * @param {boolean} submitOnShiftEnter - Button will be clicked when the users enters the enter and shift key on their keyboard.
  * @returns {Promise.<void>}
  */
-export async function TextBox_ExecuteButtonAction(textAreaName, buttonName, submitOnEnter, submitOnShiftEnter) {
+export async function TextBox_ExecuteButtonAction(textBoxName, buttonName, submitOnEnter, submitOnShiftEnter) {
 	// BEGIN USER CODE
 	try {
 		//Validations

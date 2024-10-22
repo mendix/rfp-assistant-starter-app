@@ -24314,18 +24314,19 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .rfp-page-container .rfp-settings-container .rfp-text-explanation {
   display: none;
 }
-.rfp-page-container .mx-dataview {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-.rfp-page-container .mx-dataview .mx-dataview-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
 .rfp-page-container .mx-layoutgrid.container-fluid {
   padding: 0;
+}
+
+.dataview-grow {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.dataview-grow > .mx-dataview-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-wrapper {
