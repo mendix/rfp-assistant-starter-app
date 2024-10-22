@@ -24297,32 +24297,32 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: flex;
   justify-content: center;
 }
-.rfp-page-container .rfp-overview-container {
+.rfp-page-container .rfp-container--overview {
   width: 100%;
   max-width: 1200px;
 }
-.rfp-page-container .rfp-overview-container .td {
+.rfp-page-container .rfp-container--overview .td {
   border-bottom: none;
 }
-.rfp-page-container .rfp-container {
+.rfp-page-container .rfp-container--view {
   width: 100%;
   max-width: 960px;
   display: flex;
   flex-direction: column;
 }
-.rfp-page-container .rfp-left-container {
+.rfp-page-container .rfp-container--medium {
   width: 100%;
   max-width: 864px;
   display: flex;
   flex-direction: column;
 }
-.rfp-page-container .rfp-right-container {
+.rfp-page-container .rfp-container--small {
   width: 100%;
   max-width: 448px;
   display: flex;
   flex-direction: column;
 }
-.rfp-page-container .rfp-right-container .rfp-text-explanation {
+.rfp-page-container .rfp-container--small .rfp-text-explanation {
   display: none;
 }
 .rfp-page-container .mx-layoutgrid.container-fluid {
@@ -24374,6 +24374,17 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .input-wrapper .btn-input-action--left {
   left: 1px;
   border-radius: 4px 0 0 4px;
+}
+
+.sticky-wrapper {
+  overflow: unset;
+  padding-top: 0;
+}
+
+.sticky-content {
+  position: sticky;
+  top: 0px;
+  z-index: 101;
 }
 
 .btn-container {
