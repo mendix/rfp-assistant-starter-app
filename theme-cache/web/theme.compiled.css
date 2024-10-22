@@ -24254,6 +24254,17 @@ input[type=checkbox].three-state-checkbox + .control-label {
   text-decoration: none;
 }
 
+.btn-as-text {
+  border: none;
+  color: #0a1325;
+}
+.btn-as-text:hover, .btn-as-text:active, .btn-as-text:focus {
+  color: #0a1325;
+}
+.btn-as-text:active:not(:hover), .btn-as-text:focus:not(:hover) {
+  background-color: transparent;
+}
+
 .label-with-text > label {
   overflow: hidden;
   margin-bottom: 4px;
@@ -24329,12 +24340,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
   flex-direction: column;
 }
 
-.input-wrapper {
-  display: flex;
-}
-.input-wrapper .form-group {
-  flex-grow: 1;
-}
 .input-wrapper--right .form-group .form-control {
   padding-right: 36px;
 }

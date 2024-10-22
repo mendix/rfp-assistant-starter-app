@@ -52,6 +52,22 @@ $input-button-size: 36px;
     text-decoration: none;
 }
 
+.btn-as-text {
+    border: none;
+    color: $font-color-default;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $font-color-default;
+    }
+
+    &:active:not(:hover),
+    &:focus:not(:hover) {
+        background-color: transparent;
+    }
+}
+
 .label-with-text {
     >label {
         //from .form-group .control-label
@@ -144,11 +160,6 @@ $input-button-size: 36px;
 }
 
 .input-wrapper {
-    display: flex;
-
-    .form-group {
-        flex-grow: 1;
-    }
 
     &--right {
         .form-group .form-control {
