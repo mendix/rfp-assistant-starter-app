@@ -84,6 +84,57 @@ $wizard-step-width: 180px;
 
 }
 
+.rfp-page-container {
+    min-height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+
+    .rfp-overview-container {
+        width: 100%;
+        max-width: 1200px;
+
+        .td {
+            border-bottom: none;
+        }
+    }
+
+    .rfp-container {
+        width: 100%;
+        max-width: 960px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .mx-dataview {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        .mx-dataview-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .mx-layoutgrid.container-fluid {
+        padding: 0;
+    }
+}
+
+.btn-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid $border-color-default;
+
+    .btn {
+        margin-left: $spacing-small;
+        margin-top: $spacing-medium;
+    }
+}
+
 .wizard {
     display: flex;
     justify-content: center;
@@ -100,6 +151,7 @@ $wizard-step-width: 180px;
             padding: 0;
             height: $font-size-default;
             width: $font-size-default;
+            border: 1px solid $border-color-default;
 
         }
 
