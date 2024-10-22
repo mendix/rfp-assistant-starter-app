@@ -123,7 +123,7 @@ $input-button-size: 36px;
 
     }
 
-    .rfp-quickanswer-container {
+    .rfp-left-container {
         width: 100%;
         max-width: 864px;
         display: flex;
@@ -131,7 +131,7 @@ $input-button-size: 36px;
 
     }
 
-    .rfp-settings-container {
+    .rfp-right-container {
         width: 100%;
         max-width: 448px;
         display: flex;
@@ -144,6 +144,14 @@ $input-button-size: 36px;
 
     .mx-layoutgrid.container-fluid {
         padding: 0;
+    }
+
+    .widget-progress-bar {
+
+        .progress,
+        .progress-bar {
+            height: $font-size-default / 2;
+        }
     }
 }
 
@@ -161,19 +169,19 @@ $input-button-size: 36px;
 
 .input-wrapper {
 
-    &--right {
+    &--btn-right {
         .form-group .form-control {
             padding-right: $input-button-size;
         }
     }
 
-    &--left {
+    &--btn-left {
         .form-group .form-control {
             padding-left: $input-button-size;
         }
     }
 
-    &--left-right {
+    &--btn-left-right {
         .form-group .form-control {
             padding-left: $input-button-size;
             padding-right: $input-button-size;
@@ -276,6 +284,45 @@ $input-button-size: 36px;
     .wizard-step-visited {
         &::before {
             background-color: $wizard-active-color;
+        }
+    }
+
+}
+
+.progress-item {
+    .mx-text {
+        color: $font-color-detail;
+    }
+
+    .progress-circle {
+        padding: 0;
+        height: $font-size-default;
+        width: $font-size-default;
+        border: 2px solid $border-color-default;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &--active {
+        .mx-text {
+            color: $font-color-default;
+        }
+
+        .progress-circle {
+            border-color: $font-color-default;
+        }
+    }
+
+    &--completed {
+        .progress-circle::after {
+            content: "";
+            border: solid $font-color-default;
+            border-width: 0 2px 2px 0;
+            width: .4rem;
+            height: .6rem;
+            transform: rotate(45deg);
         }
     }
 

@@ -24310,23 +24310,27 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: flex;
   flex-direction: column;
 }
-.rfp-page-container .rfp-quickanswer-container {
+.rfp-page-container .rfp-left-container {
   width: 100%;
   max-width: 864px;
   display: flex;
   flex-direction: column;
 }
-.rfp-page-container .rfp-settings-container {
+.rfp-page-container .rfp-right-container {
   width: 100%;
   max-width: 448px;
   display: flex;
   flex-direction: column;
 }
-.rfp-page-container .rfp-settings-container .rfp-text-explanation {
+.rfp-page-container .rfp-right-container .rfp-text-explanation {
   display: none;
 }
 .rfp-page-container .mx-layoutgrid.container-fluid {
   padding: 0;
+}
+.rfp-page-container .widget-progress-bar .progress,
+.rfp-page-container .widget-progress-bar .progress-bar {
+  height: 7px;
 }
 
 .dataview-grow {
@@ -24340,13 +24344,13 @@ input[type=checkbox].three-state-checkbox + .control-label {
   flex-direction: column;
 }
 
-.input-wrapper--right .form-group .form-control {
+.input-wrapper--btn-right .form-group .form-control {
   padding-right: 36px;
 }
-.input-wrapper--left .form-group .form-control {
+.input-wrapper--btn-left .form-group .form-control {
   padding-left: 36px;
 }
-.input-wrapper--left-right .form-group .form-control {
+.input-wrapper--btn-left-right .form-group .form-control {
   padding-left: 36px;
   padding-right: 36px;
 }
@@ -24427,6 +24431,34 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .wizard .wizard-step-active::before,
 .wizard .wizard-step-visited::before {
   background-color: #1b34a0;
+}
+
+.progress-item .mx-text {
+  color: #6c717e;
+}
+.progress-item .progress-circle {
+  padding: 0;
+  height: 14px;
+  width: 14px;
+  border: 2px solid #ced0d3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progress-item--active .mx-text {
+  color: #0a1325;
+}
+.progress-item--active .progress-circle {
+  border-color: #0a1325;
+}
+.progress-item--completed .progress-circle::after {
+  content: "";
+  border: solid #0a1325;
+  border-width: 0 2px 2px 0;
+  width: 0.4rem;
+  height: 0.6rem;
+  transform: rotate(45deg);
 }
 
 .mx-layoutgrid.card-container > .row {
