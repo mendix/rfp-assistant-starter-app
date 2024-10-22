@@ -24299,6 +24299,21 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: flex;
   flex-direction: column;
 }
+.rfp-page-container .rfp-quickanswer-container {
+  width: 100%;
+  max-width: 864px;
+  display: flex;
+  flex-direction: column;
+}
+.rfp-page-container .rfp-settings-container {
+  width: 100%;
+  max-width: 448px;
+  display: flex;
+  flex-direction: column;
+}
+.rfp-page-container .rfp-settings-container .rfp-text-explanation {
+  display: none;
+}
 .rfp-page-container .mx-dataview {
   flex-grow: 1;
   display: flex;
