@@ -24465,11 +24465,15 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 .progress-item--completed .progress-circle::after {
   content: "";
-  border: solid #0a1325;
+  border: solid;
+  border-color: #6c717e;
   border-width: 0 2px 2px 0;
   width: 0.4rem;
   height: 0.6rem;
   transform: rotate(45deg);
+}
+.progress-item.progress-item--active.progress-item--completed .progress-circle::after {
+  border-color: #0a1325;
 }
 
 .mx-layoutgrid.card-container > .row {

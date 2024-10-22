@@ -213,16 +213,14 @@ $input-button-size: 36px;
     }
 }
 
-.sticky-wrapper{
+.sticky-wrapper {
     overflow: unset;
     padding-top: 0;
 }
 
-.sticky-content{
+.sticky-content {
     position: sticky;
-    //background-color: inherit;
     top: 0px;
-    //padding-top: $spacing-large;
     z-index: 101;
 }
 
@@ -332,7 +330,8 @@ $input-button-size: 36px;
     &--completed {
         .progress-circle::after {
             content: "";
-            border: solid $font-color-default;
+            border: solid;
+            border-color: $font-color-detail;
             border-width: 0 2px 2px 0;
             width: .4rem;
             height: .6rem;
@@ -340,4 +339,9 @@ $input-button-size: 36px;
         }
     }
 
+    &.progress-item--active.progress-item--completed {
+        .progress-circle::after {
+            border-color: $font-color-default;
+        }
+    }
 }
