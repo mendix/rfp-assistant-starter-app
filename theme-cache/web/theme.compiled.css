@@ -24458,10 +24458,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   justify-content: center;
 }
 .progress-item--active .mx-text {
-  color: #0a1325;
+  color: #1b34a0;
 }
 .progress-item--active .progress-circle {
-  border-color: #0a1325;
+  border-color: #1b34a0;
 }
 .progress-item--completed .progress-circle::after {
   content: "";
@@ -24473,7 +24473,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
   transform: rotate(45deg);
 }
 .progress-item.progress-item--active.progress-item--completed .progress-circle::after {
-  border-color: #0a1325;
+  border-color: #1b34a0;
 }
 
 .mx-layoutgrid.card-container > .row {

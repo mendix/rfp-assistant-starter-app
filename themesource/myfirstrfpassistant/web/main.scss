@@ -319,11 +319,11 @@ $input-button-size: 36px;
 
     &--active {
         .mx-text {
-            color: $font-color-default;
+            color: $color-primary-dark; 
         }
 
         .progress-circle {
-            border-color: $font-color-default;
+            border-color: $color-primary-dark;
         }
     }
 
@@ -341,7 +341,7 @@ $input-button-size: 36px;
 
     &.progress-item--active.progress-item--completed {
         .progress-circle::after {
-            border-color: $font-color-default;
+            border-color: $color-primary-dark;
         }
     }
 }
