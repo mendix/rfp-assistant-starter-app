@@ -15,7 +15,7 @@ $wizard-step-width: 180px;
 .badge {
     font-weight: normal;
 
-    .mx-image-viewer-responsive > img {
+    .mx-image-viewer-responsive>img {
         max-width: $font-size-default;
         max-height: $font-size-default;
     }
@@ -78,7 +78,7 @@ $wizard-step-width: 180px;
 .show-validation-feedback {
     margin: 0;
 
-    > input {
+    >input {
         display: none;
     }
 
@@ -118,7 +118,8 @@ $wizard-step-width: 180px;
         max-width: 448px;
         display: flex;
         flex-direction: column;
-        .rfp-text-explanation{
+
+        .rfp-text-explanation {
             display: none;
         }
     }
@@ -138,6 +139,20 @@ $wizard-step-width: 180px;
     .mx-layoutgrid.container-fluid {
         padding: 0;
     }
+}
+
+.input-wrapper {
+    display: flex;
+
+    .form-group {
+        flex-grow: 1;
+    }
+}
+
+.btn-quickanswer {
+    border: none;
+    position: absolute;
+    right: 30px;
 }
 
 .btn-container {

@@ -24328,6 +24328,19 @@ input[type=checkbox].three-state-checkbox + .control-label {
   padding: 0;
 }
 
+.input-wrapper {
+  display: flex;
+}
+.input-wrapper .form-group {
+  flex-grow: 1;
+}
+
+.btn-quickanswer {
+  border: none;
+  position: absolute;
+  right: 30px;
+}
+
 .btn-container {
   margin-top: auto;
   display: flex;
