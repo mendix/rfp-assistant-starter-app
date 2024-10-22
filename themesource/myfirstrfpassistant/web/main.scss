@@ -11,7 +11,7 @@ $brand-purple-light: rgba($brand-purple, 0.15);
 $font-color-light: rgba($font-color-default, 0.8);
 $border-radius-large: 20px;
 $wizard-step-width: 180px;
-$input-button-width: 36px;
+$input-button-size: 36px;
 
 .badge {
     font-weight: normal;
@@ -112,6 +112,7 @@ $input-button-width: 36px;
         max-width: 864px;
         display: flex;
         flex-direction: column;
+
     }
 
     .rfp-settings-container {
@@ -151,20 +152,45 @@ $input-button-width: 36px;
 
     &--right {
         .form-group .form-control {
-            padding-right: $input-button-width;
+            padding-right: $input-button-size;
         }
     }
-}
 
-.btn-input-action {
-    width: $input-button-width;
-    top: 1px;
-    border: none;
-    position: absolute;
-    padding: $spacing-small;
+    &--left {
+        .form-group .form-control {
+            padding-left: $input-button-size;
+        }
+    }
 
-    &--right {
-        right: 1px;
+    &--left-right {
+        .form-group .form-control {
+            padding-left: $input-button-size;
+            padding-right: $input-button-size;
+        }
+    }
+
+    .btn-input-action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration-line: none;
+        padding: $spacing-small;
+        color: $font-color-default;
+        width: $input-button-size;
+        height: $input-button-size;
+        border: none;
+        position: absolute;
+        top: 1px;
+
+        &--right {
+            right: 1px;
+            border-radius: 0 $btn-border-radius $btn-border-radius 0;
+        }
+
+        &--left {
+            left: 1px;
+            border-radius: $btn-border-radius 0 0 $btn-border-radius;
+        }
     }
 }
 

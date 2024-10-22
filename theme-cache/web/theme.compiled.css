@@ -24337,16 +24337,33 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .input-wrapper--right .form-group .form-control {
   padding-right: 36px;
 }
-
-.btn-input-action {
+.input-wrapper--left .form-group .form-control {
+  padding-left: 36px;
+}
+.input-wrapper--left-right .form-group .form-control {
+  padding-left: 36px;
+  padding-right: 36px;
+}
+.input-wrapper .btn-input-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration-line: none;
+  padding: 8px;
+  color: #0a1325;
   width: 36px;
-  top: 1px;
+  height: 36px;
   border: none;
   position: absolute;
-  padding: 8px;
+  top: 1px;
 }
-.btn-input-action--right {
+.input-wrapper .btn-input-action--right {
   right: 1px;
+  border-radius: 0 4px 4px 0;
+}
+.input-wrapper .btn-input-action--left {
+  left: 1px;
+  border-radius: 4px 0 0 4px;
 }
 
 .btn-container {
