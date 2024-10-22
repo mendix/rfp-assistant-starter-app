@@ -24334,11 +24334,19 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .input-wrapper .form-group {
   flex-grow: 1;
 }
+.input-wrapper--right .form-group .form-control {
+  padding-right: 36px;
+}
 
-.btn-quickanswer {
+.btn-input-action {
+  width: 36px;
+  top: 1px;
   border: none;
   position: absolute;
-  right: 30px;
+  padding: 8px;
+}
+.btn-input-action--right {
+  right: 1px;
 }
 
 .btn-container {

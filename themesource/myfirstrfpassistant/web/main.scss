@@ -11,6 +11,7 @@ $brand-purple-light: rgba($brand-purple, 0.15);
 $font-color-light: rgba($font-color-default, 0.8);
 $border-radius-large: 20px;
 $wizard-step-width: 180px;
+$input-button-width: 36px;
 
 .badge {
     font-weight: normal;
@@ -147,12 +148,24 @@ $wizard-step-width: 180px;
     .form-group {
         flex-grow: 1;
     }
+
+    &--right {
+        .form-group .form-control {
+            padding-right: $input-button-width;
+        }
+    }
 }
 
-.btn-quickanswer {
+.btn-input-action {
+    width: $input-button-width;
+    top: 1px;
     border: none;
     position: absolute;
-    right: 30px;
+    padding: $spacing-small;
+
+    &--right {
+        right: 1px;
+    }
 }
 
 .btn-container {
