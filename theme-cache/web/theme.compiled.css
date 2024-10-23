@@ -24223,6 +24223,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
 
 .badge {
   font-weight: normal;
+  font-size: 12px;
+}
+.badge .col {
+  padding: 0;
 }
 .badge .mx-image-viewer-responsive > img {
   max-width: 14px;

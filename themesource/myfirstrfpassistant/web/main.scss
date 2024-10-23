@@ -15,6 +15,10 @@ $input-button-size: 36px;
 
 .badge {
     font-weight: normal;
+    font-size: $font-size-small;
+    .col {
+        padding: 0
+    }
 
     .mx-image-viewer-responsive>img {
         max-width: $font-size-default;
@@ -319,7 +323,7 @@ $input-button-size: 36px;
 
     &--active {
         .mx-text {
-            color: $color-primary-dark; 
+            color: $color-primary-dark;
         }
 
         .progress-circle {
