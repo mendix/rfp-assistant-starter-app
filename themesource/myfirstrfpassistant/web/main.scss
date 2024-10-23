@@ -365,7 +365,8 @@ $input-button-size: 36px;
                     &:focus,
                     &:active {
                         color: $font-color-default;
-                        background: transparent;
+                        background: $btn-default-bg-hover;
+                        border-radius: $border-radius-large;
                     }
                 }
 

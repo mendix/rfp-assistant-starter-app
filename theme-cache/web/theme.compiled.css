@@ -24491,7 +24491,8 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:hover, .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:focus, .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:active {
   color: #0a1325;
-  background: transparent;
+  background: #e7e7e9;
+  border-radius: 20px;
 }
 .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button .widget-accordion-group-header-button-icon {
   align-self: left;
