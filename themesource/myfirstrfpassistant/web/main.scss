@@ -11,11 +11,12 @@ $brand-purple-light: rgba($brand-purple, 0.15);
 $font-color-light: rgba($font-color-default, 0.8);
 $border-radius-large: 20px;
 $wizard-step-width: 180px;
+$input-button-size: 36px;
 
 .badge {
     font-weight: normal;
 
-    .mx-image-viewer-responsive > img {
+    .mx-image-viewer-responsive>img {
         max-width: $font-size-default;
         max-height: $font-size-default;
     }
@@ -51,6 +52,22 @@ $wizard-step-width: 180px;
     text-decoration: none;
 }
 
+.btn-as-text {
+    border: none;
+    color: $font-color-default;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $font-color-default;
+    }
+
+    &:active:not(:hover),
+    &:focus:not(:hover) {
+        background-color: transparent;
+    }
+}
+
 .label-with-text {
     >label {
         //from .form-group .control-label
@@ -78,7 +95,7 @@ $wizard-step-width: 180px;
 .show-validation-feedback {
     margin: 0;
 
-    > input {
+    >input {
         display: none;
     }
 
@@ -89,7 +106,7 @@ $wizard-step-width: 180px;
     display: flex;
     justify-content: center;
 
-    .rfp-overview-container {
+    .rfp-container--overview {
         width: 100%;
         max-width: 1200px;
 
@@ -98,7 +115,7 @@ $wizard-step-width: 180px;
         }
     }
 
-    .rfp-container {
+    .rfp-container--view {
         width: 100%;
         max-width: 960px;
         display: flex;
@@ -106,22 +123,107 @@ $wizard-step-width: 180px;
 
     }
 
-    .mx-dataview {
-        flex-grow: 1;
+    .rfp-container--medium {
+        width: 100%;
+        max-width: 864px;
         display: flex;
         flex-direction: column;
 
-        .mx-dataview-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+    }
+
+    .rfp-container--small {
+        width: 100%;
+        max-width: 448px;
+        display: flex;
+        flex-direction: column;
+
+        .rfp-text-explanation {
+            display: none;
         }
     }
 
     .mx-layoutgrid.container-fluid {
         padding: 0;
     }
+
+    .widget-progress-bar {
+
+        .progress,
+        .progress-bar {
+            height: $font-size-default / 2;
+        }
+    }
 }
+
+.dataview-grow {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    >.mx-dataview-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.input-wrapper {
+
+    &--btn-right {
+        .form-group .form-control {
+            padding-right: $input-button-size;
+        }
+    }
+
+    &--btn-left {
+        .form-group .form-control {
+            padding-left: $input-button-size;
+        }
+    }
+
+    &--btn-left-right {
+        .form-group .form-control {
+            padding-left: $input-button-size;
+            padding-right: $input-button-size;
+        }
+    }
+
+    .btn-input-action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration-line: none;
+        padding: $spacing-small;
+        color: $font-color-default;
+        width: $input-button-size;
+        height: $input-button-size;
+        border: none;
+        position: absolute;
+        top: 1px;
+
+        &--right {
+            right: 1px;
+            border-radius: 0 $btn-border-radius $btn-border-radius 0;
+        }
+
+        &--left {
+            left: 1px;
+            border-radius: $btn-border-radius 0 0 $btn-border-radius;
+        }
+    }
+}
+
+.sticky-wrapper {
+    overflow: unset;
+    padding-top: 0;
+}
+
+.sticky-content {
+    position: sticky;
+    top: 0px;
+    z-index: 101;
+}
+
 
 .btn-container {
     margin-top: auto;
@@ -197,4 +299,49 @@ $wizard-step-width: 180px;
         }
     }
 
+}
+
+.progress-item {
+    .mx-text {
+        color: $font-color-detail;
+    }
+
+    .progress-circle {
+        padding: 0;
+        height: $font-size-default;
+        width: $font-size-default;
+        border: 2px solid $border-color-default;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &--active {
+        .mx-text {
+            color: $color-primary-dark; 
+        }
+
+        .progress-circle {
+            border-color: $color-primary-dark;
+        }
+    }
+
+    &--completed {
+        .progress-circle::after {
+            content: "";
+            border: solid;
+            border-color: $font-color-detail;
+            border-width: 0 2px 2px 0;
+            width: .4rem;
+            height: .6rem;
+            transform: rotate(45deg);
+        }
+    }
+
+    &.progress-item--active.progress-item--completed {
+        .progress-circle::after {
+            border-color: $color-primary-dark;
+        }
+    }
 }

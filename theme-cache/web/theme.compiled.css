@@ -24254,6 +24254,17 @@ input[type=checkbox].three-state-checkbox + .control-label {
   text-decoration: none;
 }
 
+.btn-as-text {
+  border: none;
+  color: #0a1325;
+}
+.btn-as-text:hover, .btn-as-text:active, .btn-as-text:focus {
+  color: #0a1325;
+}
+.btn-as-text:active:not(:hover), .btn-as-text:focus:not(:hover) {
+  background-color: transparent;
+}
+
 .label-with-text > label {
   overflow: hidden;
   margin-bottom: 4px;
@@ -24286,31 +24297,94 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: flex;
   justify-content: center;
 }
-.rfp-page-container .rfp-overview-container {
+.rfp-page-container .rfp-container--overview {
   width: 100%;
   max-width: 1200px;
 }
-.rfp-page-container .rfp-overview-container .td {
+.rfp-page-container .rfp-container--overview .td {
   border-bottom: none;
 }
-.rfp-page-container .rfp-container {
+.rfp-page-container .rfp-container--view {
   width: 100%;
   max-width: 960px;
   display: flex;
   flex-direction: column;
 }
-.rfp-page-container .mx-dataview {
-  flex-grow: 1;
+.rfp-page-container .rfp-container--medium {
+  width: 100%;
+  max-width: 864px;
   display: flex;
   flex-direction: column;
 }
-.rfp-page-container .mx-dataview .mx-dataview-content {
-  flex-grow: 1;
+.rfp-page-container .rfp-container--small {
+  width: 100%;
+  max-width: 448px;
   display: flex;
   flex-direction: column;
+}
+.rfp-page-container .rfp-container--small .rfp-text-explanation {
+  display: none;
 }
 .rfp-page-container .mx-layoutgrid.container-fluid {
   padding: 0;
+}
+.rfp-page-container .widget-progress-bar .progress,
+.rfp-page-container .widget-progress-bar .progress-bar {
+  height: 7px;
+}
+
+.dataview-grow {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.dataview-grow > .mx-dataview-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-wrapper--btn-right .form-group .form-control {
+  padding-right: 36px;
+}
+.input-wrapper--btn-left .form-group .form-control {
+  padding-left: 36px;
+}
+.input-wrapper--btn-left-right .form-group .form-control {
+  padding-left: 36px;
+  padding-right: 36px;
+}
+.input-wrapper .btn-input-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration-line: none;
+  padding: 8px;
+  color: #0a1325;
+  width: 36px;
+  height: 36px;
+  border: none;
+  position: absolute;
+  top: 1px;
+}
+.input-wrapper .btn-input-action--right {
+  right: 1px;
+  border-radius: 0 4px 4px 0;
+}
+.input-wrapper .btn-input-action--left {
+  left: 1px;
+  border-radius: 4px 0 0 4px;
+}
+
+.sticky-wrapper {
+  overflow: unset;
+  padding-top: 0;
+}
+
+.sticky-content {
+  position: sticky;
+  top: 0px;
+  z-index: 101;
 }
 
 .btn-container {
@@ -24368,6 +24442,38 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .wizard .wizard-step-active::before,
 .wizard .wizard-step-visited::before {
   background-color: #1b34a0;
+}
+
+.progress-item .mx-text {
+  color: #6c717e;
+}
+.progress-item .progress-circle {
+  padding: 0;
+  height: 14px;
+  width: 14px;
+  border: 2px solid #ced0d3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progress-item--active .mx-text {
+  color: #1b34a0;
+}
+.progress-item--active .progress-circle {
+  border-color: #1b34a0;
+}
+.progress-item--completed .progress-circle::after {
+  content: "";
+  border: solid;
+  border-color: #6c717e;
+  border-width: 0 2px 2px 0;
+  width: 0.4rem;
+  height: 0.6rem;
+  transform: rotate(45deg);
+}
+.progress-item.progress-item--active.progress-item--completed .progress-circle::after {
+  border-color: #1b34a0;
 }
 
 .mx-layoutgrid.card-container > .row {
