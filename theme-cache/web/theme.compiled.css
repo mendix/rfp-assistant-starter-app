@@ -24480,6 +24480,36 @@ input[type=checkbox].three-state-checkbox + .control-label {
   border-color: #1b34a0;
 }
 
+.accordion-references .widget-accordion-group {
+  background: transparent;
+  border-bottom: none;
+}
+.accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button {
+  display: inline-flex;
+  background: transparent;
+  padding: 0;
+}
+.accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:hover, .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:focus, .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:active {
+  color: #0a1325;
+  background: transparent;
+}
+.accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button .widget-accordion-group-header-button-icon {
+  align-self: left;
+  display: inline-flex;
+  fill: #0a1325;
+}
+.accordion-references .widget-accordion-group .widget-accordion-group-content-wrapper .widget-accordion-group-content {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+.reference-card {
+  margin-bottom: none;
+  background-color: #f8f8f8;
+  padding: 16px;
+}
+
 .mx-layoutgrid.card-container > .row {
   padding-bottom: 24px;
 }
