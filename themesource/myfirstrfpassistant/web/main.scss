@@ -224,7 +224,6 @@ $input-button-size: 36px;
     z-index: 101;
 }
 
-
 .btn-container {
     margin-top: auto;
     display: flex;
@@ -344,4 +343,55 @@ $input-button-size: 36px;
             border-color: $color-primary-dark;
         }
     }
+}
+
+.accordion-references {
+    .widget-accordion-group{
+        background: transparent;
+        border-bottom: none;
+
+        .widget-accordion-group-header {
+            .widget-accordion-group-header-button {
+                display: inline-flex;
+                background: transparent;
+                padding: 0;
+
+                &.widget-accordion-group-header-button-clickable {
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        color: $font-color-default;
+                        background: $btn-default-bg-hover;
+                        border-radius: $border-radius-large;
+                    }
+                }
+
+                .widget-accordion-group-header-button-icon {
+                    align-self: left;
+                    display: inline-flex;
+                    fill: $font-color-default;
+                }
+            }      
+        }
+
+        .widget-accordion-group-content-wrapper {
+            .widget-accordion-group-content {
+                padding-left: 0;
+                padding-right: 0;
+                padding-bottom: 0;
+            }
+        }
+    }
+}
+
+.reference-card {
+    margin-bottom: none;
+    background-color: $bg-color;
+    padding: $spacing-medium;
+}
+
+.fixed-position-answer-buttons {
+    position: absolute;
+    right: 0px;
+    margin-top: 9px;
 }
