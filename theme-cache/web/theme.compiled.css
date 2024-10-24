@@ -24514,7 +24514,11 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .fixed-position-answer-buttons {
   position: absolute;
   right: 0px;
-  margin-top: 9px;
+  margin-top: 11px;
+}
+
+.btn-small-padding {
+  padding: 4px 8px;
 }
 
 .mx-layoutgrid.card-container > .row {
