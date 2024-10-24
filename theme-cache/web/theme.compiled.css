@@ -24542,8 +24542,30 @@ input[type=checkbox].three-state-checkbox + .control-label {
   padding: 4px 8px;
 }
 
-.widget-progress-bar.actionless .progress-bar, .widget-progress-bar.actionless .progress {
+.widget-progress-bar.actionless .progress-bar,
+.widget-progress-bar.actionless .progress {
   cursor: default;
+}
+
+.container-clickable {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+.container-clickable .mx-text {
+  margin: 0;
+}
+.container-clickable .btn {
+  border: none;
+  background-color: transparent;
+  color: #0a1325;
+}
+.container-clickable:hover {
+  background-color: #e7e7e9;
 }
 
 .mx-layoutgrid.card-container > .row {

@@ -433,8 +433,35 @@ $input-button-size: 36px;
     padding: $spacing-smaller $spacing-small;
 }
 
-.widget-progress-bar.actionless{
-    .progress-bar, .progress{
-        cursor: default; 
+.widget-progress-bar.actionless {
+
+    .progress-bar,
+    .progress {
+        cursor: default;
+    }
+}
+
+.container-clickable {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: $spacing-small 0;
+    padding: $spacing-small;
+    border-radius: $btn-border-radius;
+
+    .mx-text {
+        margin: 0;
+    }
+
+    .btn {
+        border: none;
+        background-color: transparent;
+        color: $font-color-default;
+    }
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: $btn-default-bg-hover;
     }
 }
