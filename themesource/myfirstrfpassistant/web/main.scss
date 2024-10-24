@@ -393,3 +393,9 @@ $input-button-size: 36px;
     background-color: $bg-color;
     padding: $spacing-medium;
 }
+
+.fixed-position-answer-buttons {
+    position: absolute;
+    right: 0px;
+    margin-top: 9px;
+}
