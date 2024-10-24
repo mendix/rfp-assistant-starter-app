@@ -262,7 +262,9 @@ $input-button-size: 36px;
             height: $font-size-default;
             width: $font-size-default;
             border: 1px solid $border-color-default;
-
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         &::before {
@@ -293,8 +295,17 @@ $input-button-size: 36px;
             color: $wizard-active-color;
             border-color: $wizard-active-border-color;
             background-color: $wizard-active-color;
+            &::after {
+                content: "";
+                border: solid;
+                border-color: $wizard-default-bg;
+                border-width: 0 2px 2px 0;
+                width: .4rem;
+                height: .6rem;
+                transform: rotate(45deg);
+            }
         }
-
+        
         .wizard-step-text {
             color: $wizard-active-step-color;
         }

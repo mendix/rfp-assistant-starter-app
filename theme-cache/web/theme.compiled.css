@@ -24420,6 +24420,9 @@ input[type=checkbox].three-state-checkbox + .control-label {
   height: 14px;
   width: 14px;
   border: 1px solid #ced0d3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .wizard .wizard-step::before {
   position: absolute;
@@ -24441,6 +24444,15 @@ input[type=checkbox].three-state-checkbox + .control-label {
   color: #1b34a0;
   border-color: #1b34a0;
   background-color: #1b34a0;
+}
+.wizard .wizard-step-visited .wizard-step-number::after {
+  content: "";
+  border: solid;
+  border-color: #fff;
+  border-width: 0 2px 2px 0;
+  width: 0.4rem;
+  height: 0.6rem;
+  transform: rotate(45deg);
 }
 .wizard .wizard-step-visited .wizard-step-text {
   color: #1b34a0;
