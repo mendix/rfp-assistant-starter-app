@@ -159,15 +159,11 @@ $input-button-size: 36px;
     }
 }
 
-.dataview-grow {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+.dataview--display-contents {
+    display: contents;
 
     >.mx-dataview-content {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
+        display: contents;
     }
 }
 
