@@ -24296,6 +24296,12 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: none;
 }
 
+.mx-groupbox > h5.mx-groupbox-header {
+  font-size: 18px;
+  padding: 8px;
+  background-color: transparent;
+}
+
 .rfp-page-container {
   min-height: -webkit-fill-available;
   display: flex;

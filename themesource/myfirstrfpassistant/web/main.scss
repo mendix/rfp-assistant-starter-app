@@ -16,6 +16,7 @@ $input-button-size: 36px;
 .badge {
     font-weight: normal;
     font-size: $font-size-small;
+
     .col {
         padding: 0
     }
@@ -103,6 +104,14 @@ $input-button-size: 36px;
         display: none;
     }
 
+}
+
+.mx-groupbox {
+    &>h5.mx-groupbox-header {
+        font-size: $font-size-h4;
+        padding: $spacing-small;
+        background-color: transparent;
+    }
 }
 
 .rfp-page-container {
@@ -346,7 +355,7 @@ $input-button-size: 36px;
 }
 
 .accordion-references {
-    .widget-accordion-group{
+    .widget-accordion-group {
         background: transparent;
         border-bottom: none;
 
@@ -357,6 +366,7 @@ $input-button-size: 36px;
                 padding: 0;
 
                 &.widget-accordion-group-header-button-clickable {
+
                     &:hover,
                     &:focus,
                     &:active {
@@ -371,7 +381,7 @@ $input-button-size: 36px;
                     display: inline-flex;
                     fill: $font-color-default;
                 }
-            }      
+            }
         }
 
         .widget-accordion-group-content-wrapper {
@@ -399,3 +409,4 @@ $input-button-size: 36px;
 .btn-small-padding {
     padding: $spacing-smaller $spacing-small;
 }
+
