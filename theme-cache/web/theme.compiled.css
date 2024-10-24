@@ -24542,6 +24542,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   padding: 4px 8px;
 }
 
+.widget-progress-bar.actionless .progress-bar, .widget-progress-bar.actionless .progress {
+  cursor: default;
+}
+
 .mx-layoutgrid.card-container > .row {
   padding-bottom: 24px;
 }

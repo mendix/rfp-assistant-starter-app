@@ -432,3 +432,9 @@ $input-button-size: 36px;
 .btn-small-padding {
     padding: $spacing-smaller $spacing-small;
 }
+
+.widget-progress-bar.actionless{
+    .progress-bar, .progress{
+        cursor: default; 
+    }
+}
