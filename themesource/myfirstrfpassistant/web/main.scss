@@ -253,15 +253,15 @@ $input-button-size: 36px;
     .wizard-step {
         width: $wizard-step-width;
 
-        &:first-child::before {
-            display: none;
+        .wizard-step-text {
+            color: $font-color-detail;
         }
 
         .wizard-step-number {
             padding: 0;
             height: $font-size-default;
             width: $font-size-default;
-            border: 1px solid $border-color-default;
+            border: 2px solid $border-color-default;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -276,6 +276,9 @@ $input-button-size: 36px;
             width: 100%;
         }
 
+        &:first-child::before {
+            display: none;
+        }
     }
 
     .wizard-step-active {
@@ -295,6 +298,7 @@ $input-button-size: 36px;
             color: $wizard-active-color;
             border-color: $wizard-active-border-color;
             background-color: $wizard-active-color;
+
             &::after {
                 content: "";
                 border: solid;
@@ -305,7 +309,7 @@ $input-button-size: 36px;
                 transform: rotate(45deg);
             }
         }
-        
+
         .wizard-step-text {
             color: $wizard-active-step-color;
         }
@@ -334,6 +338,7 @@ $input-button-size: 36px;
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: $wizard-default-bg;
     }
 
     &--active {
@@ -347,20 +352,27 @@ $input-button-size: 36px;
     }
 
     &--completed {
-        .progress-circle::after {
-            content: "";
-            border: solid;
-            border-color: $font-color-detail;
-            border-width: 0 2px 2px 0;
-            width: .4rem;
-            height: .6rem;
-            transform: rotate(45deg);
+        .progress-circle {
+            &::after {
+                content: "";
+                border: solid;
+                border-color: $wizard-default-bg;
+                border-width: 0 2px 2px 0;
+                width: .4rem;
+                height: .6rem;
+                transform: rotate(45deg);
+            }
+
+            background-color: $border-color-default;
         }
     }
 
     &.progress-item--active.progress-item--completed {
-        .progress-circle::after {
-            border-color: $color-primary-dark;
+        .progress-circle {
+            // &::after {
+            // border-color: $color-primary-dark;
+            // }
+            background-color: $color-primary-dark;
         }
     }
 }
@@ -420,4 +432,3 @@ $input-button-size: 36px;
 .btn-small-padding {
     padding: $spacing-smaller $spacing-small;
 }
-

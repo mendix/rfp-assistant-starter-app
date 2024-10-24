@@ -24412,14 +24412,14 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .wizard .wizard-step {
   width: 180px;
 }
-.wizard .wizard-step:first-child::before {
-  display: none;
+.wizard .wizard-step .wizard-step-text {
+  color: #6c717e;
 }
 .wizard .wizard-step .wizard-step-number {
   padding: 0;
   height: 14px;
   width: 14px;
-  border: 1px solid #ced0d3;
+  border: 2px solid #ced0d3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24431,6 +24431,9 @@ input[type=checkbox].three-state-checkbox + .control-label {
   right: 90px;
   display: block;
   width: 100%;
+}
+.wizard .wizard-step:first-child::before {
+  display: none;
 }
 .wizard .wizard-step-active .wizard-step-number {
   color: #1b34a0;
@@ -24474,6 +24477,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fff;
 }
 .progress-item--active .mx-text {
   color: #1b34a0;
@@ -24481,17 +24485,20 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .progress-item--active .progress-circle {
   border-color: #1b34a0;
 }
+.progress-item--completed .progress-circle {
+  background-color: #ced0d3;
+}
 .progress-item--completed .progress-circle::after {
   content: "";
   border: solid;
-  border-color: #6c717e;
+  border-color: #fff;
   border-width: 0 2px 2px 0;
   width: 0.4rem;
   height: 0.6rem;
   transform: rotate(45deg);
 }
-.progress-item.progress-item--active.progress-item--completed .progress-circle::after {
-  border-color: #1b34a0;
+.progress-item.progress-item--active.progress-item--completed .progress-circle {
+  background-color: #1b34a0;
 }
 
 .accordion-references .widget-accordion-group {
