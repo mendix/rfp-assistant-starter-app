@@ -24337,15 +24337,11 @@ input[type=checkbox].three-state-checkbox + .control-label {
   height: 7px;
 }
 
-.dataview-grow {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+.dataview--display-contents {
+  display: contents;
 }
-.dataview-grow > .mx-dataview-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+.dataview--display-contents > .mx-dataview-content {
+  display: contents;
 }
 
 .input-wrapper--btn-right .form-group .form-control {
