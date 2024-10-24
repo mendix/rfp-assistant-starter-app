@@ -24256,6 +24256,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .btn-without-border.mx-link {
   color: rgba(10, 19, 37, 0.8);
   text-decoration: none;
+  border: 1px solid transparent;
 }
 
 .btn-as-text {
@@ -24551,7 +24552,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 8px 0;
   padding: 8px;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;

@@ -55,6 +55,7 @@ $input-button-size: 36px;
 .btn-without-border.mx-link {
     color: $font-color-light;
     text-decoration: none;
+    border: 1px solid transparent;
 }
 
 .btn-as-text {
@@ -445,7 +446,6 @@ $input-button-size: 36px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: $spacing-small 0;
     padding: $spacing-small;
     border-radius: $btn-border-radius;
 
