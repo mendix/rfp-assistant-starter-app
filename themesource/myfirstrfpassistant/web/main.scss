@@ -16,6 +16,7 @@ $input-button-size: 36px;
 .badge {
     font-weight: normal;
     font-size: $font-size-small;
+
     .col {
         padding: 0
     }
@@ -54,6 +55,7 @@ $input-button-size: 36px;
 .btn-without-border.mx-link {
     color: $font-color-light;
     text-decoration: none;
+    border: 1px solid transparent;
 }
 
 .btn-as-text {
@@ -103,6 +105,14 @@ $input-button-size: 36px;
         display: none;
     }
 
+}
+
+.mx-groupbox {
+    &>h5.mx-groupbox-header {
+        font-size: $font-size-h4;
+        padding: $spacing-small;
+        background-color: transparent;
+    }
 }
 
 .rfp-page-container {
@@ -244,16 +254,18 @@ $input-button-size: 36px;
     .wizard-step {
         width: $wizard-step-width;
 
-        &:first-child::before {
-            display: none;
+        .wizard-step-text {
+            color: $font-color-detail;
         }
 
         .wizard-step-number {
             padding: 0;
             height: $font-size-default;
             width: $font-size-default;
-            border: 1px solid $border-color-default;
-
+            border: 2px solid $border-color-default;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         &::before {
@@ -265,6 +277,9 @@ $input-button-size: 36px;
             width: 100%;
         }
 
+        &:first-child::before {
+            display: none;
+        }
     }
 
     .wizard-step-active {
@@ -284,6 +299,16 @@ $input-button-size: 36px;
             color: $wizard-active-color;
             border-color: $wizard-active-border-color;
             background-color: $wizard-active-color;
+
+            &::after {
+                content: "";
+                border: solid;
+                border-color: $wizard-default-bg;
+                border-width: 0 2px 2px 0;
+                width: .4rem;
+                height: .6rem;
+                transform: rotate(45deg);
+            }
         }
 
         .wizard-step-text {
@@ -314,6 +339,7 @@ $input-button-size: 36px;
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: $wizard-default-bg;
     }
 
     &--active {
@@ -327,26 +353,33 @@ $input-button-size: 36px;
     }
 
     &--completed {
-        .progress-circle::after {
-            content: "";
-            border: solid;
-            border-color: $font-color-detail;
-            border-width: 0 2px 2px 0;
-            width: .4rem;
-            height: .6rem;
-            transform: rotate(45deg);
+        .progress-circle {
+            &::after {
+                content: "";
+                border: solid;
+                border-color: $wizard-default-bg;
+                border-width: 0 2px 2px 0;
+                width: .4rem;
+                height: .6rem;
+                transform: rotate(45deg);
+            }
+
+            background-color: $border-color-default;
         }
     }
 
     &.progress-item--active.progress-item--completed {
-        .progress-circle::after {
-            border-color: $color-primary-dark;
+        .progress-circle {
+            // &::after {
+            // border-color: $color-primary-dark;
+            // }
+            background-color: $color-primary-dark;
         }
     }
 }
 
 .accordion-references {
-    .widget-accordion-group{
+    .widget-accordion-group {
         background: transparent;
         border-bottom: none;
 
@@ -357,6 +390,7 @@ $input-button-size: 36px;
                 padding: 0;
 
                 &.widget-accordion-group-header-button-clickable {
+
                     &:hover,
                     &:focus,
                     &:active {
@@ -371,7 +405,7 @@ $input-button-size: 36px;
                     display: inline-flex;
                     fill: $font-color-default;
                 }
-            }      
+            }
         }
 
         .widget-accordion-group-content-wrapper {
@@ -397,5 +431,37 @@ $input-button-size: 36px;
 }
 
 .btn-small-padding {
-    padding: 4px 8px;
+    padding: $spacing-smaller $spacing-small;
+}
+
+.widget-progress-bar.actionless {
+
+    .progress-bar,
+    .progress {
+        cursor: default;
+    }
+}
+
+.container-clickable {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-small;
+    border-radius: $btn-border-radius;
+
+    .mx-text {
+        margin: 0;
+    }
+
+    .btn {
+        border: none;
+        background-color: transparent;
+        color: $font-color-default;
+    }
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: $btn-default-bg-hover;
+    }
 }
