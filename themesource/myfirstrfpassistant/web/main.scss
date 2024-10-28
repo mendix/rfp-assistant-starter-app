@@ -454,14 +454,21 @@ $input-button-size: 36px;
     }
 
     .btn {
+        transition: all 0.2s ease-in-out;
         border: none;
         background-color: transparent;
         color: $font-color-default;
+        &.btn-hover{
+            visibility: hidden;
+        }
     }
 
     transition: all 0.2s ease-in-out;
 
     &:hover {
         background-color: $btn-default-bg-hover;
+        .btn.btn-hover{
+            visibility: visible;
+        }
     }
 }
