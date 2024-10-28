@@ -24560,12 +24560,19 @@ input[type=checkbox].three-state-checkbox + .control-label {
   margin: 0;
 }
 .container-clickable .btn {
+  transition: all 0.2s ease-in-out;
   border: none;
   background-color: transparent;
   color: #0a1325;
 }
+.container-clickable .btn.btn-hover {
+  visibility: hidden;
+}
 .container-clickable:hover {
   background-color: #e7e7e9;
+}
+.container-clickable:hover .btn.btn-hover {
+  visibility: visible;
 }
 
 .mx-layoutgrid.card-container > .row {
