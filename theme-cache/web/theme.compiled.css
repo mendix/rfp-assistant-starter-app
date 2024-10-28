@@ -24575,6 +24575,15 @@ input[type=checkbox].three-state-checkbox + .control-label {
   visibility: visible;
 }
 
+.hover-trigger .show-on-hover {
+  display: none;
+  visibility: hidden;
+}
+.hover-trigger:hover .show-on-hover {
+  display: inline;
+  visibility: visible;
+}
+
 .mx-layoutgrid.card-container > .row {
   padding-bottom: 24px;
 }
