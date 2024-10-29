@@ -476,3 +476,15 @@ $input-button-size: 36px;
         }
     }
 }
+
+.hover-trigger {
+  .show-on-hover {
+    display: none;
+    visibility: hidden; // Initially hide the hover content
+  }
+
+  &:hover .show-on-hover {
+    display: inline;
+    visibility: visible; // Show hover content, when hovering over the hover trigger
+  }
+}
