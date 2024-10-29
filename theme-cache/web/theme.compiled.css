@@ -24556,6 +24556,11 @@ input[type=checkbox].three-state-checkbox + .control-label {
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
 }
+.container-clickable .btn-wrapper {
+  min-width: 5em;
+  display: flex;
+  justify-content: flex-end;
+}
 .container-clickable .mx-text {
   margin: 0;
 }
@@ -24565,7 +24570,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
   background-color: transparent;
   color: #0a1325;
   height: 44px;
-  min-width: 5em;
 }
 .container-clickable .btn.btn-hover {
   visibility: hidden;
