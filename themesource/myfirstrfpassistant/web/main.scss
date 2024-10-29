@@ -86,6 +86,10 @@ $input-button-size: 36px;
         font-weight: $form-label-weight;
         display: block;
     }
+    &--horizontal{
+        display: flex;
+        justify-content: space-between;
+    }
 
     .mx-text {
         margin-bottom: 4px;

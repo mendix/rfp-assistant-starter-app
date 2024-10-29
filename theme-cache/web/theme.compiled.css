@@ -24280,6 +24280,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   font-weight: 600;
   display: block;
 }
+.label-with-text--horizontal {
+  display: flex;
+  justify-content: space-between;
+}
 .label-with-text .mx-text {
   margin-bottom: 4px;
   line-height: 1.428571429;
