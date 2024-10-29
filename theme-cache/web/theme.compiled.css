@@ -24564,6 +24564,8 @@ input[type=checkbox].three-state-checkbox + .control-label {
   border: none;
   background-color: transparent;
   color: #0a1325;
+  height: 44px;
+  min-width: 5em;
 }
 .container-clickable .btn.btn-hover {
   visibility: hidden;
