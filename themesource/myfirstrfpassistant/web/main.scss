@@ -86,6 +86,10 @@ $input-button-size: 36px;
         font-weight: $form-label-weight;
         display: block;
     }
+    &--horizontal{
+        display: flex;
+        justify-content: space-between;
+    }
 
     .mx-text {
         margin-bottom: 4px;
@@ -449,6 +453,12 @@ $input-button-size: 36px;
     padding: $spacing-small;
     border-radius: $btn-border-radius;
 
+    .btn-wrapper {
+        min-width: 5em;
+        display: flex;
+        justify-content: flex-end;
+    }
+
     .mx-text {
         margin: 0;
     }
@@ -458,29 +468,35 @@ $input-button-size: 36px;
         border: none;
         background-color: transparent;
         color: $font-color-default;
-        &.btn-hover{
+        height: $font-size-small + 2 * $spacing-medium;
+
+        &.btn-hover {
             visibility: hidden;
         }
+
     }
 
     transition: all 0.2s ease-in-out;
 
     &:hover {
         background-color: $btn-default-bg-hover;
-        .btn.btn-hover{
+
+        .btn.btn-hover {
             visibility: visible;
         }
     }
 }
 
-.hover-trigger {
-  .show-on-hover {
-    display: none;
-    visibility: hidden; // Initially hide the hover content
-  }
 
-  &:hover .show-on-hover {
-    display: inline;
-    visibility: visible; // Show hover content, when hovering over the hover trigger
-  }
+
+.hover-trigger {
+    .show-on-hover {
+        display: none;
+        visibility: hidden; // Initially hide the hover content
+    }
+
+    &:hover .show-on-hover {
+        display: inline;
+        visibility: visible; // Show hover content, when hovering over the hover trigger
+    }
 }
