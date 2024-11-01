@@ -24294,6 +24294,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   border-radius: 20px;
 }
 
+.btn-active.btn {
+  background-color: #e7e7e9;
+}
+
 .show-validation-feedback {
   margin: 0;
 }
