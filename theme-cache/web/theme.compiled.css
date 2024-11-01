@@ -24598,6 +24598,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   visibility: visible;
 }
 
+.widget-events--hide {
+  display: none;
+}
+
 .mx-layoutgrid.card-container > .row {
   padding-bottom: 24px;
 }

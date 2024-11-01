@@ -492,8 +492,6 @@ $input-button-size: 36px;
     }
 }
 
-
-
 .hover-trigger {
     .show-on-hover {
         display: none;
@@ -504,4 +502,8 @@ $input-button-size: 36px;
         display: inline;
         visibility: visible; // Show hover content, when hovering over the hover trigger
     }
+}
+
+.widget-events--hide{
+    display: none;
 }
