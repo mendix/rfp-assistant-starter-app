@@ -435,8 +435,8 @@ $input-button-size: 36px;
 
 .fixed-position-answer-buttons {
     position: absolute;
-    right: 0px;
-    margin-top: 11px;
+    right: 0;
+    margin-top: $spacing-small
 }
 
 .btn-small-padding {

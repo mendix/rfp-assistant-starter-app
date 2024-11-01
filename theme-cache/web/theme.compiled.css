@@ -24543,8 +24543,8 @@ input[type=checkbox].three-state-checkbox + .control-label {
 
 .fixed-position-answer-buttons {
   position: absolute;
-  right: 0px;
-  margin-top: 11px;
+  right: 0;
+  margin-top: 8px;
 }
 
 .btn-small-padding {
