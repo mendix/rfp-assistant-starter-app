@@ -86,7 +86,8 @@ $input-button-size: 36px;
         font-weight: $form-label-weight;
         display: block;
     }
-    &--horizontal{
+
+    &--horizontal {
         display: flex;
         justify-content: space-between;
     }
@@ -104,7 +105,7 @@ $input-button-size: 36px;
 
 .btn-active.btn {
     background-color: $btn-default-bg-hover;
-   
+
 }
 
 .show-validation-feedback {
@@ -501,6 +502,6 @@ $input-button-size: 36px;
     }
 }
 
-.widget-events--hide{
+.widget-events--hide {
     display: none;
 }
