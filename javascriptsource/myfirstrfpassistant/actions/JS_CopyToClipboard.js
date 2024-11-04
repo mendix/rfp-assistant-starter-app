@@ -17,6 +17,14 @@ import { Big } from "big.js";
  */
 export async function JS_CopyToClipboard(textToCopy) {
 	// BEGIN USER CODE
-    navigator.clipboard.writeText(textToCopy);
+const el = document.createElement("textarea");
+    el.value = textToCopy;
+    el.setAttribute("readonly", "");
+    el.style.position = "absolute";
+    el.style.left = "-9999px";
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
 	// END USER CODE
 }
