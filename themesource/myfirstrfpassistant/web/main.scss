@@ -379,9 +379,6 @@ $input-button-size: 36px;
 
     &.progress-item--active.progress-item--completed {
         .progress-circle {
-            // &::after {
-            // border-color: $color-primary-dark;
-            // }
             background-color: $color-primary-dark;
         }
     }
