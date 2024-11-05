@@ -15,13 +15,6 @@
     }
 }
 
-//Remove paging bar on Gallery
-.gallery-hide-paging {
-    .widget-gallery-footer {
-        display: none;
-    }
-}
-
 //Fix for listview-stylingless margin
 .listview-stylingless{
     > ul{

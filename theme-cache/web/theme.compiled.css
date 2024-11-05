@@ -24524,6 +24524,9 @@ input[type=checkbox].three-state-checkbox + .control-label {
   background: #e7e7e9;
   border-radius: 20px;
 }
+.accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:hover .widget-accordion-group-header-button-icon, .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:focus .widget-accordion-group-header-button-icon, .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:active .widget-accordion-group-header-button-icon {
+  fill: #0a1325;
+}
 .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button .widget-accordion-group-header-button-icon {
   align-self: left;
   display: inline-flex;
@@ -24535,10 +24538,20 @@ input[type=checkbox].three-state-checkbox + .control-label {
   padding-bottom: 0;
 }
 
+.gallery-item-equal-height .widget-gallery-item-button {
+  height: 100%;
+}
+
+.gallery-hide-paging .widget-gallery-footer {
+  display: none;
+}
+
 .reference-card {
-  margin-bottom: none;
-  background-color: #f8f8f8;
-  padding: 16px;
+  padding: 8px;
+  height: 100%;
+}
+.reference-card .mx-text {
+  display: block;
 }
 
 .fixed-position-answer-buttons {
@@ -24612,10 +24625,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .mx-layoutgrid.card-container > .row .col > .card .widget-datagrid {
   margin-right: -24px;
   margin-left: -24px;
-}
-
-.gallery-hide-paging .widget-gallery-footer {
-  display: none;
 }
 
 .listview-stylingless > ul {
