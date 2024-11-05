@@ -24584,6 +24584,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 .container-clickable .mx-text {
   margin: 0;
+  line-height: 1.428571429;
 }
 .container-clickable .btn {
   transition: all 0.2s ease-in-out;
