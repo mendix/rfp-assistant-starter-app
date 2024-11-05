@@ -482,6 +482,7 @@ $input-button-size: 36px;
 
     .mx-text {
         margin: 0;
+        line-height: $line-height-base;
     }
 
     .btn {
@@ -523,3 +524,4 @@ $input-button-size: 36px;
 .widget-events--hide {
     display: none;
 }
+
