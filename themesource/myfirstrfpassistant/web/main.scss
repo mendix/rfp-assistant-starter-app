@@ -404,6 +404,9 @@ $input-button-size: 36px;
                         color: $font-color-default;
                         background: $btn-default-bg-hover;
                         border-radius: $border-radius-large;
+                        .widget-accordion-group-header-button-icon{
+                            fill: $font-color-default;
+                        }
                     }
                 }
 
@@ -425,10 +428,25 @@ $input-button-size: 36px;
     }
 }
 
+
+.gallery-item-equal-height {
+    .widget-gallery-item-button{
+        height: 100%
+    }
+} 
+
+.gallery-hide-paging {
+    .widget-gallery-footer {
+        display: none;
+    }
+}
+
 .reference-card {
-    margin-bottom: none;
-    background-color: $bg-color;
-    padding: $spacing-medium;
+    padding: $spacing-small;
+    height: 100%;
+    .mx-text{
+        display: block;
+    }
 }
 
 .fixed-position-answer-buttons {
