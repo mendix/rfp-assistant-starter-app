@@ -24267,6 +24267,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   background-color: #e7e7e9;
 }
 
+.btn-no-hover.mx-link:hover {
+  background-color: transparent !important;
+}
+
 .btn-as-text {
   border: none;
   color: #0a1325;
