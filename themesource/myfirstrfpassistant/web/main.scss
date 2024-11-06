@@ -454,11 +454,12 @@ $send-btn-size: $form-input-font-size * 2 !default;
 }
 
 .reference-card {
+    background-color: $bg-color;
     padding: $spacing-small;
     height: 100%;
-
-    .mx-text {
-        display: block;
+    min-height: 2 * $line-height-base * $font-size-default + 2 * $spacing-small ;
+    &:hover{
+        background-color: $btn-default-bg-hover;
     }
 }
 
@@ -652,3 +653,11 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
+.text-clamp--1-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+}
