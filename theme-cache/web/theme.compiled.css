@@ -24684,6 +24684,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 .drop-down-assistant-btn.btn {
   padding: 8px 16px;
+  border-radius: 0;
   border: none;
   color: #0a1325;
   text-align: left;

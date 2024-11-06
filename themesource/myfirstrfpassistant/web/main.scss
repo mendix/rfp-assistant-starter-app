@@ -603,6 +603,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
     &-btn {
         &.btn {
             padding: $spacing-small $spacing-medium;
+            border-radius: 0;
             border: none;
             color: $font-color-default;
             text-align: left;
