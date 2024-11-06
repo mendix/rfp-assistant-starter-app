@@ -453,12 +453,19 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
+.gallery-hide-focus {
+    .widget-gallery-clickable:focus-visible {
+        outline: 0;
+    }
+}
+
 .reference-card {
     background-color: $bg-color;
     padding: $spacing-small;
     height: 100%;
     min-height: 2 * $line-height-base * $font-size-default + 2 * $spacing-small ;
-    &:hover{
+
+    &:hover {
         background-color: $btn-default-bg-hover;
     }
 }
@@ -624,7 +631,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
 }
 
 // Assistant options for last question on the page should be visible
-.listview--questions{
+.listview--questions {
     ul>li:last-child {
         .drop-down-assistant {
             position: unset;

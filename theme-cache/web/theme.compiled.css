@@ -24554,6 +24554,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: none;
 }
 
+.gallery-hide-focus .widget-gallery-clickable:focus-visible {
+  outline: 0;
+}
+
 .reference-card {
   background-color: #f8f8f8;
   padding: 8px;
