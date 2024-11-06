@@ -6,16 +6,25 @@ $brand-primary-light: rgba($brand-primary, 0.15);
 $brand-warning-light: rgba($brand-warning, 0.15);
 $brand-danger-light: rgba($brand-danger, 0.15);
 $brand-success-light: rgba($brand-success, 0.15);
+$brand-success-darker: #076407;
 $brand-purple: #2F008C;
+$brand-ligher-purple: #845EFF;
 $brand-purple-light: rgba($brand-purple, 0.15);
+$btn-border-dark: #2F3646;
 $font-color-light: rgba($font-color-default, 0.8);
 $border-radius-large: 20px;
 $wizard-step-width: 180px;
 $input-button-size: 36px;
+$send-btn-size: $form-input-font-size * 2 !default;
+$border-radius-s: 0.5rem;
+$border-radius-m: 0.8rem;
 
 .badge {
     font-weight: normal;
     font-size: $font-size-small;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0.2rem;
 
     .col {
         padding: 0
@@ -43,7 +52,7 @@ $input-button-size: 36px;
 
     &.badge--success-light {
         background-color: $brand-success-light;
-        color: $brand-success;
+        color: $brand-success-darker;
     }
 
     &.badge--purple-light {
@@ -53,9 +62,14 @@ $input-button-size: 36px;
 }
 
 .btn-without-border.mx-link {
+    border-radius: $border-radius-large;
     color: $font-color-light;
     text-decoration: none;
     border: 1px solid transparent;
+}
+
+.btn-without-border.mx-link:hover {
+    background-color: $btn-default-bg-hover;
 }
 
 .btn-as-text {
@@ -105,7 +119,6 @@ $input-button-size: 36px;
 
 .btn-active.btn {
     background-color: $btn-default-bg-hover;
-
 }
 
 .show-validation-feedback {
@@ -426,7 +439,10 @@ $input-button-size: 36px;
 }
 
 .reference-card {
+    height: 5.5rem;
+    margin-top: -0.1rem;
     margin-bottom: none;
+    border-radius: $border-radius-m;
     background-color: $bg-color;
     padding: $spacing-medium;
 }
@@ -438,7 +454,7 @@ $input-button-size: 36px;
 }
 
 .btn-small-padding {
-    padding: $spacing-smaller $spacing-small;
+    padding: $spacing-small $spacing-small;
 }
 
 .widget-progress-bar.actionless {
@@ -504,4 +520,78 @@ $input-button-size: 36px;
 
 .widget-events--hide {
     display: none;
+}
+
+
+/* --------------------------------- Ask Assistant Styling --------------------------------- */
+/* Custom Text Area */
+.mx-textarea textarea {
+    border-radius: $border-radius-m;
+    padding: 1.5rem;
+    margin: 1rem 0 0.5rem;
+    line-height: 2rem; 
+}
+
+/* Rounded Button with Border */
+.rounded-btn-dark.btn {
+    border-radius: $border-radius-large;
+    border-color: $btn-border-dark;
+}
+
+/* Edit Answer Container */
+.send-edit-btn-container {
+    btn img,
+    .mx-button img,
+    .mx-link img {
+        margin: 0;
+    }
+}
+
+/* Edit Answer Button */
+.send-edit-btn.btn {
+    position: absolute;
+    right: 58px / 2 - $send-btn-size / 2;
+    bottom: 58px / 2 - $send-btn-size / 2 + 10; // added 10 to have the default position centered
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: $brand-ligher-purple;
+}
+
+/* Ask Assistant Drop Down */
+.drop-down-assistant {
+    position: absolute;
+    display: flex;
+    width: 25rem;
+    padding: 0.8rem 0;
+    flex-direction: column;
+    border-radius: $border-radius-s;
+    border: 1px solid $btn-default-bg-hover;
+    background: white;
+    z-index: 1000;
+
+    &-title {
+        display: flex;
+        padding: 0.5rem 1.5rem;
+        gap: 0.5rem;
+        align-self: stretch;
+    }
+
+    &-btn {
+        &.btn {
+            border: none;
+            color: $font-color-default;
+            text-align: left;
+            background: transparent;
+            width: 100%;
+
+            &:hover {
+                background: $btn-default-bg-hover; /* Change to a lighter color on hover */
+            }
+        }
+    }
 }

@@ -24224,6 +24224,9 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .badge {
   font-weight: normal;
   font-size: 12px;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  margin-top: 0.2rem;
 }
 .badge .col {
   padding: 0;
@@ -24246,7 +24249,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 .badge.badge--success-light {
   background-color: rgba(60, 179, 61, 0.15);
-  color: #3cb33d;
+  color: #076407;
 }
 .badge.badge--purple-light {
   background-color: rgba(47, 0, 140, 0.15);
@@ -24254,9 +24257,14 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 
 .btn-without-border.mx-link {
+  border-radius: 20px;
   color: rgba(10, 19, 37, 0.8);
   text-decoration: none;
   border: 1px solid transparent;
+}
+
+.btn-without-border.mx-link:hover {
+  background-color: #e7e7e9;
 }
 
 .btn-as-text {
@@ -24536,7 +24544,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 
 .reference-card {
+  height: 5.5rem;
+  margin-top: -0.1rem;
   margin-bottom: none;
+  border-radius: 0.8rem;
   background-color: #f8f8f8;
   padding: 16px;
 }
@@ -24548,7 +24559,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 
 .btn-small-padding {
-  padding: 4px 8px;
+  padding: 8px 8px;
 }
 
 .widget-progress-bar.actionless .progress-bar,
@@ -24600,6 +24611,73 @@ input[type=checkbox].three-state-checkbox + .control-label {
 
 .widget-events--hide {
   display: none;
+}
+
+/* --------------------------------- Ask Assistant Styling --------------------------------- */
+/* Custom Text Area */
+.mx-textarea textarea {
+  border-radius: 0.8rem;
+  padding: 1.5rem;
+  margin: 1rem 0 0.5rem;
+  line-height: 2rem;
+}
+
+/* Rounded Button with Border */
+.rounded-btn-dark.btn {
+  border-radius: 20px;
+  border-color: #2F3646;
+}
+
+/* Edit Answer Container */
+.send-edit-btn-container btn img,
+.send-edit-btn-container .mx-button img,
+.send-edit-btn-container .mx-link img {
+  margin: 0;
+}
+
+/* Edit Answer Button */
+.send-edit-btn.btn {
+  position: absolute;
+  right: 15px;
+  bottom: 25px;
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #845EFF;
+}
+
+/* Ask Assistant Drop Down */
+.drop-down-assistant {
+  position: absolute;
+  display: flex;
+  width: 25rem;
+  padding: 0.8rem 0;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  border: 1px solid #e7e7e9;
+  background: white;
+  z-index: 1000;
+}
+.drop-down-assistant-title {
+  display: flex;
+  padding: 0.5rem 1.5rem;
+  gap: 0.5rem;
+  align-self: stretch;
+}
+.drop-down-assistant-btn.btn {
+  border: none;
+  color: #0a1325;
+  text-align: left;
+  background: transparent;
+  width: 100%;
+}
+.drop-down-assistant-btn.btn:hover {
+  background: #e7e7e9;
+  /* Change to a lighter color on hover */
 }
 
 .mx-layoutgrid.card-container > .row {
