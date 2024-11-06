@@ -1,3 +1,4 @@
+@import "../../atlas_core/web/_variables.scss";
 @import '../../../theme/web/custom-variables';
 
 //custom color shades for icons and badges
@@ -525,3 +526,24 @@ $input-button-size: 36px;
     display: none;
 }
 
+.popupmenu-custom-item-container {
+    padding: $spacing-small;
+    .mx-link{
+        display: block;
+        padding: $spacing-smaller;
+    }
+}
+
+.popupmenu-custom-item-hover
+    .widget-popupmenu-root
+    .popupmenu-menu
+    .popupmenu-custom-item {
+        background-color: $bg-color-secondary;
+        &:hover,
+        &:focus,
+        &:active {
+            cursor: pointer;
+            border-color: $bg-color;
+            background-color: $bg-color;
+        }
+}

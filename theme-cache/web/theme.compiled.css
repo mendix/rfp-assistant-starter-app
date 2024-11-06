@@ -24616,6 +24616,23 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: none;
 }
 
+.popupmenu-custom-item-container {
+  padding: 8px;
+}
+.popupmenu-custom-item-container .mx-link {
+  display: block;
+  padding: 4px;
+}
+
+.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item {
+  background-color: #fff;
+}
+.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:hover, .popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:focus, .popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:active {
+  cursor: pointer;
+  border-color: #f8f8f8;
+  background-color: #f8f8f8;
+}
+
 .mx-layoutgrid.card-container > .row {
   padding-bottom: 24px;
 }
