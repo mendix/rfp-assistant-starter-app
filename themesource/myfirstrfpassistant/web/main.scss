@@ -553,6 +553,36 @@ $send-btn-size: $form-input-font-size * 2 !default;
     display: none;
 }
 
+.popupmenu-custom-item-container {
+    padding: $spacing-small;
+
+    .mx-link {
+        display: block;
+        padding: $spacing-smaller;
+    }
+}
+
+.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item {
+    background-color: $bg-color-secondary;
+
+    &:hover,
+    &:focus,
+    &:active {
+        cursor: pointer;
+        border-color: $bg-color;
+        background-color: $bg-color;
+    }
+}
+
+.text-clamp--1-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+}
+
 
 /* --------------------------------- Ask Assistant Styling --------------------------------- */
 /* Custom Text Area */
@@ -646,32 +676,4 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
-.popupmenu-custom-item-container {
-    padding: $spacing-small;
 
-    .mx-link {
-        display: block;
-        padding: $spacing-smaller;
-    }
-}
-
-.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item {
-    background-color: $bg-color-secondary;
-
-    &:hover,
-    &:focus,
-    &:active {
-        cursor: pointer;
-        border-color: $bg-color;
-        background-color: $bg-color;
-    }
-}
-
-.text-clamp--1-line {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    line-clamp: 1;
-}

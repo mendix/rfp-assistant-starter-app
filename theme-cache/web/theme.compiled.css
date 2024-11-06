@@ -24637,6 +24637,32 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: none;
 }
 
+.popupmenu-custom-item-container {
+  padding: 8px;
+}
+.popupmenu-custom-item-container .mx-link {
+  display: block;
+  padding: 4px;
+}
+
+.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item {
+  background-color: #fff;
+}
+.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:hover, .popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:focus, .popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:active {
+  cursor: pointer;
+  border-color: #f8f8f8;
+  background-color: #f8f8f8;
+}
+
+.text-clamp--1-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+}
+
 /* --------------------------------- Ask Assistant Styling --------------------------------- */
 /* Custom Text Area */
 .mx-textarea textarea {
@@ -24711,32 +24737,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
 
 .listview--questions ul > li:last-child .drop-down-assistant {
   position: unset;
-}
-
-.popupmenu-custom-item-container {
-  padding: 8px;
-}
-.popupmenu-custom-item-container .mx-link {
-  display: block;
-  padding: 4px;
-}
-
-.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item {
-  background-color: #fff;
-}
-.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:hover, .popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:focus, .popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:active {
-  cursor: pointer;
-  border-color: #f8f8f8;
-  background-color: #f8f8f8;
-}
-
-.text-clamp--1-line {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  line-clamp: 1;
 }
 
 .mx-layoutgrid.card-container > .row {
