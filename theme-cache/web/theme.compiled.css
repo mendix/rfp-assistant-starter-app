@@ -24696,7 +24696,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
   /* Change to a lighter color on hover */
 }
 
-ul > li:last-child ul > li:last-child .drop-down-assistant {
+.listview--questions ul > li:last-child .drop-down-assistant {
   position: unset;
 }
 
