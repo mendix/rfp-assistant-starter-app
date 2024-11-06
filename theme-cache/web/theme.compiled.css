@@ -24554,12 +24554,18 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: none;
 }
 
+.gallery-hide-focus .widget-gallery-clickable:focus-visible {
+  outline: 0;
+}
+
 .reference-card {
+  background-color: #f8f8f8;
   padding: 8px;
   height: 100%;
+  min-height: 56.000000012px;
 }
-.reference-card .mx-text {
-  display: block;
+.reference-card:hover {
+  background-color: #e7e7e9;
 }
 
 .fixed-position-answer-buttons {
@@ -24715,6 +24721,15 @@ input[type=checkbox].three-state-checkbox + .control-label {
   cursor: pointer;
   border-color: #f8f8f8;
   background-color: #f8f8f8;
+}
+
+.text-clamp--1-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
 }
 
 .mx-layoutgrid.card-container > .row {
