@@ -24398,6 +24398,9 @@ input[type=checkbox].three-state-checkbox + .control-label {
   left: 1px;
   border-radius: 4px 0 0 4px;
 }
+.input-wrapper .btn-input-action img {
+  margin: 0;
+}
 
 .sticky-wrapper {
   overflow: unset;
