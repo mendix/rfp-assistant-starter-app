@@ -9,14 +9,20 @@ $brand-danger-light: rgba($brand-danger, 0.15);
 $brand-success-light: rgba($brand-success, 0.15);
 $brand-purple: #2F008C;
 $brand-purple-light: rgba($brand-purple, 0.15);
+$brand-purple-brighter: #845EFF;
+$btn-border-dark: $gray-darker;
 $font-color-light: rgba($font-color-default, 0.8);
 $border-radius-large: 20px;
 $wizard-step-width: 180px;
 $input-button-size: 36px;
+$send-btn-size: $form-input-font-size * 2 !default;
 
 .badge {
     font-weight: normal;
     font-size: $font-size-small;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0.2rem;
 
     .col {
         padding: 0
@@ -44,7 +50,7 @@ $input-button-size: 36px;
 
     &.badge--success-light {
         background-color: $brand-success-light;
-        color: $brand-success;
+        color: $color-success-darker;
     }
 
     &.badge--purple-light {
@@ -54,9 +60,14 @@ $input-button-size: 36px;
 }
 
 .btn-without-border.mx-link {
+    border-radius: $border-radius-large;
     color: $font-color-light;
     text-decoration: none;
     border: 1px solid transparent;
+}
+
+.btn-without-border.mx-link:hover {
+    background-color: $btn-default-bg-hover;
 }
 
 .btn-as-text {
@@ -106,7 +117,6 @@ $input-button-size: 36px;
 
 .btn-active.btn {
     background-color: $btn-default-bg-hover;
-
 }
 
 .show-validation-feedback {
@@ -405,7 +415,8 @@ $input-button-size: 36px;
                         color: $font-color-default;
                         background: $btn-default-bg-hover;
                         border-radius: $border-radius-large;
-                        .widget-accordion-group-header-button-icon{
+
+                        .widget-accordion-group-header-button-icon {
                             fill: $font-color-default;
                         }
                     }
@@ -431,10 +442,10 @@ $input-button-size: 36px;
 
 
 .gallery-item-equal-height {
-    .widget-gallery-item-button{
+    .widget-gallery-item-button {
         height: 100%
     }
-} 
+}
 
 .gallery-hide-paging {
     .widget-gallery-footer {
@@ -442,11 +453,20 @@ $input-button-size: 36px;
     }
 }
 
+.gallery-hide-focus {
+    .widget-gallery-clickable:focus-visible {
+        outline: 0;
+    }
+}
+
 .reference-card {
+    background-color: $bg-color;
     padding: $spacing-small;
     height: 100%;
-    .mx-text{
-        display: block;
+    min-height: 2 * $line-height-base * $font-size-default + 2 * $spacing-small ;
+
+    &:hover {
+        background-color: $btn-default-bg-hover;
     }
 }
 
@@ -526,24 +546,125 @@ $input-button-size: 36px;
     display: none;
 }
 
+
+/* --------------------------------- Ask Assistant Styling --------------------------------- */
+/* Custom Text Area */
+.mx-textarea textarea {
+    margin-top: $spacing-smaller;
+    margin-bottom: $spacing-smaller;
+    line-height: 2rem;
+}
+
+/* Rounded Button with Border */
+.rounded-btn-dark.btn {
+    border-radius: $border-radius-large;
+    border-color: $btn-border-dark;
+}
+
+/* Edit Answer Container */
+.send-edit-btn-container {
+
+    btn img,
+    .mx-button img,
+    .mx-link img {
+        margin: 0;
+    }
+}
+
+/* Edit Answer Button */
+.send-edit-btn.btn {
+    position: absolute;
+    right: 58px / 2 - $send-btn-size / 2;
+    bottom: 58px / 2 - $send-btn-size / 2 + $spacing-smaller;
+    display: flex;
+    width: $send-btn-size;
+    height: $send-btn-size;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: $brand-purple-brighter;
+    border-color: transparent;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: $brand-purple;
+    }
+}
+
+/* Ask Assistant Drop Down */
+.drop-down-assistant {
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    padding: $spacing-small 0;
+    border-radius: $border-radius-default;
+    border: 1px solid $btn-default-bg-hover;
+    background: white;
+
+    &-title {
+        display: flex;
+        padding: $spacing-smaller $spacing-medium;
+        gap: 0.5rem;
+        align-self: stretch;
+    }
+
+    &-btn {
+        &.btn {
+            padding: $spacing-small $spacing-medium;
+            border-radius: 0;
+            border: none;
+            color: $font-color-default;
+            text-align: left;
+            background: transparent;
+            width: 100%;
+
+            &:hover {
+                background: $btn-default-bg-hover;
+                /* Change to a lighter color on hover */
+            }
+        }
+    }
+}
+
+// Assistant options for last question on the page should be visible
+.listview--questions {
+    ul>li:last-child {
+        .drop-down-assistant {
+            position: unset;
+        }
+    }
+}
+
 .popupmenu-custom-item-container {
     padding: $spacing-small;
-    .mx-link{
+
+    .mx-link {
         display: block;
         padding: $spacing-smaller;
     }
 }
 
-.popupmenu-custom-item-hover
-    .widget-popupmenu-root
-    .popupmenu-menu
-    .popupmenu-custom-item {
-        background-color: $bg-color-secondary;
-        &:hover,
-        &:focus,
-        &:active {
-            cursor: pointer;
-            border-color: $bg-color;
-            background-color: $bg-color;
-        }
+.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item {
+    background-color: $bg-color-secondary;
+
+    &:hover,
+    &:focus,
+    &:active {
+        cursor: pointer;
+        border-color: $bg-color;
+        background-color: $bg-color;
+    }
+}
+
+.text-clamp--1-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
 }
