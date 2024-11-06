@@ -24249,7 +24249,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 .badge.badge--success-light {
   background-color: rgba(60, 179, 61, 0.15);
-  color: #076407;
+  color: #246b25;
 }
 .badge.badge--purple-light {
   background-color: rgba(47, 0, 140, 0.15);
@@ -24544,12 +24544,11 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 
 .reference-card {
-  height: 5.5rem;
-  margin-top: -0.1rem;
-  margin-bottom: none;
-  border-radius: 0.8rem;
-  background-color: #f8f8f8;
-  padding: 16px;
+  padding: 8px;
+  height: 100%;
+}
+.reference-card .mx-text {
+  display: block;
 }
 
 .fixed-position-answer-buttons {
@@ -24559,7 +24558,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 
 .btn-small-padding {
-  padding: 8px 8px;
+  padding: 4px 8px;
 }
 
 .widget-progress-bar.actionless .progress-bar,
@@ -24616,16 +24615,15 @@ input[type=checkbox].three-state-checkbox + .control-label {
 /* --------------------------------- Ask Assistant Styling --------------------------------- */
 /* Custom Text Area */
 .mx-textarea textarea {
-  border-radius: 0.8rem;
-  padding: 1.5rem;
-  margin: 1rem 0 0.5rem;
+  margin-top: 4px;
+  margin-bottom: 4px;
   line-height: 2rem;
 }
 
 /* Rounded Button with Border */
 .rounded-btn-dark.btn {
   border-radius: 20px;
-  border-color: #2F3646;
+  border-color: #0a1325;
 }
 
 /* Edit Answer Container */
@@ -24639,36 +24637,41 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .send-edit-btn.btn {
   position: absolute;
   right: 15px;
-  bottom: 25px;
+  bottom: 19px;
   display: flex;
-  width: 3rem;
-  height: 3rem;
+  width: 28px;
+  height: 28px;
   padding: 0;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   background-color: #845EFF;
+  border-color: transparent;
+}
+.send-edit-btn.btn:hover, .send-edit-btn.btn:active, .send-edit-btn.btn:focus {
+  background-color: #2F008C;
 }
 
 /* Ask Assistant Drop Down */
 .drop-down-assistant {
   position: absolute;
+  z-index: 1000;
   display: flex;
-  width: 25rem;
-  padding: 0.8rem 0;
   flex-direction: column;
-  border-radius: 0.5rem;
+  width: 25rem;
+  padding: 8px 0;
+  border-radius: 4px;
   border: 1px solid #e7e7e9;
   background: white;
-  z-index: 1000;
 }
 .drop-down-assistant-title {
   display: flex;
-  padding: 0.5rem 1.5rem;
+  padding: 4px 16px;
   gap: 0.5rem;
   align-self: stretch;
 }
 .drop-down-assistant-btn.btn {
+  padding: 8px 16px;
   border: none;
   color: #0a1325;
   text-align: left;

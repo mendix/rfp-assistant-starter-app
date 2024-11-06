@@ -6,18 +6,15 @@ $brand-primary-light: rgba($brand-primary, 0.15);
 $brand-warning-light: rgba($brand-warning, 0.15);
 $brand-danger-light: rgba($brand-danger, 0.15);
 $brand-success-light: rgba($brand-success, 0.15);
-$brand-success-darker: #076407;
 $brand-purple: #2F008C;
-$brand-ligher-purple: #845EFF;
 $brand-purple-light: rgba($brand-purple, 0.15);
-$btn-border-dark: #2F3646;
+$brand-purple-brighter: #845EFF;
+$btn-border-dark: $gray-darker;
 $font-color-light: rgba($font-color-default, 0.8);
 $border-radius-large: 20px;
 $wizard-step-width: 180px;
 $input-button-size: 36px;
 $send-btn-size: $form-input-font-size * 2 !default;
-$border-radius-s: 0.5rem;
-$border-radius-m: 0.8rem;
 
 .badge {
     font-weight: normal;
@@ -52,7 +49,7 @@ $border-radius-m: 0.8rem;
 
     &.badge--success-light {
         background-color: $brand-success-light;
-        color: $brand-success-darker;
+        color: $color-success-darker;
     }
 
     &.badge--purple-light {
@@ -439,12 +436,12 @@ $border-radius-m: 0.8rem;
 }
 
 .reference-card {
-    height: 5.5rem;
-    margin-top: -0.1rem;
-    margin-bottom: none;
-    border-radius: $border-radius-m;
-    background-color: $bg-color;
-    padding: $spacing-medium;
+    padding: $spacing-small;
+    height: 100%;
+
+    .mx-text {
+        display: block;
+    }
 }
 
 .fixed-position-answer-buttons {
@@ -454,7 +451,7 @@ $border-radius-m: 0.8rem;
 }
 
 .btn-small-padding {
-    padding: $spacing-small $spacing-small;
+    padding: $spacing-smaller $spacing-small;
 }
 
 .widget-progress-bar.actionless {
@@ -526,10 +523,9 @@ $border-radius-m: 0.8rem;
 /* --------------------------------- Ask Assistant Styling --------------------------------- */
 /* Custom Text Area */
 .mx-textarea textarea {
-    border-radius: $border-radius-m;
-    padding: 1.5rem;
-    margin: 1rem 0 0.5rem;
-    line-height: 2rem; 
+    margin-top: $spacing-smaller;
+    margin-bottom: $spacing-smaller;
+    line-height: 2rem;
 }
 
 /* Rounded Button with Border */
@@ -540,6 +536,7 @@ $border-radius-m: 0.8rem;
 
 /* Edit Answer Container */
 .send-edit-btn-container {
+
     btn img,
     .mx-button img,
     .mx-link img {
@@ -551,38 +548,43 @@ $border-radius-m: 0.8rem;
 .send-edit-btn.btn {
     position: absolute;
     right: 58px / 2 - $send-btn-size / 2;
-    bottom: 58px / 2 - $send-btn-size / 2 + 10; // added 10 to have the default position centered
+    bottom: 58px / 2 - $send-btn-size / 2 + $spacing-smaller;
     display: flex;
-    width: 3rem;
-    height: 3rem;
+    width: $send-btn-size;
+    height: $send-btn-size;
     padding: 0;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: $brand-ligher-purple;
+    background-color: $brand-purple-brighter;
+    border-color: transparent;
+    &:hover, &:active, &:focus {
+        background-color: $brand-purple;
+    }
 }
 
 /* Ask Assistant Drop Down */
 .drop-down-assistant {
     position: absolute;
+    z-index: 1000;
     display: flex;
-    width: 25rem;
-    padding: 0.8rem 0;
     flex-direction: column;
-    border-radius: $border-radius-s;
+    width: 25rem;
+    padding: $spacing-small 0;
+    border-radius: $border-radius-default;
     border: 1px solid $btn-default-bg-hover;
     background: white;
-    z-index: 1000;
 
     &-title {
         display: flex;
-        padding: 0.5rem 1.5rem;
+        padding: $spacing-smaller $spacing-medium;
         gap: 0.5rem;
         align-self: stretch;
     }
 
     &-btn {
         &.btn {
+            padding: $spacing-small $spacing-medium;
             border: none;
             color: $font-color-default;
             text-align: left;
@@ -590,7 +592,8 @@ $border-radius-m: 0.8rem;
             width: 100%;
 
             &:hover {
-                background: $btn-default-bg-hover; /* Change to a lighter color on hover */
+                background: $btn-default-bg-hover;
+                /* Change to a lighter color on hover */
             }
         }
     }
