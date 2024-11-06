@@ -9,14 +9,20 @@ $brand-danger-light: rgba($brand-danger, 0.15);
 $brand-success-light: rgba($brand-success, 0.15);
 $brand-purple: #2F008C;
 $brand-purple-light: rgba($brand-purple, 0.15);
+$brand-purple-brighter: #845EFF;
+$btn-border-dark: $gray-darker;
 $font-color-light: rgba($font-color-default, 0.8);
 $border-radius-large: 20px;
 $wizard-step-width: 180px;
 $input-button-size: 36px;
+$send-btn-size: $form-input-font-size * 2 !default;
 
 .badge {
     font-weight: normal;
     font-size: $font-size-small;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0.2rem;
 
     .col {
         padding: 0
@@ -44,7 +50,7 @@ $input-button-size: 36px;
 
     &.badge--success-light {
         background-color: $brand-success-light;
-        color: $brand-success;
+        color: $color-success-darker;
     }
 
     &.badge--purple-light {
@@ -54,9 +60,14 @@ $input-button-size: 36px;
 }
 
 .btn-without-border.mx-link {
+    border-radius: $border-radius-large;
     color: $font-color-light;
     text-decoration: none;
     border: 1px solid transparent;
+}
+
+.btn-without-border.mx-link:hover {
+    background-color: $btn-default-bg-hover;
 }
 
 .btn-as-text {
@@ -106,7 +117,6 @@ $input-button-size: 36px;
 
 .btn-active.btn {
     background-color: $btn-default-bg-hover;
-
 }
 
 .show-validation-feedback {
@@ -445,7 +455,8 @@ $input-button-size: 36px;
 .reference-card {
     padding: $spacing-small;
     height: 100%;
-    .mx-text{
+
+    .mx-text {
         display: block;
     }
 }
@@ -524,6 +535,86 @@ $input-button-size: 36px;
 
 .widget-events--hide {
     display: none;
+}
+
+
+/* --------------------------------- Ask Assistant Styling --------------------------------- */
+/* Custom Text Area */
+.mx-textarea textarea {
+    margin-top: $spacing-smaller;
+    margin-bottom: $spacing-smaller;
+    line-height: 2rem;
+}
+
+/* Rounded Button with Border */
+.rounded-btn-dark.btn {
+    border-radius: $border-radius-large;
+    border-color: $btn-border-dark;
+}
+
+/* Edit Answer Container */
+.send-edit-btn-container {
+
+    btn img,
+    .mx-button img,
+    .mx-link img {
+        margin: 0;
+    }
+}
+
+/* Edit Answer Button */
+.send-edit-btn.btn {
+    position: absolute;
+    right: 58px / 2 - $send-btn-size / 2;
+    bottom: 58px / 2 - $send-btn-size / 2 + $spacing-smaller;
+    display: flex;
+    width: $send-btn-size;
+    height: $send-btn-size;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: $brand-purple-brighter;
+    border-color: transparent;
+    &:hover, &:active, &:focus {
+        background-color: $brand-purple;
+    }
+}
+
+/* Ask Assistant Drop Down */
+.drop-down-assistant {
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    padding: $spacing-small 0;
+    border-radius: $border-radius-default;
+    border: 1px solid $btn-default-bg-hover;
+    background: white;
+
+    &-title {
+        display: flex;
+        padding: $spacing-smaller $spacing-medium;
+        gap: 0.5rem;
+        align-self: stretch;
+    }
+
+    &-btn {
+        &.btn {
+            padding: $spacing-small $spacing-medium;
+            border: none;
+            color: $font-color-default;
+            text-align: left;
+            background: transparent;
+            width: 100%;
+
+            &:hover {
+                background: $btn-default-bg-hover;
+                /* Change to a lighter color on hover */
+            }
+        }
+    }
 }
 
 .popupmenu-custom-item-container {
