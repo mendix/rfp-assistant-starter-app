@@ -24267,6 +24267,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   background-color: #e7e7e9;
 }
 
+.btn-no-hover.mx-link:hover {
+  background-color: transparent !important;
+}
+
 .btn-as-text {
   border: none;
   color: #0a1325;
@@ -24398,6 +24402,9 @@ input[type=checkbox].three-state-checkbox + .control-label {
   left: 1px;
   border-radius: 4px 0 0 4px;
 }
+.input-wrapper .btn-input-action img {
+  margin: 0;
+}
 
 .sticky-wrapper {
   overflow: unset;
@@ -24522,10 +24529,14 @@ input[type=checkbox].three-state-checkbox + .control-label {
   background: transparent;
   border-bottom: none;
 }
+.accordion-references .widget-accordion-group .widget-accordion-group-header {
+  display: flex;
+}
 .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button {
-  display: inline-flex;
+  margin-top: 8px;
   background: transparent;
   padding: 0;
+  border: 1px solid transparent;
 }
 .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:hover, .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:focus, .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:active {
   color: #0a1325;
@@ -24630,14 +24641,33 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: none;
 }
 
-/* --------------------------------- Ask Assistant Styling --------------------------------- */
-/* Custom Text Area */
-.mx-textarea textarea {
-  margin-top: 4px;
-  margin-bottom: 4px;
-  line-height: 2rem;
+.popupmenu-custom-item-container {
+  padding: 8px;
+}
+.popupmenu-custom-item-container .mx-link {
+  display: block;
+  padding: 4px;
 }
 
+.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item {
+  background-color: #fff;
+}
+.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:hover, .popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:focus, .popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:active {
+  cursor: pointer;
+  border-color: #f8f8f8;
+  background-color: #f8f8f8;
+}
+
+.text-clamp--1-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+}
+
+/* --------------------------------- Ask Assistant Styling --------------------------------- */
 /* Rounded Button with Border */
 .rounded-btn-dark.btn {
   border-radius: 20px;
@@ -24670,7 +24700,13 @@ input[type=checkbox].three-state-checkbox + .control-label {
   background-color: #2F008C;
 }
 
-/* Ask Assistant Drop Down */
+/* Assistant input box with options dropdown below */
+.chat-assistant .mx-textarea textarea {
+  margin-bottom: 4px;
+  line-height: 2rem;
+}
+
+/* Ask Assistant Options Drop Down */
 .drop-down-assistant {
   position: absolute;
   z-index: 1000;
@@ -24702,34 +24738,9 @@ input[type=checkbox].three-state-checkbox + .control-label {
   /* Change to a lighter color on hover */
 }
 
+/* Assistant options for last question on the page should be visible */
 .listview--questions ul > li:last-child .drop-down-assistant {
   position: unset;
-}
-
-.popupmenu-custom-item-container {
-  padding: 8px;
-}
-.popupmenu-custom-item-container .mx-link {
-  display: block;
-  padding: 4px;
-}
-
-.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item {
-  background-color: #fff;
-}
-.popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:hover, .popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:focus, .popupmenu-custom-item-hover .widget-popupmenu-root .popupmenu-menu .popupmenu-custom-item:active {
-  cursor: pointer;
-  border-color: #f8f8f8;
-  background-color: #f8f8f8;
-}
-
-.text-clamp--1-line {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  line-clamp: 1;
 }
 
 .mx-layoutgrid.card-container > .row {
