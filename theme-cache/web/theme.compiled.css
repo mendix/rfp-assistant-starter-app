@@ -24529,10 +24529,14 @@ input[type=checkbox].three-state-checkbox + .control-label {
   background: transparent;
   border-bottom: none;
 }
+.accordion-references .widget-accordion-group .widget-accordion-group-header {
+  display: flex;
+}
 .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button {
-  display: inline-flex;
+  margin-top: 8px;
   background: transparent;
   padding: 0;
+  border: 1px solid transparent;
 }
 .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:hover, .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:focus, .accordion-references .widget-accordion-group .widget-accordion-group-header .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable:active {
   color: #0a1325;
