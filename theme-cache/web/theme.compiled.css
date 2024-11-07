@@ -24664,13 +24664,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 
 /* --------------------------------- Ask Assistant Styling --------------------------------- */
-/* Custom Text Area */
-.mx-textarea textarea {
-  margin-top: 4px;
-  margin-bottom: 4px;
-  line-height: 2rem;
-}
-
 /* Rounded Button with Border */
 .rounded-btn-dark.btn {
   border-radius: 20px;
@@ -24703,7 +24696,13 @@ input[type=checkbox].three-state-checkbox + .control-label {
   background-color: #2F008C;
 }
 
-/* Ask Assistant Drop Down */
+/* Assistant input box with options dropdown below */
+.chat-assistant .mx-textarea textarea {
+  margin-bottom: 4px;
+  line-height: 2rem;
+}
+
+/* Ask Assistant Options Drop Down */
 .drop-down-assistant {
   position: absolute;
   z-index: 1000;
@@ -24735,6 +24734,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
   /* Change to a lighter color on hover */
 }
 
+/* Assistant options for last question on the page should be visible */
 .listview--questions ul > li:last-child .drop-down-assistant {
   position: unset;
 }

@@ -245,7 +245,8 @@ $send-btn-size: $form-input-font-size * 2 !default;
             left: 1px;
             border-radius: $btn-border-radius 0 0 $btn-border-radius;
         }
-        img{
+
+        img {
             margin: 0;
         }
     }
@@ -585,12 +586,6 @@ $send-btn-size: $form-input-font-size * 2 !default;
 
 
 /* --------------------------------- Ask Assistant Styling --------------------------------- */
-/* Custom Text Area */
-.mx-textarea textarea {
-    margin-top: $spacing-smaller;
-    margin-bottom: $spacing-smaller;
-    line-height: 2rem;
-}
 
 /* Rounded Button with Border */
 .rounded-btn-dark.btn {
@@ -630,7 +625,16 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
-/* Ask Assistant Drop Down */
+/* Assistant input box with options dropdown below */
+.chat-assistant {
+    .mx-textarea textarea {
+        margin-bottom: $spacing-smaller;
+        line-height: 2rem;
+    }
+}
+
+
+/* Ask Assistant Options Drop Down */
 .drop-down-assistant {
     position: absolute;
     z-index: 1000;
@@ -667,7 +671,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
-// Assistant options for last question on the page should be visible
+/* Assistant options for last question on the page should be visible */
 .listview--questions {
     ul>li:last-child {
         .drop-down-assistant {
@@ -675,5 +679,3 @@ $send-btn-size: $form-input-font-size * 2 !default;
         }
     }
 }
-
-
