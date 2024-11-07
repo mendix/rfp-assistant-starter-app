@@ -24636,6 +24636,9 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: inline;
   visibility: visible;
 }
+.hover-trigger .info-text-wrapper {
+  display: block;
+}
 
 .widget-events--hide {
   display: none;
