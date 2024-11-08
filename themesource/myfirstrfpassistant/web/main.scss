@@ -421,6 +421,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
 
     &.progress-item--active.progress-item--completed {
         .progress-circle {
+            border-color: $color-primary-dark;
             background-color: $color-primary-dark;
         }
     }

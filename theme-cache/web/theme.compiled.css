@@ -24535,6 +24535,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
   background-color: #0a1325;
 }
 .progress-item.progress-item--active.progress-item--completed .progress-circle {
+  border-color: #1b34a0;
   background-color: #1b34a0;
 }
 
