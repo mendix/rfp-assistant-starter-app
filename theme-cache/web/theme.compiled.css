@@ -24659,6 +24659,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   overflow-y: visible;
 }
 
+.popupmenu--display-flex.popupmenu {
+  display: flex;
+}
+
 .popupmenu-custom-item-container {
   padding: 8px;
 }
