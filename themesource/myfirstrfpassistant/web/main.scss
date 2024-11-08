@@ -72,10 +72,12 @@ $send-btn-size: $form-input-font-size * 2 !default;
     color: $font-color-light;
     text-decoration: none;
     border: 1px solid transparent;
+
     &.disabled {
         background-color: transparent !important;
         cursor: default;
     }
+
     &:hover {
         background-color: $btn-default-bg-hover;
     }
@@ -382,7 +384,18 @@ $send-btn-size: $form-input-font-size * 2 !default;
         background-color: $wizard-default-bg;
     }
 
-    &--active {
+    &:hover {
+        .mx-text {
+            color: $font-color-default;
+        }
+
+        .progress-circle {
+            border-color: $font-color-default;
+        }
+    }
+
+    &--active,
+    &--active:hover {
         .mx-text {
             color: $color-primary-dark;
         }
@@ -408,11 +421,21 @@ $send-btn-size: $form-input-font-size * 2 !default;
         }
     }
 
+    &--completed:hover {
+        .progress-circle {
+            border-color: $font-color-default;
+            background-color: $font-color-default;
+        }
+    }
+
     &.progress-item--active.progress-item--completed {
         .progress-circle {
+            border-color: $color-primary-dark;
             background-color: $color-primary-dark;
         }
     }
+
+
 }
 
 .accordion-references {
@@ -568,6 +591,15 @@ $send-btn-size: $form-input-font-size * 2 !default;
     display: none;
 }
 
+//fix for datagrid scrollbar caused by popupmenu
+.datagrid--no-scroll {
+    &.widget-datagrid {
+        .widget-datagrid-content {
+            overflow-y: visible;
+        }
+    }
+}
+
 .popupmenu-custom-item-container {
     padding: $spacing-small;
 
@@ -605,7 +637,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
 }
 
 .texbox-loading-wrapper {
-    position:relative;
+    position: relative;
 
     .generating-loading-wrapper {
         display: flex;
@@ -637,9 +669,17 @@ $send-btn-size: $form-input-font-size * 2 !default;
         }
 
         @keyframes preloader {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.5); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
     }
 }
