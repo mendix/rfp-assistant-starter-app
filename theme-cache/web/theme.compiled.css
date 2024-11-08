@@ -24231,29 +24231,36 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .badge .col {
   padding: 0;
 }
+.badge .mx-text {
+  margin-left: 4px;
+}
 .badge .mx-image-viewer-responsive > img {
   max-width: 14px;
   max-height: 14px;
 }
 .badge.badge--primary-light {
-  background-color: rgba(38, 74, 229, 0.15);
+  background-color: rgba(38, 74, 229, 0.1);
   color: #264ae5;
 }
 .badge.badge--warning-light {
-  background-color: rgba(236, 165, 28, 0.15);
+  background-color: rgba(236, 165, 28, 0.1);
   color: #eca51c;
 }
 .badge.badge--danger-light {
-  background-color: rgba(227, 63, 78, 0.15);
+  background-color: rgba(227, 63, 78, 0.1);
   color: #e33f4e;
 }
 .badge.badge--success-light {
-  background-color: rgba(60, 179, 61, 0.15);
+  background-color: rgba(60, 179, 61, 0.1);
   color: #246b25;
 }
 .badge.badge--purple-light {
-  background-color: rgba(47, 0, 140, 0.15);
+  background-color: rgba(47, 0, 140, 0.1);
   color: #2F008C;
+}
+
+.margin-bottom-large {
+  margin-bottom: 40px;
 }
 
 .btn-without-border.mx-link {
@@ -24506,10 +24513,16 @@ input[type=checkbox].three-state-checkbox + .control-label {
   justify-content: center;
   background-color: #fff;
 }
-.progress-item--active .mx-text {
+.progress-item:hover .mx-text {
+  color: #0a1325;
+}
+.progress-item:hover .progress-circle {
+  border-color: #0a1325;
+}
+.progress-item--active .mx-text, .progress-item--active:hover .mx-text {
   color: #1b34a0;
 }
-.progress-item--active .progress-circle {
+.progress-item--active .progress-circle, .progress-item--active:hover .progress-circle {
   border-color: #1b34a0;
 }
 .progress-item--completed .progress-circle {
@@ -24524,7 +24537,12 @@ input[type=checkbox].three-state-checkbox + .control-label {
   height: 0.6rem;
   transform: rotate(45deg);
 }
+.progress-item--completed:hover .progress-circle {
+  border-color: #0a1325;
+  background-color: #0a1325;
+}
 .progress-item.progress-item--active.progress-item--completed .progress-circle {
+  border-color: #1b34a0;
   background-color: #1b34a0;
 }
 
@@ -24644,6 +24662,14 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: none;
 }
 
+.datagrid--no-scroll.widget-datagrid .widget-datagrid-content {
+  overflow-y: visible;
+}
+
+.popupmenu--display-flex.popupmenu {
+  display: flex;
+}
+
 .popupmenu-custom-item-container {
   padding: 8px;
 }
@@ -24659,6 +24685,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   cursor: pointer;
   border-color: #f8f8f8;
   background-color: #f8f8f8;
+}
+
+.combobox-without-clear-button .widget-combobox .widget-combobox-input-container .widget-combobox-clear-button {
+  display: none !important;
 }
 
 .text-clamp--1-line {
@@ -24753,7 +24783,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 /* Ask Assistant Options Drop Down */
 .drop-down-assistant {
   position: absolute;
-  z-index: 1000;
+  z-index: 99;
   display: flex;
   flex-direction: column;
   width: 25rem;
