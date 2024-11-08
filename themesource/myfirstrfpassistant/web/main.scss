@@ -684,7 +684,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
 /* Ask Assistant Options Drop Down */
 .drop-down-assistant {
     position: absolute;
-    z-index: 1000;
+    z-index: 99;
     display: flex;
     flex-direction: column;
     width: 25rem;
