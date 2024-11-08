@@ -3,12 +3,12 @@
 
 //custom color shades for icons and badges
 
-$brand-primary-light: rgba($brand-primary, 0.15);
-$brand-warning-light: rgba($brand-warning, 0.15);
-$brand-danger-light: rgba($brand-danger, 0.15);
-$brand-success-light: rgba($brand-success, 0.15);
+$brand-primary-light: rgba($brand-primary, 0.1);
+$brand-warning-light: rgba($brand-warning, 0.1);
+$brand-danger-light: rgba($brand-danger, 0.1);
+$brand-success-light: rgba($brand-success, 0.1);
 $brand-purple: #2F008C;
-$brand-purple-light: rgba($brand-purple, 0.15);
+$brand-purple-light: rgba($brand-purple, 0.1);
 $brand-purple-brighter: #845EFF;
 $btn-border-dark: $gray-darker;
 $font-color-light: rgba($font-color-default, 0.8);
@@ -26,6 +26,10 @@ $send-btn-size: $form-input-font-size * 2 !default;
 
     .col {
         padding: 0
+    }
+
+    .mx-text {
+        margin-left: $spacing-smaller;
     }
 
     .mx-image-viewer-responsive>img {
@@ -57,6 +61,10 @@ $send-btn-size: $form-input-font-size * 2 !default;
         background-color: $brand-purple-light;
         color: $brand-purple;
     }
+}
+
+.margin-bottom-large {
+    margin-bottom: $spacing-larger + $spacing-small;
 }
 
 .btn-without-border.mx-link {
@@ -616,6 +624,12 @@ $send-btn-size: $form-input-font-size * 2 !default;
         cursor: pointer;
         border-color: $bg-color;
         background-color: $bg-color;
+    }
+}
+
+.combobox-without-clear-button {
+    .widget-combobox .widget-combobox-input-container .widget-combobox-clear-button {
+        display: none !important;
     }
 }
 
