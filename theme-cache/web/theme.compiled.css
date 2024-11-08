@@ -24655,6 +24655,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: none;
 }
 
+.datagrid--no-scroll.widget-datagrid .widget-datagrid-content {
+  overflow-y: visible;
+}
+
 .popupmenu-custom-item-container {
   padding: 8px;
 }

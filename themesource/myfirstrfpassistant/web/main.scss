@@ -380,9 +380,10 @@ $send-btn-size: $form-input-font-size * 2 !default;
         .mx-text {
             color: $font-color-default;
         }
+
         .progress-circle {
             border-color: $font-color-default;
-    }
+        }
     }
 
     &--active,
@@ -580,6 +581,15 @@ $send-btn-size: $form-input-font-size * 2 !default;
 
 .widget-events--hide {
     display: none;
+}
+
+//fix for datagrid scrollbar caused by popupmenu
+.datagrid--no-scroll {
+    &.widget-datagrid {
+        .widget-datagrid-content {
+            overflow-y: visible;
+        }
+    }
 }
 
 .popupmenu-custom-item-container {
