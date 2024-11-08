@@ -24740,6 +24740,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
   border-color: transparent;
 }
 .send-edit-btn.btn:hover, .send-edit-btn.btn:active, .send-edit-btn.btn:focus {
+  border-color: transparent;
   background-color: #2F008C;
 }
 
