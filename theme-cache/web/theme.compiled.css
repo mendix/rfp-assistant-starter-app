@@ -24506,10 +24506,16 @@ input[type=checkbox].three-state-checkbox + .control-label {
   justify-content: center;
   background-color: #fff;
 }
-.progress-item--active .mx-text {
+.progress-item:hover .mx-text {
+  color: #0a1325;
+}
+.progress-item:hover .progress-circle {
+  border-color: #0a1325;
+}
+.progress-item--active .mx-text, .progress-item--active:hover .mx-text {
   color: #1b34a0;
 }
-.progress-item--active .progress-circle {
+.progress-item--active .progress-circle, .progress-item--active:hover .progress-circle {
   border-color: #1b34a0;
 }
 .progress-item--completed .progress-circle {
@@ -24523,6 +24529,10 @@ input[type=checkbox].three-state-checkbox + .control-label {
   width: 0.4rem;
   height: 0.6rem;
   transform: rotate(45deg);
+}
+.progress-item--completed:hover .progress-circle {
+  border-color: #0a1325;
+  background-color: #0a1325;
 }
 .progress-item.progress-item--active.progress-item--completed .progress-circle {
   background-color: #1b34a0;
@@ -24753,7 +24763,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 /* Ask Assistant Options Drop Down */
 .drop-down-assistant {
   position: absolute;
-  z-index: 1000;
+  z-index: 99;
   display: flex;
   flex-direction: column;
   width: 25rem;
