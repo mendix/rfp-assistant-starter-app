@@ -24687,10 +24687,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
   background-color: #f8f8f8;
 }
 
-.combobox-without-clear-button .widget-combobox .widget-combobox-input-container .widget-combobox-clear-button {
-  display: none !important;
-}
-
 .text-clamp--1-line {
   overflow: hidden;
   text-overflow: ellipsis;
