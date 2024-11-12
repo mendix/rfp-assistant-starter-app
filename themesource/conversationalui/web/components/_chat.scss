@@ -24,9 +24,17 @@
     }
 
     @keyframes preloader {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.5); }
-        100% { transform: scale(1); }
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.5);
+        }
+
+        100% {
+            transform: scale(1);
+        }
     }
 }
 
@@ -71,14 +79,15 @@
     }
 
     .has-error {
-        &:before{
-            display:none;
+        &:before {
+            display: none;
         }
+
         .alert {
             display: none !important;
         }
-    }  
-    
+    }
+
     .send-btn-container {
         //row-right
         display: flex !important;
@@ -134,7 +143,7 @@
     }
 }
 
-.chat-history-sidebar{
+.chat-history-sidebar {
     overflow-y: auto;
 }
 

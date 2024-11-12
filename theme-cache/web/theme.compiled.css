@@ -24259,80 +24259,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
   color: #2F008C;
 }
 
-.margin-bottom-large {
-  margin-bottom: 40px;
-}
-
-.btn-without-border.mx-link {
-  border-radius: 20px;
-  color: rgba(10, 19, 37, 0.8);
-  text-decoration: none;
-  border: 1px solid transparent;
-}
-.btn-without-border.mx-link.disabled {
-  background-color: transparent !important;
-  cursor: default;
-}
-.btn-without-border.mx-link:hover {
-  background-color: #e7e7e9;
-}
-
-.btn-no-hover.mx-link:hover {
-  background-color: transparent !important;
-}
-
-.btn-as-text {
-  border: none;
-  color: #0a1325;
-}
-.btn-as-text:hover, .btn-as-text:active, .btn-as-text:focus {
-  color: #0a1325;
-}
-.btn-as-text:active:not(:hover), .btn-as-text:focus:not(:hover) {
-  background-color: transparent;
-}
-
-.label-with-text > label {
-  overflow: hidden;
-  margin-bottom: 4px;
-  text-align: left;
-  text-overflow: ellipsis;
-  color: #0a1325;
-  font-size: 14px;
-  font-weight: 600;
-  display: block;
-}
-.label-with-text--horizontal {
-  display: flex;
-  justify-content: space-between;
-}
-.label-with-text .mx-text {
-  margin-bottom: 4px;
-  line-height: 1.428571429;
-  display: block;
-}
-
-.rounded-btn.btn {
-  border-radius: 20px;
-}
-
-.btn-active.btn {
-  background-color: #e7e7e9;
-}
-
-.show-validation-feedback {
-  margin: 0;
-}
-.show-validation-feedback > input {
-  display: none;
-}
-
-.mx-groupbox > h5.mx-groupbox-header {
-  font-size: 18px;
-  padding: 8px;
-  background-color: transparent;
-}
-
 .rfp-page-container {
   min-height: -webkit-fill-available;
   display: flex;
@@ -24372,6 +24298,102 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .rfp-page-container .widget-progress-bar .progress,
 .rfp-page-container .widget-progress-bar .progress-bar {
   height: 7px;
+}
+
+.btn-without-border.mx-link {
+  border-radius: 20px;
+  color: rgba(10, 19, 37, 0.8);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+.btn-without-border.mx-link.disabled {
+  background-color: transparent !important;
+  cursor: default;
+}
+.btn-without-border.mx-link:hover {
+  background-color: #e7e7e9;
+}
+
+.btn-no-hover.mx-link:hover {
+  background-color: transparent !important;
+}
+
+.btn-as-text {
+  border: none;
+  color: #0a1325;
+}
+.btn-as-text:hover, .btn-as-text:active, .btn-as-text:focus {
+  color: #0a1325;
+}
+.btn-as-text:active:not(:hover), .btn-as-text:focus:not(:hover) {
+  background-color: transparent;
+}
+
+.btn.rounded-btn {
+  border-radius: 20px;
+}
+
+.btn.btn-active {
+  background-color: #e7e7e9;
+}
+
+.btn-container {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #ced0d3;
+}
+.btn-container .btn {
+  margin-left: 8px;
+  margin-top: 16px;
+}
+
+.fixed-position-answer-buttons {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+}
+
+.btn.btn-small-padding,
+.mx-link.btn-small-padding {
+  padding: 4px 8px;
+}
+
+.label-with-text > label {
+  overflow: hidden;
+  margin-bottom: 4px;
+  text-align: left;
+  text-overflow: ellipsis;
+  color: #0a1325;
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+}
+.label-with-text--horizontal {
+  display: flex;
+  justify-content: space-between;
+}
+.label-with-text .mx-text {
+  margin-bottom: 4px;
+  line-height: 1.428571429;
+  display: block;
+}
+
+.mx-groupbox > h5.mx-groupbox-header {
+  font-size: 18px;
+  padding: 8px;
+  background-color: transparent;
+}
+
+.sticky-wrapper {
+  overflow: unset;
+  padding-top: 0;
+}
+
+.sticky-content {
+  position: sticky;
+  top: 0px;
+  z-index: 101;
 }
 
 .dataview--display-contents {
@@ -24414,28 +24436,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 .input-wrapper .btn-input-action img {
   margin: 0;
-}
-
-.sticky-wrapper {
-  overflow: unset;
-  padding-top: 0;
-}
-
-.sticky-content {
-  position: sticky;
-  top: 0px;
-  z-index: 101;
-}
-
-.btn-container {
-  margin-top: auto;
-  display: flex;
-  justify-content: flex-end;
-  border-top: 1px solid #ced0d3;
-}
-.btn-container .btn {
-  margin-left: 8px;
-  margin-top: 16px;
 }
 
 .wizard {
@@ -24590,29 +24590,14 @@ input[type=checkbox].three-state-checkbox + .control-label {
   outline: 0;
 }
 
-.reference-card {
+.card.reference-card {
   background-color: #f8f8f8;
   padding: 8px;
   height: 100%;
   min-height: 56.000000012px;
 }
-.reference-card:hover {
+.card.reference-card:hover {
   background-color: #e7e7e9;
-}
-
-.fixed-position-answer-buttons {
-  position: absolute;
-  right: 0;
-  margin-top: 8px;
-}
-
-.btn-small-padding {
-  padding: 4px 8px;
-}
-
-.widget-progress-bar.actionless .progress-bar,
-.widget-progress-bar.actionless .progress {
-  cursor: default;
 }
 
 .container-clickable {
@@ -24658,14 +24643,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
   visibility: visible;
 }
 
-.widget-events--hide {
-  display: none;
-}
-
-.datagrid--no-scroll.widget-datagrid .widget-datagrid-content {
-  overflow-y: visible;
-}
-
 .popupmenu--display-flex.popupmenu {
   display: flex;
 }
@@ -24685,55 +24662,6 @@ input[type=checkbox].three-state-checkbox + .control-label {
   cursor: pointer;
   border-color: #f8f8f8;
   background-color: #f8f8f8;
-}
-
-.text-clamp--1-line {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  line-clamp: 1;
-}
-
-.texbox-loading-wrapper {
-  position: relative;
-}
-.texbox-loading-wrapper .generating-loading-wrapper {
-  display: flex;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-}
-.texbox-loading-wrapper .generating-loading-wrapper .loading-dot {
-  border-radius: 100%;
-  background-color: #845EFF;
-  width: 4.6666666667px;
-  height: 4.6666666667px;
-}
-.texbox-loading-wrapper .generating-loading-wrapper .loading-dot:nth-child(1) {
-  animation: preloader 0.9s ease-in-out alternate infinite;
-}
-.texbox-loading-wrapper .generating-loading-wrapper .loading-dot:nth-child(2) {
-  margin: 0 14px;
-  animation: preloader 0.9s ease-in-out alternate 0.2s infinite;
-}
-.texbox-loading-wrapper .generating-loading-wrapper .loading-dot:nth-child(3) {
-  animation: preloader 0.9s ease-in-out alternate 0.4s infinite;
-}
-@keyframes preloader {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 
 /* --------------------------------- Ask Assistant Styling --------------------------------- */
@@ -24816,6 +24744,79 @@ input[type=checkbox].three-state-checkbox + .control-label {
 /* Assistant options for only question on the page should be visible */
 .single--question .drop-down-assistant {
   position: unset;
+}
+
+.texbox-loading-wrapper {
+  position: relative;
+}
+.texbox-loading-wrapper .generating-loading-wrapper {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+}
+.texbox-loading-wrapper .generating-loading-wrapper .loading-dot {
+  border-radius: 100%;
+  background-color: #845EFF;
+  width: 4.6666666667px;
+  height: 4.6666666667px;
+}
+.texbox-loading-wrapper .generating-loading-wrapper .loading-dot:nth-child(1) {
+  animation: preloader 0.9s ease-in-out alternate infinite;
+}
+.texbox-loading-wrapper .generating-loading-wrapper .loading-dot:nth-child(2) {
+  margin: 0 14px;
+  animation: preloader 0.9s ease-in-out alternate 0.2s infinite;
+}
+.texbox-loading-wrapper .generating-loading-wrapper .loading-dot:nth-child(3) {
+  animation: preloader 0.9s ease-in-out alternate 0.4s infinite;
+}
+@keyframes preloader {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.margin-bottom-large {
+  margin-bottom: 40px;
+}
+
+.show-validation-feedback {
+  margin: 0;
+}
+.show-validation-feedback > input {
+  display: none;
+}
+
+.text-clamp--1-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+}
+
+.widget-events--hide {
+  display: none;
+}
+
+.datagrid--no-scroll.widget-datagrid .widget-datagrid-content {
+  overflow-y: visible;
+}
+
+.widget-progress-bar.actionless .progress-bar,
+.widget-progress-bar.actionless .progress {
+  cursor: default;
 }
 
 .mx-layoutgrid.card-container > .row {

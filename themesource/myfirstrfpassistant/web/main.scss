@@ -17,6 +17,8 @@ $wizard-step-width: 180px;
 $input-button-size: 36px;
 $send-btn-size: $form-input-font-size * 2 !default;
 
+
+//Badges
 .badge {
     font-weight: normal;
     font-size: $font-size-small;
@@ -63,96 +65,8 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
-.margin-bottom-large {
-    margin-bottom: $spacing-larger + $spacing-small;
-}
 
-.btn-without-border.mx-link {
-    border-radius: $border-radius-large;
-    color: $font-color-light;
-    text-decoration: none;
-    border: 1px solid transparent;
-
-    &.disabled {
-        background-color: transparent !important;
-        cursor: default;
-    }
-
-    &:hover {
-        background-color: $btn-default-bg-hover;
-    }
-}
-
-.btn-no-hover.mx-link:hover {
-    background-color: transparent !important;
-}
-
-.btn-as-text {
-    border: none;
-    color: $font-color-default;
-
-    &:hover,
-    &:active,
-    &:focus {
-        color: $font-color-default;
-    }
-
-    &:active:not(:hover),
-    &:focus:not(:hover) {
-        background-color: transparent;
-    }
-}
-
-.label-with-text {
-    >label {
-        //from .form-group .control-label
-        overflow: hidden;
-        margin-bottom: 4px;
-        text-align: left;
-        text-overflow: ellipsis;
-        color: $form-label-color;
-        font-size: $form-label-size;
-        font-weight: $form-label-weight;
-        display: block;
-    }
-
-    &--horizontal {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .mx-text {
-        margin-bottom: 4px;
-        line-height: $line-height-base;
-        display: block;
-    }
-}
-
-.rounded-btn.btn {
-    border-radius: $border-radius-large;
-}
-
-.btn-active.btn {
-    background-color: $btn-default-bg-hover;
-}
-
-.show-validation-feedback {
-    margin: 0;
-
-    >input {
-        display: none;
-    }
-
-}
-
-.mx-groupbox {
-    &>h5.mx-groupbox-header {
-        font-size: $font-size-h4;
-        padding: $spacing-small;
-        background-color: transparent;
-    }
-}
-
+//Page flex containers
 .rfp-page-container {
     min-height: -webkit-fill-available;
     display: flex;
@@ -207,6 +121,129 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
+
+//Buttons
+.btn-without-border.mx-link {
+    border-radius: $border-radius-large;
+    color: $font-color-light;
+    text-decoration: none;
+    border: 1px solid transparent;
+
+    &.disabled {
+        background-color: transparent !important;
+        cursor: default;
+    }
+
+    &:hover {
+        background-color: $btn-default-bg-hover;
+    }
+}
+
+.btn-no-hover.mx-link:hover {
+    background-color: transparent !important;
+}
+
+.btn-as-text {
+    border: none;
+    color: $font-color-default;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $font-color-default;
+    }
+
+    &:active:not(:hover),
+    &:focus:not(:hover) {
+        background-color: transparent;
+    }
+}
+
+.btn.rounded-btn {
+    border-radius: $border-radius-large;
+}
+
+.btn.btn-active {
+    background-color: $btn-default-bg-hover;
+}
+
+.btn-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid $border-color-default;
+
+    .btn {
+        margin-left: $spacing-small;
+        margin-top: $spacing-medium;
+    }
+}
+
+.fixed-position-answer-buttons {
+    position: absolute;
+    right: 0;
+    margin-top: $spacing-small
+}
+
+.btn,
+.mx-link {
+    &.btn-small-padding {
+        padding: $spacing-smaller $spacing-small;
+    }
+}
+
+
+//Labels
+.label-with-text {
+    >label {
+        //from .form-group .control-label
+        overflow: hidden;
+        margin-bottom: 4px;
+        text-align: left;
+        text-overflow: ellipsis;
+        color: $form-label-color;
+        font-size: $form-label-size;
+        font-weight: $form-label-weight;
+        display: block;
+    }
+
+    &--horizontal {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .mx-text {
+        margin-bottom: 4px;
+        line-height: $line-height-base;
+        display: block;
+    }
+}
+
+
+//Groupbox adjustments
+.mx-groupbox {
+    &>h5.mx-groupbox-header {
+        font-size: $font-size-h4;
+        padding: $spacing-small;
+        background-color: transparent;
+    }
+}
+
+
+//Sticky page logic
+.sticky-wrapper {
+    overflow: unset;
+    padding-top: 0;
+}
+
+.sticky-content {
+    position: sticky;
+    top: 0px;
+    z-index: 101;
+}
+
+
+//Dataview
 .dataview--display-contents {
     display: contents;
 
@@ -215,6 +252,8 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
+
+//Custom input box with buttons
 .input-wrapper {
 
     &--btn-right {
@@ -265,29 +304,8 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
-.sticky-wrapper {
-    overflow: unset;
-    padding-top: 0;
-}
 
-.sticky-content {
-    position: sticky;
-    top: 0px;
-    z-index: 101;
-}
-
-.btn-container {
-    margin-top: auto;
-    display: flex;
-    justify-content: flex-end;
-    border-top: 1px solid $border-color-default;
-
-    .btn {
-        margin-left: $spacing-small;
-        margin-top: $spacing-medium;
-    }
-}
-
+//Wizard customizations + additions
 .wizard {
     display: flex;
     justify-content: center;
@@ -367,6 +385,8 @@ $send-btn-size: $form-input-font-size * 2 !default;
 
 }
 
+
+//Custom progress item
 .progress-item {
     .mx-text {
         color: $font-color-detail;
@@ -438,6 +458,8 @@ $send-btn-size: $form-input-font-size * 2 !default;
 
 }
 
+
+//Accordion customizations
 .accordion-references {
     .widget-accordion-group {
         background: transparent;
@@ -486,6 +508,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
 }
 
 
+//Gallery
 .gallery-item-equal-height {
     .widget-gallery-item-button {
         height: 100%
@@ -504,7 +527,9 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
-.reference-card {
+
+//Reference card
+.card.reference-card {
     background-color: $bg-color;
     padding: $spacing-small;
     height: 100%;
@@ -515,24 +540,8 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
-.fixed-position-answer-buttons {
-    position: absolute;
-    right: 0;
-    margin-top: $spacing-small
-}
 
-.btn-small-padding {
-    padding: $spacing-smaller $spacing-small;
-}
-
-.widget-progress-bar.actionless {
-
-    .progress-bar,
-    .progress {
-        cursor: default;
-    }
-}
-
+//Custom container as clickable item with button
 .container-clickable {
     display: flex;
     align-items: center;
@@ -575,6 +584,8 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
+
+//Custom hover component
 .hover-trigger {
     .show-on-hover {
         display: none;
@@ -587,19 +598,8 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
-.widget-events--hide {
-    display: none;
-}
 
-//fix for datagrid scrollbar caused by popupmenu
-.datagrid--no-scroll {
-    &.widget-datagrid {
-        .widget-datagrid-content {
-            overflow-y: visible;
-        }
-    }
-}
-
+//Popup menu customizations and fixes
 .popupmenu--display-flex {
     &.popupmenu {
         display: flex;
@@ -627,62 +627,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
-.text-clamp--1-line {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    line-clamp: 1;
-}
 
-.texbox-loading-wrapper {
-    position: relative;
-
-    .generating-loading-wrapper {
-        display: flex;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        top: 0;
-
-        .loading-dot {
-            border-radius: 100%;
-            background-color: $brand-purple-brighter;
-            width: $font-size-default / 3;
-            height: $font-size-default / 3;
-
-            &:nth-child(1) {
-                animation: preloader 0.9s ease-in-out alternate infinite;
-            }
-
-            &:nth-child(2) {
-                margin: 0 14px;
-                animation: preloader 0.9s ease-in-out alternate 0.2s infinite;
-            }
-
-            &:nth-child(3) {
-                animation: preloader 0.9s ease-in-out alternate 0.4s infinite;
-            }
-        }
-
-        @keyframes preloader {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.5);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-    }
-}
 
 
 /* --------------------------------- Ask Assistant Styling --------------------------------- */
@@ -785,5 +730,102 @@ $send-btn-size: $form-input-font-size * 2 !default;
 .single--question {
     .drop-down-assistant {
         position: unset;
+    }
+}
+
+//Custom loading state component for textarea
+.texbox-loading-wrapper {
+    position: relative;
+
+    .generating-loading-wrapper {
+        display: flex;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+
+        .loading-dot {
+            border-radius: 100%;
+            background-color: $brand-purple-brighter;
+            width: $font-size-default / 3;
+            height: $font-size-default / 3;
+
+            &:nth-child(1) {
+                animation: preloader 0.9s ease-in-out alternate infinite;
+            }
+
+            &:nth-child(2) {
+                margin: 0 14px;
+                animation: preloader 0.9s ease-in-out alternate 0.2s infinite;
+            }
+
+            &:nth-child(3) {
+                animation: preloader 0.9s ease-in-out alternate 0.4s infinite;
+            }
+        }
+
+        @keyframes preloader {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+
+//Helpers
+.margin-bottom-large {
+    margin-bottom: $spacing-larger + $spacing-small;
+}
+
+.show-validation-feedback {
+    margin: 0;
+
+    >input {
+        display: none;
+    }
+
+}
+
+.text-clamp--1-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+}
+
+//Hide events widget
+.widget-events--hide {
+    display: none;
+}
+
+
+//fix for datagrid scrollbar caused by popupmenu
+.datagrid--no-scroll {
+    &.widget-datagrid {
+        .widget-datagrid-content {
+            overflow-y: visible;
+        }
+    }
+}
+
+//Fix cursor on progress bar
+.widget-progress-bar.actionless {
+
+    .progress-bar,
+    .progress {
+        cursor: default;
     }
 }
