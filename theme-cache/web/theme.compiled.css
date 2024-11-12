@@ -24813,6 +24813,11 @@ input[type=checkbox].three-state-checkbox + .control-label {
   position: unset;
 }
 
+/* Assistant options for only question on the page should be visible */
+.single--question .drop-down-assistant {
+  position: unset;
+}
+
 .mx-layoutgrid.card-container > .row {
   padding-bottom: 24px;
 }
