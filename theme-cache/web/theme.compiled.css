@@ -24437,6 +24437,9 @@ input[type=checkbox].three-state-checkbox + .control-label {
 .input-wrapper .btn-input-action img {
   margin: 0;
 }
+.input-wrapper .btn-input-action.show-disabled {
+  background-color: #f8f8f8;
+}
 
 .wizard {
   display: flex;
