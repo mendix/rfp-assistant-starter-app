@@ -79,6 +79,9 @@ public class EmbeddingsResponse
 	 */
 	public static genaicommons.proxies.EmbeddingsResponse initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
+		if (com.mendix.core.Core.isSubClassOf("AmazonBedrockConnector.CohereEmbedResponse", mendixObject.getType())) {
+			return amazonbedrockconnector.proxies.CohereEmbedResponse.initialize(context, mendixObject);
+		}
 		return new genaicommons.proxies.EmbeddingsResponse(context, mendixObject);
 	}
 

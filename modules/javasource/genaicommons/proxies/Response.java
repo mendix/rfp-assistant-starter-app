@@ -80,6 +80,18 @@ public class Response
 	 */
 	public static genaicommons.proxies.Response initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
+		if (com.mendix.core.Core.isSubClassOf("AmazonBedrockConnector.ChatCompletionsResponse", mendixObject.getType())) {
+			return amazonbedrockconnector.proxies.ChatCompletionsResponse.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("AmazonBedrockConnector.RetrieveAndGenerateResponse", mendixObject.getType())) {
+			return amazonbedrockconnector.proxies.RetrieveAndGenerateResponse.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("AmazonBedrockConnector.RetrieveResponse", mendixObject.getType())) {
+			return amazonbedrockconnector.proxies.RetrieveResponse.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("AmazonBedrockConnector.TitanImageResponse", mendixObject.getType())) {
+			return amazonbedrockconnector.proxies.TitanImageResponse.initialize(context, mendixObject);
+		}
 		return new genaicommons.proxies.Response(context, mendixObject);
 	}
 
