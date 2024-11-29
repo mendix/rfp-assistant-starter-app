@@ -41,7 +41,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
 
     &.badge--primary-light {
         background-color: $brand-primary-light;
-        color: $brand-primary;
+        color: $alert-secondary-color;
     }
 
     &.badge--warning-light {
@@ -51,7 +51,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
 
     &.badge--danger-light {
         background-color: $brand-danger-light;
-        color: $brand-danger;
+        color: $alert-danger-color;
     }
 
     &.badge--success-light {
@@ -550,7 +550,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: $spacing-small;
+    padding: $spacing-smaller $spacing-smaller $spacing-smaller $spacing-small;
     border-radius: $btn-border-radius;
 
     .btn-wrapper {
@@ -632,8 +632,6 @@ $send-btn-size: $form-input-font-size * 2 !default;
 }
 
 
-
-
 /* --------------------------------- Ask Assistant Styling --------------------------------- */
 
 /* Rounded Button with Border */
@@ -644,7 +642,6 @@ $send-btn-size: $form-input-font-size * 2 !default;
 
 /* Edit Answer Container */
 .send-edit-btn-container {
-
     btn img,
     .mx-button img,
     .mx-link img {
@@ -686,7 +683,7 @@ $send-btn-size: $form-input-font-size * 2 !default;
 
 /* Ask Assistant Options Drop Down */
 .drop-down-assistant {
-    position: absolute;
+    position: relative;
     z-index: 99;
     display: flex;
     flex-direction: column;
@@ -721,21 +718,22 @@ $send-btn-size: $form-input-font-size * 2 !default;
     }
 }
 
-/* Assistant options for last question on the page should be visible */
+/* Assistant options for last question on the page should be visible
 .listview--questions {
     ul>li:last-child {
         .drop-down-assistant {
             position: unset;
         }
     }
-}
+}*/
 
-/* Assistant options for only question on the page should be visible */
+
+/* Assistant options for only question on the page should be visible 
 .single--question {
     .drop-down-assistant {
         position: unset;
     }
-}
+}*/
 
 //Custom loading state component for textarea
 .texbox-loading-wrapper {

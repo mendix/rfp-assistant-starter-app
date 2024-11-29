@@ -24240,7 +24240,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 .badge.badge--primary-light {
   background-color: rgba(38, 74, 229, 0.1);
-  color: #264ae5;
+  color: #172c89;
 }
 .badge.badge--warning-light {
   background-color: rgba(236, 165, 28, 0.1);
@@ -24248,7 +24248,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 }
 .badge.badge--danger-light {
   background-color: rgba(227, 63, 78, 0.1);
-  color: #e33f4e;
+  color: #88262f;
 }
 .badge.badge--success-light {
   background-color: rgba(60, 179, 61, 0.1);
@@ -24607,7 +24607,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px;
+  padding: 4px 4px 4px 8px;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
 }
@@ -24709,7 +24709,7 @@ input[type=checkbox].three-state-checkbox + .control-label {
 
 /* Ask Assistant Options Drop Down */
 .drop-down-assistant {
-  position: absolute;
+  position: relative;
   z-index: 99;
   display: flex;
   flex-direction: column;
@@ -24739,16 +24739,20 @@ input[type=checkbox].three-state-checkbox + .control-label {
   /* Change to a lighter color on hover */
 }
 
-/* Assistant options for last question on the page should be visible */
-.listview--questions ul > li:last-child .drop-down-assistant {
-  position: unset;
-}
-
-/* Assistant options for only question on the page should be visible */
-.single--question .drop-down-assistant {
-  position: unset;
-}
-
+/* Assistant options for last question on the page should be visible
+.listview--questions {
+    ul>li:last-child {
+        .drop-down-assistant {
+            position: unset;
+        }
+    }
+}*/
+/* Assistant options for only question on the page should be visible 
+.single--question {
+    .drop-down-assistant {
+        position: unset;
+    }
+}*/
 .texbox-loading-wrapper {
   position: relative;
 }
