@@ -29,11 +29,14 @@ public class Usage
 	 */
 	public enum MemberNames
 	{
+		Architecture("Architecture"),
+		DeployedModelDisplayName("DeployedModelDisplayName"),
 		InputTokens("InputTokens"),
 		OutputTokens("OutputTokens"),
 		TotalTokens("TotalTokens"),
 		DurationMilliseconds("DurationMilliseconds"),
-		DeploymentIdentifier("DeploymentIdentifier");
+		_DeploymentIdentifier("_DeploymentIdentifier"),
+		Usage_DeployedModel("GenAICommons.Usage_DeployedModel");
 
 		private final java.lang.String metaName;
 
@@ -136,6 +139,78 @@ public class Usage
 	{
 		com.mendix.core.Core.delete(context, getMendixObject());
 	}
+	/**
+	 * @return value of Architecture
+	 */
+	public final java.lang.String getArchitecture()
+	{
+		return getArchitecture(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Architecture
+	 */
+	public final java.lang.String getArchitecture(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Architecture.toString());
+	}
+
+	/**
+	 * Set value of Architecture
+	 * @param architecture
+	 */
+	public final void setArchitecture(java.lang.String architecture)
+	{
+		setArchitecture(getContext(), architecture);
+	}
+
+	/**
+	 * Set value of Architecture
+	 * @param context
+	 * @param architecture
+	 */
+	public final void setArchitecture(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String architecture)
+	{
+		getMendixObject().setValue(context, MemberNames.Architecture.toString(), architecture);
+	}
+
+	/**
+	 * @return value of DeployedModelDisplayName
+	 */
+	public final java.lang.String getDeployedModelDisplayName()
+	{
+		return getDeployedModelDisplayName(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of DeployedModelDisplayName
+	 */
+	public final java.lang.String getDeployedModelDisplayName(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.DeployedModelDisplayName.toString());
+	}
+
+	/**
+	 * Set value of DeployedModelDisplayName
+	 * @param deployedmodeldisplayname
+	 */
+	public final void setDeployedModelDisplayName(java.lang.String deployedmodeldisplayname)
+	{
+		setDeployedModelDisplayName(getContext(), deployedmodeldisplayname);
+	}
+
+	/**
+	 * Set value of DeployedModelDisplayName
+	 * @param context
+	 * @param deployedmodeldisplayname
+	 */
+	public final void setDeployedModelDisplayName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String deployedmodeldisplayname)
+	{
+		getMendixObject().setValue(context, MemberNames.DeployedModelDisplayName.toString(), deployedmodeldisplayname);
+	}
+
 	/**
 	 * @return value of InputTokens
 	 */
@@ -281,39 +356,86 @@ public class Usage
 	}
 
 	/**
-	 * @return value of DeploymentIdentifier
+	 * @return value of _DeploymentIdentifier
 	 */
-	public final java.lang.String getDeploymentIdentifier()
+	public final java.lang.String get_DeploymentIdentifier()
 	{
-		return getDeploymentIdentifier(getContext());
+		return get_DeploymentIdentifier(getContext());
 	}
 
 	/**
 	 * @param context
-	 * @return value of DeploymentIdentifier
+	 * @return value of _DeploymentIdentifier
 	 */
-	public final java.lang.String getDeploymentIdentifier(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String get_DeploymentIdentifier(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.String) getMendixObject().getValue(context, MemberNames.DeploymentIdentifier.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames._DeploymentIdentifier.toString());
 	}
 
 	/**
-	 * Set value of DeploymentIdentifier
-	 * @param deploymentidentifier
+	 * Set value of _DeploymentIdentifier
+	 * @param _deploymentidentifier
 	 */
-	public final void setDeploymentIdentifier(java.lang.String deploymentidentifier)
+	public final void set_DeploymentIdentifier(java.lang.String _deploymentidentifier)
 	{
-		setDeploymentIdentifier(getContext(), deploymentidentifier);
+		set_DeploymentIdentifier(getContext(), _deploymentidentifier);
 	}
 
 	/**
-	 * Set value of DeploymentIdentifier
+	 * Set value of _DeploymentIdentifier
 	 * @param context
-	 * @param deploymentidentifier
+	 * @param _deploymentidentifier
 	 */
-	public final void setDeploymentIdentifier(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String deploymentidentifier)
+	public final void set_DeploymentIdentifier(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String _deploymentidentifier)
 	{
-		getMendixObject().setValue(context, MemberNames.DeploymentIdentifier.toString(), deploymentidentifier);
+		getMendixObject().setValue(context, MemberNames._DeploymentIdentifier.toString(), _deploymentidentifier);
+	}
+
+	/**
+	 * @throws com.mendix.core.CoreException
+	 * @return value of Usage_DeployedModel
+	 */
+	public final genaicommons.proxies.DeployedModel getUsage_DeployedModel() throws com.mendix.core.CoreException
+	{
+		return getUsage_DeployedModel(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Usage_DeployedModel
+	 * @throws com.mendix.core.CoreException
+	 */
+	public final genaicommons.proxies.DeployedModel getUsage_DeployedModel(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
+	{
+		genaicommons.proxies.DeployedModel result = null;
+		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.Usage_DeployedModel.toString());
+		if (identifier != null) {
+			result = genaicommons.proxies.DeployedModel.load(context, identifier);
+		}
+		return result;
+	}
+
+	/**
+	 * Set value of Usage_DeployedModel
+	 * @param usage_deployedmodel
+	 */
+	public final void setUsage_DeployedModel(genaicommons.proxies.DeployedModel usage_deployedmodel)
+	{
+		setUsage_DeployedModel(getContext(), usage_deployedmodel);
+	}
+
+	/**
+	 * Set value of Usage_DeployedModel
+	 * @param context
+	 * @param usage_deployedmodel
+	 */
+	public final void setUsage_DeployedModel(com.mendix.systemwideinterfaces.core.IContext context, genaicommons.proxies.DeployedModel usage_deployedmodel)
+	{
+		if (usage_deployedmodel == null) {
+			getMendixObject().setValue(context, MemberNames.Usage_DeployedModel.toString(), null);
+		} else {
+			getMendixObject().setValue(context, MemberNames.Usage_DeployedModel.toString(), usage_deployedmodel.getMendixObject().getId());
+		}
 	}
 
 	/**

@@ -28,6 +28,7 @@ public class Response
 		TotalTokens("TotalTokens"),
 		DurationMilliseconds("DurationMilliseconds"),
 		StopReason("StopReason"),
+		ResponseText("ResponseText"),
 		Response_Message("GenAICommons.Response_Message");
 
 		private final java.lang.String metaName;
@@ -312,6 +313,42 @@ public class Response
 	public final void setStopReason(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String stopreason)
 	{
 		getMendixObject().setValue(context, MemberNames.StopReason.toString(), stopreason);
+	}
+
+	/**
+	 * @return value of ResponseText
+	 */
+	public final java.lang.String getResponseText()
+	{
+		return getResponseText(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of ResponseText
+	 */
+	public final java.lang.String getResponseText(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.ResponseText.toString());
+	}
+
+	/**
+	 * Set value of ResponseText
+	 * @param responsetext
+	 */
+	public final void setResponseText(java.lang.String responsetext)
+	{
+		setResponseText(getContext(), responsetext);
+	}
+
+	/**
+	 * Set value of ResponseText
+	 * @param context
+	 * @param responsetext
+	 */
+	public final void setResponseText(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String responsetext)
+	{
+		getMendixObject().setValue(context, MemberNames.ResponseText.toString(), responsetext);
 	}
 
 	/**

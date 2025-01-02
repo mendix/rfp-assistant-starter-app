@@ -23,7 +23,7 @@ public class Microflows
 	// These are the microflows for the GenAICommons module
 	/**
 	 * Can be used to trigger the scheduled event ScE_Usage_Cleanup logic manually.
-	 * This is a cleanup of Usage data (token monitor). This microflow is used in the ScE with the same name. This can be toggled on/off in the Mendix Cloud portal per environment. It runs daily at 12:00AM UTC.
+	 * This is a cleanup of Usage data (token consumption monitor). This microflow is used in the ScE with the same name. This can be toggled on/off in the Mendix Cloud portal per environment. It runs daily at 12:00AM UTC.
 	 * See constant @ConversationalUI.Usage_CleanUpAfterDays for more information.
 	 */
 	public static void aCT_Usage_Cleanup_TriggerScE(IContext context)
@@ -38,6 +38,37 @@ public class Microflows
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		Core.microflowCall("GenAICommons.ACT_Usage_CleanupAll").withParams(params).execute(context);
+	}
+	/**
+	 * Action can be used to invoke a chat completions API with a request containing a list of (historical) messages comprising the conversation so far. This action is provider agnostic and will execute the microflow that is saved on the object as "Microflow" attribute.
+	 * - Request: Contains messages and optional attributes.
+	 * - DeployedModel: The DeployedModel entity replaces the Connection entity. It contains the name of the microflow to be executed for the specified model and other information relevant to connect to a model. The OutputModality needs to be Text.
+	 */
+	public static genaicommons.proxies.Response chatCompletions_WithHistory(IContext context, genaicommons.proxies.Request _request, genaicommons.proxies.DeployedModel _deployedModel)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("Request", _request == null ? null : _request.getMendixObject());
+		params.put("DeployedModel", _deployedModel == null ? null : _deployedModel.getMendixObject());
+		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.ChatCompletions_WithHistory").withParams(params).execute(context);
+		return result == null ? null : genaicommons.proxies.Response.initialize(context, result);
+	}
+	/**
+	 * Microflow can be used to invoke a chat completions API with a simple request where only a single user message is sent. If you want to send multiple historical user or assistant messages, use the Request_ChatCompletions_WithHistory java action from GenAI commons.
+	 * Inputs:
+	 * - UserPrompt: The input of the user.
+	 * - DeployedModel: The DeployedModel entity replaces the Connection entity. It contains the name of the microflow to be executed for the specified model and other information relevant to connect to a model. The OutputModality needs to be Text.
+	 * - OptionalRequest: Contains optional attributes.
+	 * - FileCollection (optional): An optional collection of files to be sent along with the UserPrompt to use Vision or Document Chat.
+	 */
+	public static genaicommons.proxies.Response chatCompletions_WithoutHistory(IContext context, genaicommons.proxies.DeployedModel _deployedModel, java.lang.String _userPrompt, genaicommons.proxies.FileCollection _optionalFileCollection, genaicommons.proxies.Request _optionalRequest)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("DeployedModel", _deployedModel == null ? null : _deployedModel.getMendixObject());
+		params.put("UserPrompt", _userPrompt);
+		params.put("OptionalFileCollection", _optionalFileCollection == null ? null : _optionalFileCollection.getMendixObject());
+		params.put("OptionalRequest", _optionalRequest == null ? null : _optionalRequest.getMendixObject());
+		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.ChatCompletions_WithoutHistory").withParams(params).execute(context);
+		return result == null ? null : genaicommons.proxies.Response.initialize(context, result);
 	}
 	/**
 	 * Create a chunk with only the input text populated.
@@ -124,6 +155,53 @@ public class Microflows
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("ChunkCollection", _chunkCollection == null ? null : _chunkCollection.getMendixObject());
 		Core.microflowCall("GenAICommons.ChunkCollection_SetIndexOnChunks").withParams(params).execute(context);
+	}
+	/**
+	 * Commits a DeployedModel to the database.
+	 */
+	public static void deployedModel_Commit(IContext context, genaicommons.proxies.DeployedModel _deployedModel)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("DeployedModel", _deployedModel == null ? null : _deployedModel.getMendixObject());
+		Core.microflowCall("GenAICommons.DeployedModel_Commit").withParams(params).execute(context);
+	}
+	/**
+	 * Deletes a DeployedModel from the database.
+	 */
+	public static void deployedModel_Delete(IContext context, genaicommons.proxies.DeployedModel _deployedModel)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("DeployedModel", _deployedModel == null ? null : _deployedModel.getMendixObject());
+		Core.microflowCall("GenAICommons.DeployedModel_Delete").withParams(params).execute(context);
+	}
+	/**
+	 * Validates all attributes of a DeployedModel to check if they are not blank.
+	 */
+	public static boolean deployedModel_Validate(IContext context, genaicommons.proxies.DeployedModel _deployedModel)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("DeployedModel", _deployedModel == null ? null : _deployedModel.getMendixObject());
+		return (java.lang.Boolean) Core.microflowCall("GenAICommons.DeployedModel_Validate").withParams(params).execute(context);
+	}
+	/**
+	 * Use this microflow to execute a call to the embeddings API for a single string input. The microflow returns an EmbeddingsResponse containing token usage metrics. 
+	 * 
+	 * Inputs:
+	 * - InputText: Input text to create the embedding vector for.
+	 * - DeployedModel: The DeployedModel entity replaces the Connection entity. It contains the name of the microflow to be executed for the specified model and other information relevant to connect to a model. The OutputModality needs to be Embeddings.
+	 * - EmbeddingOptions (optional): Can be used to specify optional attributes like vector dimensions. Note that not all provider and models may support all embeddings options attributes
+	 * 
+	 * Output 
+	 * - EmbeddingsResponse: This is a response object containing token usage metric and pointing to a ChunkCollection. The ChunkCollection contains the chunk for which an embedding vector was created. In order to retrieve the generated vector, "Embeddings: Get First Vector from Response" can be used.
+	 */
+	public static genaicommons.proxies.EmbeddingsResponse embeddings_String(IContext context, genaicommons.proxies.DeployedModel _deployedModel, java.lang.String _inputText, genaicommons.proxies.EmbeddingsOptions _embeddingsOptions)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("DeployedModel", _deployedModel == null ? null : _deployedModel.getMendixObject());
+		params.put("InputText", _inputText);
+		params.put("EmbeddingsOptions", _embeddingsOptions == null ? null : _embeddingsOptions.getMendixObject());
+		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.Embeddings_String").withParams(params).execute(context);
+		return result == null ? null : genaicommons.proxies.EmbeddingsResponse.initialize(context, result);
 	}
 	/**
 	 * Creates new EmbeddingsOptions.
@@ -243,6 +321,23 @@ public class Microflows
 		params.put("NumberOfImages", _numberOfImages);
 		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.ImageOptions_GetCreate").withParams(params).execute(context);
 		return result == null ? null : genaicommons.proxies.ImageOptions.initialize(context, result);
+	}
+	public static void inputModality_Commit(IContext context, genaicommons.proxies.InputModality _inputModality)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("InputModality", _inputModality == null ? null : _inputModality.getMendixObject());
+		Core.microflowCall("GenAICommons.InputModality_Commit").withParams(params).execute(context);
+	}
+	/**
+	 * Gets or creates an input modality object for the given model modality.
+	 * If a new object is created it is also committed to the database.
+	 */
+	public static genaicommons.proxies.InputModality inputModality_GetCreate(IContext context, genaicommons.proxies.ENUM_ModelModality _eNUM_ModelModality)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ENUM_ModelModality", _eNUM_ModelModality == null ? null : _eNUM_ModelModality.name());
+		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.InputModality_GetCreate").withParams(params).execute(context);
+		return result == null ? null : genaicommons.proxies.InputModality.initialize(context, result);
 	}
 	/**
 	 * Adds a Message to the Response (if none already exists).
@@ -512,11 +607,11 @@ public class Microflows
 	 * 
 	 * 
 	 */
-	public static void usage_Create_Embeddings(IContext context, genaicommons.proxies.EmbeddingsResponse _embeddingsResponse, java.lang.String _deploymentIdentifier)
+	public static void usage_Create_Embeddings(IContext context, genaicommons.proxies.EmbeddingsResponse _embeddingsResponse, genaicommons.proxies.DeployedModel _deployedModel)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("EmbeddingsResponse", _embeddingsResponse == null ? null : _embeddingsResponse.getMendixObject());
-		params.put("DeploymentIdentifier", _deploymentIdentifier);
+		params.put("DeployedModel", _deployedModel == null ? null : _deployedModel.getMendixObject());
 		Core.microflowCall("GenAICommons.Usage_Create_Embeddings").withParams(params).execute(context);
 	}
 	/**
@@ -531,11 +626,11 @@ public class Microflows
 	 * -OutputTokens: the number of output tokens.
 	 * -TotalTokens: the number of total tokens (typically input + output).
 	 */
-	public static void usage_Create_TextAndFiles(IContext context, genaicommons.proxies.Response _response, java.lang.String _deploymentIdentifier)
+	public static void usage_Create_TextAndFiles(IContext context, genaicommons.proxies.Response _response, genaicommons.proxies.DeployedModel _deployedModel)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("Response", _response == null ? null : _response.getMendixObject());
-		params.put("DeploymentIdentifier", _deploymentIdentifier);
+		params.put("DeployedModel", _deployedModel == null ? null : _deployedModel.getMendixObject());
 		Core.microflowCall("GenAICommons.Usage_Create_TextAndFiles").withParams(params).execute(context);
 	}
 }

@@ -24,18 +24,16 @@ public class Request_ExecuteFromConnector extends CustomJavaAction<IMendixObject
 {
 	private IMendixObject __Request;
 	private genaicommons.proxies.Request Request;
-	private IMendixObject __Connection;
-	private genaicommons.proxies.Connection Connection;
+	private IMendixObject __DeployedModel;
+	private genaicommons.proxies.DeployedModel DeployedModel;
 	private java.lang.String CallModelMicroflow;
-	private java.lang.String DeploymentIdentifier;
 
-	public Request_ExecuteFromConnector(IContext context, IMendixObject Request, IMendixObject Connection, java.lang.String CallModelMicroflow, java.lang.String DeploymentIdentifier)
+	public Request_ExecuteFromConnector(IContext context, IMendixObject Request, IMendixObject DeployedModel, java.lang.String CallModelMicroflow)
 	{
 		super(context);
 		this.__Request = Request;
-		this.__Connection = Connection;
+		this.__DeployedModel = DeployedModel;
 		this.CallModelMicroflow = CallModelMicroflow;
-		this.DeploymentIdentifier = DeploymentIdentifier;
 	}
 
 	@java.lang.Override
@@ -43,7 +41,7 @@ public class Request_ExecuteFromConnector extends CustomJavaAction<IMendixObject
 	{
 		this.Request = this.__Request == null ? null : genaicommons.proxies.Request.initialize(getContext(), __Request);
 
-		this.Connection = this.__Connection == null ? null : genaicommons.proxies.Connection.initialize(getContext(), __Connection);
+		this.DeployedModel = this.__DeployedModel == null ? null : genaicommons.proxies.DeployedModel.initialize(getContext(), __DeployedModel);
 
 		// BEGIN USER CODE
 		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
