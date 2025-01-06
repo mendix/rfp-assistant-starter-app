@@ -179,7 +179,9 @@ public class Microflows
 		Core.microflowCall("MxGenAIConnector.NAV_ConfigurationOverview_Open").withParams(params).execute(context);
 	}
 	/**
-	 * Microflow can be used to add optional parameters to the Retrieve and Generate Request which then is passed to the ChatCompletions_RetrieveAndGenerate microflow. 
+	 * Microflow can be used to add optional parameters to the Retrieve and Generate Request which then is passed to the ChatCompletions_RetrieveAndGenerate microflow. Note that this currently works without history only.
+	 * If your use case requires chat with history, see the AI Bot Starter App for an example of how to use function calling to make knowledge base retrieves work with history: ChatContext_MxCloudRetrieveAndGenerate_ActionMicroflow
+	 * 
 	 * Inputs:
 	 * - Request: Object that is passed to the ChatCompletions_RetrieveAndGenerate microflow.
 	 * - MaxNumberOfResults (optional): Specify how many results are retrieved from the knowledge base and passed to the model as part of the request. Default: 3
