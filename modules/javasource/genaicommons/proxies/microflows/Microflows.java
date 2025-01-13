@@ -57,8 +57,8 @@ public class Microflows
 	 * Inputs:
 	 * - UserPrompt: The input of the user.
 	 * - DeployedModel: The DeployedModel entity replaces the Connection entity. It contains the name of the microflow to be executed for the specified model and other information relevant to connect to a model. The OutputModality needs to be Text.
-	 * - OptionalRequest: Contains optional attributes.
-	 * - FileCollection (optional): An optional collection of files to be sent along with the UserPrompt to use Vision or Document Chat.
+	 * - OptionalRequest: This is an optional object that contains optional attributes and an optional ToolCollection. If no Request is passed, one will be created.
+	 * - OptionalFileCollection: An optional collection of files to be sent along with the UserPrompt to use vision or document chat.
 	 */
 	public static genaicommons.proxies.Response chatCompletions_WithoutHistory(IContext context, genaicommons.proxies.DeployedModel _deployedModel, java.lang.String _userPrompt, genaicommons.proxies.FileCollection _optionalFileCollection, genaicommons.proxies.Request _optionalRequest)
 	{
