@@ -80,9 +80,7 @@
     // Icon buttons
     .btn-icon {
         & > img,
-        & > .glyphicon,
-        & > .mx-icon-lined,
-        & > .mx-icon-filled {
+        & > .glyphicon {
             margin: 0;
         }
     }
@@ -93,9 +91,7 @@
         align-items: center;
 
         & > img,
-        & > .glyphicon,
-        & > .mx-icon-lined,
-        & > .mx-icon-filled {
+        & > .glyphicon {
             top: 0;
             margin-left: 4px;
         }
@@ -106,9 +102,7 @@
         padding-left: 0;
 
         & > img,
-        & > .glyphicon,
-        & > .mx-icon-lined,
-        & > .mx-icon-filled {
+        & > .glyphicon {
             display: block;
             margin: 0 0 4px 0;
         }

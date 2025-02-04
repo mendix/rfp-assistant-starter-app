@@ -68,9 +68,7 @@
         align-items: center;
         transform: translateX(-50%);
 
-        .glyphicon,
-        .mx-icon-lined,
-        .mx-icon-filled {
+        .glyphicon {
             font-size: $timeline-icon-size;
         }
 

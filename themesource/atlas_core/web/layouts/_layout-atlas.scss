@@ -6,20 +6,9 @@
 @mixin layout-atlas() {
     .layout-atlas {
         // Toggle button
-        .toggle-btn {
-            & > img,
-            & > .glyphicon,
-            & > .mx-icon-lined,
-            & > .mx-icon-filled {
-                margin: 0;
-            }
-        }
-        .toggle-btn > .mx-icon-lined {
-            font-family: "Atlas_Core$Atlas";
-        }
-
-        .toggle-btn > .mx-icon-filled {
-            font-family: "Atlas_Core$Atlas_Filled";
+        .toggle-btn > img,
+        .toggle-btn > .glyphicon {
+            margin: 0;
         }
 
         .mx-scrollcontainer-open {
@@ -31,9 +20,7 @@
         // Sidebar
         .region-sidebar {
             background-color: $navsidebar-bg;
-            @if not $use-modern-client {
-                z-index: 101;
-            }
+            z-index: 101;
             box-shadow: 0 0 4px rgb(0 0 0 / 14%), 2px 4px 8px rgb(0 0 0 / 28%);
 
             .mx-scrollcontainer-wrapper {
@@ -45,9 +32,7 @@
             .mx-navigationtree .navbar-inner > ul > li > a {
                 padding: $spacing-medium;
 
-                .glyphicon,
-                .mx-icon-lined,
-                .mx-icon-filled {
+                .glyphicon {
                     margin-right: $spacing-small;
                 }
             }
@@ -68,7 +53,7 @@
         // Topbar
         .region-topbar {
             position: relative;
-            z-index: 60; // Show dropshadow
+            z-index: 2; // Show dropshadow
             min-height: $topbar-minimalheight;
             background-color: $navtopbar-bg;
 
@@ -143,11 +128,9 @@
             }
         }
 
-        @if (not $use-modern-client) {
-            .mx-scrollcontainer-slide {
-                &:not(.mx-scrollcontainer-open) > .region-sidebar {
-                    overflow: hidden;
-                }
+        .mx-scrollcontainer-slide {
+            &:not(.mx-scrollcontainer-open) > .region-sidebar {
+                overflow: hidden;
             }
         }
     }

@@ -47,9 +47,7 @@
                         margin-right: 0.5em;
                     }
 
-                    .glyphicon,
-                    .mx-icon-lined,
-                    .mx-icon-filled {
+                    .glyphicon {
                         top: 0;
                         margin-right: 0.5em;
                         vertical-align: middle;
@@ -99,9 +97,7 @@
                         text-shadow: none;
                         font-size: $navigation-sub-font-size;
                         font-weight: $font-weight-normal;
-                        .glyphicon,
-                        .mx-icon-lined,
-                        .mx-icon-filled {
+                        .glyphicon {
                             margin-right: $spacing-small;
                         }
 

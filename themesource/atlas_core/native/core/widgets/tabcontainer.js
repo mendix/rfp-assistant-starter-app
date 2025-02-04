@@ -23,7 +23,7 @@ export const TabContainer = {
         pressOpacity: 0.8,
         pressColor: tabContainer.tabBar.pressColor,
         backgroundColor: tabContainer.tabBar.backgroundColor,
-        minHeight: 48,
+        height: 48,
         justifyContent: "center"
     },
     indicator: {
