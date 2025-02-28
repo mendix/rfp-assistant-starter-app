@@ -448,7 +448,7 @@ public class Microflows
 		params.put("ContentString", _contentString);
 		Core.microflowCall("GenAICommons.Request_AddMessage").withParams(params).execute(context);
 	}
-	public static void request_AddMessage_Tool(IContext context, genaicommons.proxies.Request _request, genaicommons.proxies.ENUM_MessageRole _eNUM_MessageRole, genaicommons.proxies.FileCollection _fileCollection, java.util.List<genaicommons.proxies.ToolCall> _toolCallList, java.lang.String _toolCallId, java.lang.String _contentString)
+	public static genaicommons.proxies.Message request_AddMessage_Tool(IContext context, genaicommons.proxies.Request _request, genaicommons.proxies.ENUM_MessageRole _eNUM_MessageRole, genaicommons.proxies.FileCollection _fileCollection, java.util.List<genaicommons.proxies.ToolCall> _toolCallList, java.lang.String _toolCallId, java.lang.String _contentString)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("Request", _request == null ? null : _request.getMendixObject());
@@ -466,7 +466,8 @@ public class Microflows
 
 		params.put("ToolCallId", _toolCallId);
 		params.put("ContentString", _contentString);
-		Core.microflowCall("GenAICommons.Request_AddMessage_Tool").withParams(params).execute(context);
+		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.Request_AddMessage_Tool").withParams(params).execute(context);
+		return result == null ? null : genaicommons.proxies.Message.initialize(context, result);
 	}
 	/**
 	 * This microflow can be used to add an additional stop sequence to the request
@@ -497,6 +498,13 @@ public class Microflows
 		params.put("Request", _request == null ? null : _request.getMendixObject());
 		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.Request_GetCreate").withParams(params).execute(context);
 		return result == null ? null : genaicommons.proxies.Request.initialize(context, result);
+	}
+	public static genaicommons.proxies.Message request_GetLastAssistantMessage(IContext context, genaicommons.proxies.Request _request)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("Request", _request == null ? null : _request.getMendixObject());
+		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.Request_GetLastAssistantMessage").withParams(params).execute(context);
+		return result == null ? null : genaicommons.proxies.Message.initialize(context, result);
 	}
 	/**
 	 * Use this microflow to set the ToolChoice. This controls which (if any) function is called by the model.
@@ -565,12 +573,30 @@ public class Microflows
 		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.Tool_CastTo_Function").withParams(params).execute(context);
 		return result == null ? null : genaicommons.proxies.Function.initialize(context, result);
 	}
+	public static genaicommons.proxies.KnowledgeBaseRetrieval tool_CastTo_KnowledgeBaseRetrieval(IContext context, genaicommons.proxies.Tool _tool)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("Tool", _tool == null ? null : _tool.getMendixObject());
+		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.Tool_CastTo_KnowledgeBaseRetrieval").withParams(params).execute(context);
+		return result == null ? null : genaicommons.proxies.KnowledgeBaseRetrieval.initialize(context, result);
+	}
 	public static genaicommons.proxies.Tool tool_GetSelf(IContext context, genaicommons.proxies.Tool _tool)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("Tool", _tool == null ? null : _tool.getMendixObject());
 		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.Tool_GetSelf").withParams(params).execute(context);
 		return result == null ? null : genaicommons.proxies.Tool.initialize(context, result);
+	}
+	/**
+	 * Can be used in tool microflows to get the ToolCall based on the Request and Tool.
+	 */
+	public static genaicommons.proxies.ToolCall tool_Request_GetToolCall(IContext context, genaicommons.proxies.Request _request, genaicommons.proxies.Tool _tool)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("Request", _request == null ? null : _request.getMendixObject());
+		params.put("Tool", _tool == null ? null : _tool.getMendixObject());
+		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.Tool_Request_GetToolCall").withParams(params).execute(context);
+		return result == null ? null : genaicommons.proxies.ToolCall.initialize(context, result);
 	}
 	public static genaicommons.proxies.ToolCall toolCall_GetSelf(IContext context, genaicommons.proxies.ToolCall _toolCall)
 	{
@@ -579,7 +605,7 @@ public class Microflows
 		IMendixObject result = (IMendixObject)Core.microflowCall("GenAICommons.ToolCall_GetSelf").withParams(params).execute(context);
 		return result == null ? null : genaicommons.proxies.ToolCall.initialize(context, result);
 	}
-	public static java.lang.String toolCall_ProcessAndExecuteFunction(IContext context, genaicommons.proxies.ToolCall _toolCall, java.util.List<genaicommons.proxies.Tool> _toolList)
+	public static void toolCall_ProcessAndExecuteTool(IContext context, genaicommons.proxies.ToolCall _toolCall, java.util.List<genaicommons.proxies.Tool> _toolList, genaicommons.proxies.Request _request)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("ToolCall", _toolCall == null ? null : _toolCall.getMendixObject());
@@ -593,7 +619,8 @@ public class Microflows
 		}
 		params.put("ToolList", listparam_toolList);
 
-		return (java.lang.String) Core.microflowCall("GenAICommons.ToolCall_ProcessAndExecuteFunction").withParams(params).execute(context);
+		params.put("Request", _request == null ? null : _request.getMendixObject());
+		Core.microflowCall("GenAICommons.ToolCall_ProcessAndExecuteTool").withParams(params).execute(context);
 	}
 	/**
 	 * Use this microflow to create and store the Usage object based on the EmbeddingsReponse in the Embeddings Operations that follow the principles of GenAI Commons.

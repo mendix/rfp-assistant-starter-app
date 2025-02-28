@@ -25,7 +25,8 @@ public class Tool
 	{
 		Name("Name"),
 		Description("Description"),
-		ToolType("ToolType");
+		ToolType("ToolType"),
+		Microflow("Microflow");
 
 		private final java.lang.String metaName;
 
@@ -79,6 +80,9 @@ public class Tool
 	{
 		if (com.mendix.core.Core.isSubClassOf("GenAICommons.Function", mendixObject.getType())) {
 			return genaicommons.proxies.Function.initialize(context, mendixObject);
+		}
+		if (com.mendix.core.Core.isSubClassOf("GenAICommons.KnowledgeBaseRetrieval", mendixObject.getType())) {
+			return genaicommons.proxies.KnowledgeBaseRetrieval.initialize(context, mendixObject);
 		}
 		if (com.mendix.core.Core.isSubClassOf("AmazonBedrockConnector.KnowledgeBaseTool", mendixObject.getType())) {
 			return amazonbedrockconnector.proxies.KnowledgeBaseTool.initialize(context, mendixObject);
@@ -231,6 +235,42 @@ public class Tool
 	public final void setToolType(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String tooltype)
 	{
 		getMendixObject().setValue(context, MemberNames.ToolType.toString(), tooltype);
+	}
+
+	/**
+	 * @return value of Microflow
+	 */
+	public final java.lang.String getMicroflow()
+	{
+		return getMicroflow(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Microflow
+	 */
+	public final java.lang.String getMicroflow(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Microflow.toString());
+	}
+
+	/**
+	 * Set value of Microflow
+	 * @param microflow
+	 */
+	public final void setMicroflow(java.lang.String microflow)
+	{
+		setMicroflow(getContext(), microflow);
+	}
+
+	/**
+	 * Set value of Microflow
+	 * @param context
+	 * @param microflow
+	 */
+	public final void setMicroflow(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String microflow)
+	{
+		getMendixObject().setValue(context, MemberNames.Microflow.toString(), microflow);
 	}
 
 	/**
