@@ -25413,4 +25413,9 @@ input[type=checkbox].three-state-checkbox + .control-label {
   margin-bottom: 0;
 }
 
+/*    Mendix 10   */
+.layout-atlas .region-sidebar .mx-navigationtree .navbar-inner > ul > li > a .glyphicon {
+  margin-right: 16px;
+}
+
 /*# sourceMappingURL=theme.compiled.css.map */
