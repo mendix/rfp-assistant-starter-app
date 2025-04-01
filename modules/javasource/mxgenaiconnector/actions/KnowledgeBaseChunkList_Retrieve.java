@@ -10,7 +10,6 @@
 package mxgenaiconnector.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
@@ -25,6 +24,8 @@ import com.mendix.systemwideinterfaces.core.UserAction;
  * 
  * The Connection entity passed must be of type MxKnowledgeBaseConnection and must contain the CollectionName string attribute filled and a MxCloudKnowledgeBase associated with the connection details to the knowledge base service. By providing the Collection on the Connection, you determine the collection for which the retrieve should happen. 
  * Use MxKnowledgeBaseConnection_Create to create it.
+ * 
+ * Previously inserted or changed chunks are only available in the knowledge base after 60-120 seconds due to asynchronous data synchronization for better scalability.
  */
 public class KnowledgeBaseChunkList_Retrieve extends UserAction<java.util.List<IMendixObject>>
 {

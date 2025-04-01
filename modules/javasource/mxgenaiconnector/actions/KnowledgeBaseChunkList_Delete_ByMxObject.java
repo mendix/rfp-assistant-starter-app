@@ -10,7 +10,6 @@
 package mxgenaiconnector.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
@@ -20,6 +19,8 @@ import com.mendix.systemwideinterfaces.core.UserAction;
  * 
  * Mandatory: The Connection entity passed must be of type MxKnowledgeBaseConnection and must contain the CollectionName string attribute filled and a MxCloudKnowledgeBase associated with the connection details to the knowledge base. By providing the CollectionName on the Connection, you determine the collection from which the chunks should be deleted.
  * Use MxKnowledgeBaseConnection_Create to create it.
+ * 
+ * Once deleted, chunks are no longer available for read operations in the KB after 60-120 seconds due to asynchronous data synchronization for better scalability.
  */
 public class KnowledgeBaseChunkList_Delete_ByMxObject extends UserAction<java.lang.Boolean>
 {
