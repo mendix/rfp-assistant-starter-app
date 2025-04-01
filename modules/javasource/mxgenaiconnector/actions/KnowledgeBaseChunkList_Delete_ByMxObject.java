@@ -12,6 +12,7 @@ package mxgenaiconnector.actions;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Use this operation to delete existing chunks and corresponding metadata in a collection, based on the MxObjectID. 
@@ -20,24 +21,29 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
  * Mandatory: The Connection entity passed must be of type MxKnowledgeBaseConnection and must contain the CollectionName string attribute filled and a MxCloudKnowledgeBase associated with the connection details to the knowledge base. By providing the CollectionName on the Connection, you determine the collection from which the chunks should be deleted.
  * Use MxKnowledgeBaseConnection_Create to create it.
  */
-public class KnowledgeBaseChunkList_Delete_ByMxObject extends CustomJavaAction<java.lang.Boolean>
+public class KnowledgeBaseChunkList_Delete_ByMxObject extends UserAction<java.lang.Boolean>
 {
-	private IMendixObject __Connection;
-	private genaicommons.proxies.Connection Connection;
-	private IMendixObject MxObject;
+	/** @deprecated use Connection.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __Connection;
+	private final genaicommons.proxies.Connection Connection;
+	private final IMendixObject MxObject;
 
-	public KnowledgeBaseChunkList_Delete_ByMxObject(IContext context, IMendixObject Connection, IMendixObject MxObject)
+	public KnowledgeBaseChunkList_Delete_ByMxObject(
+		IContext context,
+		IMendixObject _connection,
+		IMendixObject _mxObject
+	)
 	{
 		super(context);
-		this.__Connection = Connection;
-		this.MxObject = MxObject;
+		this.__Connection = _connection;
+		this.Connection = _connection == null ? null : genaicommons.proxies.Connection.initialize(getContext(), _connection);
+		this.MxObject = _mxObject;
 	}
 
 	@java.lang.Override
 	public java.lang.Boolean executeAction() throws Exception
 	{
-		this.Connection = this.__Connection == null ? null : genaicommons.proxies.Connection.initialize(getContext(), __Connection);
-
 		// BEGIN USER CODE
 		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
 		// END USER CODE

@@ -17,23 +17,28 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import myfirstrfpassistant.impl.MxLogger;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class FileDocument_ExtractContents extends CustomJavaAction<java.lang.String>
+public class FileDocument_ExtractContents extends UserAction<java.lang.String>
 {
-	private IMendixObject __FileDocument;
-	private system.proxies.FileDocument FileDocument;
+	/** @deprecated use FileDocument.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __FileDocument;
+	private final system.proxies.FileDocument FileDocument;
 
-	public FileDocument_ExtractContents(IContext context, IMendixObject FileDocument)
+	public FileDocument_ExtractContents(
+		IContext context,
+		IMendixObject _fileDocument
+	)
 	{
 		super(context);
-		this.__FileDocument = FileDocument;
+		this.__FileDocument = _fileDocument;
+		this.FileDocument = _fileDocument == null ? null : system.proxies.FileDocument.initialize(getContext(), _fileDocument);
 	}
 
 	@java.lang.Override
 	public java.lang.String executeAction() throws Exception
 	{
-		this.FileDocument = this.__FileDocument == null ? null : system.proxies.FileDocument.initialize(getContext(), __FileDocument);
-
 		// BEGIN USER CODE
 		try {
 			validateFileDocument();

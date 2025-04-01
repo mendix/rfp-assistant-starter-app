@@ -9,7 +9,7 @@ package genaicommons.proxies;
  * 
  * The DeployedModel entity replaces the capabilities that were covered by the Connection entity in earlier versions of GenAI Commons.
  */
-public class DeployedModel
+public class DeployedModel implements com.mendix.systemwideinterfaces.core.IEntityProxy
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject deployedModelMendixObject;
 
@@ -69,15 +69,6 @@ public class DeployedModel
 	}
 
 	/**
-	 * @deprecated Use 'DeployedModel.load(IContext, IMendixIdentifier)' instead.
-	 */
-	@java.lang.Deprecated
-	public static genaicommons.proxies.DeployedModel initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
-	{
-		return genaicommons.proxies.DeployedModel.load(context, mendixIdentifier);
-	}
-
-	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 * @param context The context to be used
@@ -113,39 +104,6 @@ public class DeployedModel
 			.collect(java.util.stream.Collectors.toList());
 	}
 
-	/**
-	 * Commit the changes made on this proxy object.
-	 * @throws com.mendix.core.CoreException
-	 */
-	public final void commit() throws com.mendix.core.CoreException
-	{
-		com.mendix.core.Core.commit(context, getMendixObject());
-	}
-
-	/**
-	 * Commit the changes made on this proxy object using the specified context.
-	 * @throws com.mendix.core.CoreException
-	 */
-	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
-	{
-		com.mendix.core.Core.commit(context, getMendixObject());
-	}
-
-	/**
-	 * Delete the object.
-	 */
-	public final void delete()
-	{
-		com.mendix.core.Core.delete(context, getMendixObject());
-	}
-
-	/**
-	 * Delete the object using the specified context.
-	 */
-	public final void delete(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		com.mendix.core.Core.delete(context, getMendixObject());
-	}
 	/**
 	 * @return value of DisplayName
 	 */
@@ -255,7 +213,7 @@ public class DeployedModel
 	}
 
 	/**
-	 * Set value of OutputModality
+	 * Get value of OutputModality
 	 * @param outputmodality
 	 */
 	public final genaicommons.proxies.ENUM_ModelModality getOutputModality()
@@ -336,7 +294,7 @@ public class DeployedModel
 	}
 
 	/**
-	 * Set value of SupportsSystemPrompt
+	 * Get value of SupportsSystemPrompt
 	 * @param supportssystemprompt
 	 */
 	public final genaicommons.proxies.ENUM_ModelSupport getSupportsSystemPrompt()
@@ -381,7 +339,7 @@ public class DeployedModel
 	}
 
 	/**
-	 * Set value of SupportsConversationsWithHistory
+	 * Get value of SupportsConversationsWithHistory
 	 * @param supportsconversationswithhistory
 	 */
 	public final genaicommons.proxies.ENUM_ModelSupport getSupportsConversationsWithHistory()
@@ -426,7 +384,7 @@ public class DeployedModel
 	}
 
 	/**
-	 * Set value of SupportsFunctionCalling
+	 * Get value of SupportsFunctionCalling
 	 * @param supportsfunctioncalling
 	 */
 	public final genaicommons.proxies.ENUM_ModelSupport getSupportsFunctionCalling()
@@ -558,17 +516,13 @@ public class DeployedModel
 		getMendixObject().setValue(context, MemberNames.DeployedModel_InputModality.toString(), identifiers);
 	}
 
-	/**
-	 * @return the IMendixObject instance of this proxy for use in the Core interface.
-	 */
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IMendixObject getMendixObject()
 	{
 		return deployedModelMendixObject;
 	}
 
-	/**
-	 * @return the IContext instance of this proxy, or null if no IContext instance was specified at initialization.
-	 */
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IContext getContext()
 	{
 		return context;
@@ -594,21 +548,13 @@ public class DeployedModel
 		return getMendixObject().hashCode();
 	}
 
-	/**
-	 * @return String name of this class
-	 */
+  /**
+   * Gives full name ("Module.Entity" name) of the type of the entity.
+   *
+   * @return the name
+   */
 	public static java.lang.String getType()
 	{
 		return entityName;
-	}
-
-	/**
-	 * @return String GUID from this object, format: ID_0000000000
-	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
-	 */
-	@java.lang.Deprecated
-	public java.lang.String getGUID()
-	{
-		return "ID_" + getMendixObject().getId().toLong();
 	}
 }

@@ -12,6 +12,7 @@ package mxgenaiconnector.actions;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Use this operation to retrieve chunks from a collection. This operation returns a list of KnowledgeBaseChunks.
@@ -25,33 +26,42 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
  * The Connection entity passed must be of type MxKnowledgeBaseConnection and must contain the CollectionName string attribute filled and a MxCloudKnowledgeBase associated with the connection details to the knowledge base service. By providing the Collection on the Connection, you determine the collection for which the retrieve should happen. 
  * Use MxKnowledgeBaseConnection_Create to create it.
  */
-public class KnowledgeBaseChunkList_Retrieve extends CustomJavaAction<java.util.List<IMendixObject>>
+public class KnowledgeBaseChunkList_Retrieve extends UserAction<java.util.List<IMendixObject>>
 {
-	private IMendixObject __Connection;
-	private genaicommons.proxies.Connection Connection;
-	private IMendixObject MxObject;
-	private IMendixObject __MetadataCollection;
-	private genaicommons.proxies.MetadataCollection MetadataCollection;
-	private java.lang.Long MaxNumberOfResults;
-	private java.lang.Long Offset;
+	/** @deprecated use Connection.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __Connection;
+	private final genaicommons.proxies.Connection Connection;
+	private final IMendixObject MxObject;
+	/** @deprecated use MetadataCollection.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __MetadataCollection;
+	private final genaicommons.proxies.MetadataCollection MetadataCollection;
+	private final java.lang.Long MaxNumberOfResults;
+	private final java.lang.Long Offset;
 
-	public KnowledgeBaseChunkList_Retrieve(IContext context, IMendixObject Connection, IMendixObject MxObject, IMendixObject MetadataCollection, java.lang.Long MaxNumberOfResults, java.lang.Long Offset)
+	public KnowledgeBaseChunkList_Retrieve(
+		IContext context,
+		IMendixObject _connection,
+		IMendixObject _mxObject,
+		IMendixObject _metadataCollection,
+		java.lang.Long _maxNumberOfResults,
+		java.lang.Long _offset
+	)
 	{
 		super(context);
-		this.__Connection = Connection;
-		this.MxObject = MxObject;
-		this.__MetadataCollection = MetadataCollection;
-		this.MaxNumberOfResults = MaxNumberOfResults;
-		this.Offset = Offset;
+		this.__Connection = _connection;
+		this.Connection = _connection == null ? null : genaicommons.proxies.Connection.initialize(getContext(), _connection);
+		this.MxObject = _mxObject;
+		this.__MetadataCollection = _metadataCollection;
+		this.MetadataCollection = _metadataCollection == null ? null : genaicommons.proxies.MetadataCollection.initialize(getContext(), _metadataCollection);
+		this.MaxNumberOfResults = _maxNumberOfResults;
+		this.Offset = _offset;
 	}
 
 	@java.lang.Override
 	public java.util.List<IMendixObject> executeAction() throws Exception
 	{
-		this.Connection = this.__Connection == null ? null : genaicommons.proxies.Connection.initialize(getContext(), __Connection);
-
-		this.MetadataCollection = this.__MetadataCollection == null ? null : genaicommons.proxies.MetadataCollection.initialize(getContext(), __MetadataCollection);
-
 		// BEGIN USER CODE
 		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
 		// END USER CODE

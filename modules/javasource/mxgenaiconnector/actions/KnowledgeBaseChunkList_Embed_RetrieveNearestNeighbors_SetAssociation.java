@@ -12,6 +12,7 @@ package mxgenaiconnector.actions;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Use this operation to retrieve chunks from a collection and set associations to the related mendix objects (if applicable). The retrieval is based on similarity with respect to the input string (Content) provided.  This operation returns a list of the same type of the TargetChunk input variable.  The returned list is sorted on vector similarity which is handled internally.
@@ -25,35 +26,45 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
  * 
  * The TargetChunk entity (entity parameter) must be a specialization of the KnowledgeBaseChunk entity from the GenAICommons. If it contains associations to (specializations of) the related mendix object for which the chunk was created originally, this will be set by this operation for easy processing afterwards.
  */
-public class KnowledgeBaseChunkList_Embed_RetrieveNearestNeighbors_SetAssociation extends CustomJavaAction<java.util.List<IMendixObject>>
+public class KnowledgeBaseChunkList_Embed_RetrieveNearestNeighbors_SetAssociation extends UserAction<java.util.List<IMendixObject>>
 {
-	private IMendixObject __Connection;
-	private genaicommons.proxies.Connection Connection;
-	private java.lang.String TargetChunk;
-	private java.lang.String Content;
-	private IMendixObject __MetadataCollection;
-	private genaicommons.proxies.MetadataCollection MetadataCollection;
-	private java.lang.Long MaxNumberOfResults;
-	private java.math.BigDecimal MinimumSimilarity;
+	/** @deprecated use Connection.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __Connection;
+	private final genaicommons.proxies.Connection Connection;
+	private final java.lang.String TargetChunk;
+	private final java.lang.String Content;
+	/** @deprecated use MetadataCollection.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __MetadataCollection;
+	private final genaicommons.proxies.MetadataCollection MetadataCollection;
+	private final java.lang.Long MaxNumberOfResults;
+	private final java.math.BigDecimal MinimumSimilarity;
 
-	public KnowledgeBaseChunkList_Embed_RetrieveNearestNeighbors_SetAssociation(IContext context, IMendixObject Connection, java.lang.String TargetChunk, java.lang.String Content, IMendixObject MetadataCollection, java.lang.Long MaxNumberOfResults, java.math.BigDecimal MinimumSimilarity)
+	public KnowledgeBaseChunkList_Embed_RetrieveNearestNeighbors_SetAssociation(
+		IContext context,
+		IMendixObject _connection,
+		java.lang.String _targetChunk,
+		java.lang.String _content,
+		IMendixObject _metadataCollection,
+		java.lang.Long _maxNumberOfResults,
+		java.math.BigDecimal _minimumSimilarity
+	)
 	{
 		super(context);
-		this.__Connection = Connection;
-		this.TargetChunk = TargetChunk;
-		this.Content = Content;
-		this.__MetadataCollection = MetadataCollection;
-		this.MaxNumberOfResults = MaxNumberOfResults;
-		this.MinimumSimilarity = MinimumSimilarity;
+		this.__Connection = _connection;
+		this.Connection = _connection == null ? null : genaicommons.proxies.Connection.initialize(getContext(), _connection);
+		this.TargetChunk = _targetChunk;
+		this.Content = _content;
+		this.__MetadataCollection = _metadataCollection;
+		this.MetadataCollection = _metadataCollection == null ? null : genaicommons.proxies.MetadataCollection.initialize(getContext(), _metadataCollection);
+		this.MaxNumberOfResults = _maxNumberOfResults;
+		this.MinimumSimilarity = _minimumSimilarity;
 	}
 
 	@java.lang.Override
 	public java.util.List<IMendixObject> executeAction() throws Exception
 	{
-		this.Connection = this.__Connection == null ? null : genaicommons.proxies.Connection.initialize(getContext(), __Connection);
-
-		this.MetadataCollection = this.__MetadataCollection == null ? null : genaicommons.proxies.MetadataCollection.initialize(getContext(), __MetadataCollection);
-
 		// BEGIN USER CODE
 		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
 		// END USER CODE
