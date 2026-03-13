@@ -1,5 +1,6 @@
-@import "../../../atlas_core/web/_variables.scss";
-@import "../../../../theme/web/custom-variables.scss";
+@use '../../../../theme/web/custom-variables' as *;
+@use '../chat-variables' as *;
+
 .chat-loading-wrapper {
     display: flex;
     justify-content: left;
@@ -67,30 +68,38 @@
         height: 100%
     }
 }
-
-
 .chat-input-wrapper {
     position: relative;
-    //row-center
     display: flex !important;
     align-items: center !important;
     flex-flow: row !important;
     justify-content: center !important;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    color: $form-input-color;
+    border: 1px solid $form-input-border-color;
+    border-radius: $form-input-border-radius;
+    padding: $spacing-small;
 
     .form-group {
+        position: relative;
         width: 100%;
-        padding-left: 0px !important;
-        padding-right: 0px !important;
+        margin-bottom: $spacing-large;
+        padding: 0 !important;
 
         .form-control {
-            padding-right: $send-btn-size + 36px;
+            width: 100%;
             max-height: $chat-input-max-height;
+            padding: 0 0 $spacing-medium 0 !important;
             overflow: auto;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+            background: none !important;
         }
     }
 
     .has-error {
-        &:before{
+        &:before {
             display:none;
         }
         .alert {
@@ -101,22 +110,29 @@
     .send-btn-container {
         //row-right
         display: flex !important;
-        align-items: center !important;
+        position: absolute;
+        bottom: 0;
+        right: 0;
         flex-flow: row !important;
         justify-content: flex-end !important;
+        padding: $spacing-small;
 
         .send-btn {
-            position: absolute;
             right: 58px / 2 - $send-btn-size / 2;
             bottom: 58px / 2 - $send-btn-size / 2;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration-line: none;
-            border-radius: 50%;
+            border-radius: 8px;
             width: $send-btn-size;
             height: $send-btn-size;
             padding: 0px;
+
+            img {
+                margin: 0;
+                width: unset;
+            }
 
             .glyphicon {
                 top: 0;
@@ -129,7 +145,6 @@
 }
 
 .chat-bubble-wrapper {
-    margin-top: $spacing-small;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -138,8 +153,10 @@
     .chat-message-card {
         background: $chat-bubble-assistant-background;
         border-radius: 8px 8px 8px 0;
+        border: 1px solid $border-color-default;
         margin: 0 10% 0 0;
-        padding: $spacing-small;
+        padding: $spacing-small 12px;
+        padding-bottom: 0px;
     }
 
     &--user {
@@ -175,7 +192,7 @@
         display: none;
     }
     .chat-input-wrapper{
-        padding-top: 100% ;
+        margin-top: 100%;
         .form-group{
             .form-control{
                 background-color: $form-input-bg-disabled;
@@ -193,4 +210,37 @@
         }
     }
     
+}
+
+
+.tool-message{
+    $border-color: #E7E7E9;
+    border-radius: $border-radius-default;
+    border: 1px solid;
+    border-color: $border-color;
+    
+    .tool-title{
+        font-weight: $font-weight-semibold;
+        background-color: $border-color;
+        padding: $spacing-small;
+        display: block;
+    }
+
+    .tool-details{
+        padding: $spacing-small;
+    }
+
+    .reject-button{
+        background-color: transparent;
+        color: $font-color-default;
+        border: none;
+        &:hover {
+            background-color: $btn-default-bg-hover;
+        }
+    }    
+}
+
+.tool-status-image{
+        width: $spacing-medium;
+        margin: $spacing-smaller;
 }

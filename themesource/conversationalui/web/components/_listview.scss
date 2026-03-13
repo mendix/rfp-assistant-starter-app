@@ -1,3 +1,5 @@
+@use '../../../../theme/web/custom-variables' as *;
+
 .chat-listview-stylingless.mx-listview { //same as listview-stylingless and listview-sm
     ul > li, ol > li {
         cursor: default;
@@ -34,9 +36,9 @@
         }
 
     } ol > li {
-        padding: 0px; //used for ordered lists in markdown viewer
+        padding: 0; //used for ordered lists in markdown viewer
     } ul > li {
-        padding: 8px; //from listview-sm
+        padding: $spacing-smaller; //from listview-sm
     }
 }
 
@@ -72,5 +74,22 @@
 .listview-hide-on-empty.mx-listview {
     > ul > li.mx-listview-empty {
         display: none;
+        margin: 0;
+        padding: 0;
     }
 }
+
+.listview-remove-spacing.mx-listview {
+    margin: 0;
+    padding: 0;
+
+    > ul {
+      margin: 0;
+      padding: 0;
+    }
+}
+
+.listview-custom-spacing.mx-listview > ul > li:not(:last-child) {
+    margin-bottom: $spacing-smallest;
+}
+

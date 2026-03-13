@@ -12,9 +12,6 @@ package openaiconnector.actions;
 import static java.util.Objects.requireNonNull;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.Set;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 import com.mendix.core.Core;
@@ -47,17 +44,20 @@ public class RequestMapping_ManipulateJson extends UserAction<java.lang.String>
 	private final IMendixObject __RequestMapping;
 	private final openaiconnector.proxies.RequestMapping RequestMapping;
 	private final java.lang.String Request_Json;
+	private final java.lang.String Architecture;
 
 	public RequestMapping_ManipulateJson(
 		IContext context,
 		IMendixObject _requestMapping,
-		java.lang.String _request_Json
+		java.lang.String _request_Json,
+		java.lang.String _architecture
 	)
 	{
 		super(context);
 		this.__RequestMapping = _requestMapping;
 		this.RequestMapping = _requestMapping == null ? null : openaiconnector.proxies.RequestMapping.initialize(getContext(), _requestMapping);
 		this.Request_Json = _request_Json;
+		this.Architecture = _architecture;
 	}
 
 	@java.lang.Override
@@ -170,15 +170,18 @@ public class RequestMapping_ManipulateJson extends UserAction<java.lang.String>
 	private void setToolCallArguments(JsonNode toolCallsArray) throws Exception {
 		for (JsonNode toolCall : toolCallsArray) {
 			JsonNode function = toolCall.path("function");
-			JsonNode argumentsArray = function.path("arguments");
-			Map<String, String> argumentsMap = new HashMap<>();
-	        for (JsonNode argument : argumentsArray) {
-	            String key = argument.get("key").asText();
-	            String value = argument.get("value").asText();
-	            argumentsMap.put(key, value);
-	        }
-	        String argumentsString = MAPPER.writeValueAsString(argumentsMap);
-	       ((ObjectNode) function).put("arguments", argumentsString);
+			// Use the 'input' field as the arguments (it's already a JSON string)
+			JsonNode inputNode = function.path("input");
+			if (inputNode != null && !inputNode.isMissingNode()) {
+				String argumentsString = inputNode.asText();
+				((ObjectNode) function).put("arguments", argumentsString);
+			}
+			// Remove the 'input' field as it's not expected by the API
+			((ObjectNode) function).remove("input");
+			// Remove the 'arguments' array if it exists (not needed anymore)
+			if (function.has("arguments") && function.path("arguments").isArray()) {
+				((ObjectNode) function).remove("arguments");
+			}
 		}
 	}
 
@@ -232,9 +235,9 @@ public class RequestMapping_ManipulateJson extends UserAction<java.lang.String>
         case tool:
         	setToolChoiceTool();
             break;
-        case any:
-        	setToolChoiceAny();
-            break;
+        case any: 			
+        	setToolChoiceAny();					
+			break;
         //auto and none work out of the box
         case auto:
         	break;
@@ -250,12 +253,15 @@ public class RequestMapping_ManipulateJson extends UserAction<java.lang.String>
 	//"any" choice can only be used once at the first iteration to prevent infinity loops
 	private void setToolChoiceAny() throws CoreException {
 		if(FunctionMappingImpl.getToolCallMessages(getRequest(RequestMapping),getContext()).size() == 0) {
+			if (Architecture != null && Architecture.toLowerCase().contains("openai")) {
             ((ObjectNode) rootNode).put("tool_choice", "required");
-    	}
+			}
+		}
     	else {
     		((ObjectNode) rootNode).remove("tool_choice");
     	}
 	}
+	
 	
 	private void setToolChoiceTool() throws CoreException {
 		// Add ToolChoice Tool if it has not yet been called in a previous iteration
@@ -368,61 +374,70 @@ public class RequestMapping_ManipulateJson extends UserAction<java.lang.String>
 		return functionName.equals(toolChoiceFunctionName);
 	}
 	
-	private void mapFunctionParameters() throws CoreException {
-		ToolCollection toolCollection = getToolCollection(RequestMapping);
-		if(toolCollection == null) {
-			return;
-		}
-		List<Tool> toolList = Core.retrieveByPath(getContext(),
-				toolCollection.getMendixObject(), ToolCollection.MemberNames.ToolCollection_Tool.toString())
-				.stream()
-				.map(mxObject -> Tool.initialize(getContext(), mxObject))
-				.collect(Collectors.toList());
-		
+	private void mapFunctionParameters() throws CoreException {		
 		// Loop through all tools, find FunctionRequest object by functionName that contains the FunctionMicroflow,
 		// get InputParameterName of the FunctionMicroflow, create parametersNode and add to toolNode
 		JsonNode toolsNode = rootNode.path("tools");
 		for (JsonNode toolNode : toolsNode) {
 			String toolName = toolNode.path("function").path("name").asText();
-			Optional<Tool> toolMatch = toolList.stream()
-					.filter(tool -> {
-						return tool.getName().equals(toolName);
-					})
-					.findFirst();
-			if(toolMatch.isPresent()) {
-				Tool functionMatch = Tool.load(getContext(), toolMatch.get().getMendixObject().getId());
-				if(functionMatch != null) {
-				ObjectNode parametersNode = createFunctionParametersNode(functionMatch.getMicroflow());
-					if(parametersNode != null) {
-						JsonNode functionNode = toolNode.path("function");
-						((ObjectNode) functionNode).set("parameters", parametersNode);
-						((ObjectNode) toolNode).set("function", functionNode);
-					}
+			Tool functionMatch = FunctionImpl.getToolByName(getRequest(RequestMapping), toolName ,getContext());
+			if(functionMatch != null) {
+				// Check if toolNode already has an "input" field
+				JsonNode inputNode = toolNode.path("input");
+				ObjectNode parametersNode = null;
+				
+				if (inputNode != null && !inputNode.isMissingNode() && !inputNode.isNull() && inputNode.isObject()) {
+					// Use the existing input as parameters
+					parametersNode = (ObjectNode) inputNode;
+				} else {
+					// Create parameters from function match
+					parametersNode = createToolParametersNode(functionMatch);
 				}
+				
+				JsonNode functionNode = toolNode.path("function");
+				((ObjectNode) functionNode).set("parameters", parametersNode);
+				((ObjectNode) toolNode).set("function", functionNode);
+				
+				// Remove schema field from tool node as it's not needed in the final payload
+				((ObjectNode) toolNode).remove("schema");
 			}
 		}
-		
 		// Update tools within rootNode
 		((ObjectNode) rootNode).set("tools", toolsNode);
 	}
 	
-	private ObjectNode createFunctionParametersNode(String functionMicroflow) {
-		Map<String, IDataType> inputParameters = FunctionMappingImpl.getInputParametersForModel(functionMicroflow);
-		
-		if (inputParameters == null || inputParameters.entrySet().isEmpty()) {
-			return null;
+	private ObjectNode createToolParametersNode(Tool tool) throws CoreException {
+	
+		// Check if tool has a schema field and use it if it's valid JSON
+		String schema = tool.getSchema();
+		if (schema != null && !schema.isEmpty()) {
+			try {
+				JsonNode schemaNode = MAPPER.readTree(schema);
+				if (schemaNode != null && schemaNode.isObject()) {
+					return (ObjectNode) schemaNode;
+				}
+			} catch (Exception e) {
+				LOGGER.warn("Failed to parse schema for tool " + tool.getName() + ": " + e.getMessage());
+			}
 		}
+		
+		// Fall back to creating parameters from input parameters
+		Map<String, IDataType> inputParameters = FunctionMappingImpl.getInputParametersForModel(tool.getMicroflow());
 		
 		ObjectNode parametersNode = MAPPER.createObjectNode();
 		ObjectNode propertiesNode = MAPPER.createObjectNode();
 		ArrayNode requiredNode = MAPPER.createArrayNode();
-		inputParameters.entrySet().forEach(t -> FunctionImpl.addProperty(propertiesNode, requiredNode, t));
+		
+		if(inputParameters != null && !inputParameters.entrySet().isEmpty()) {
+			inputParameters.entrySet().forEach(t -> FunctionImpl.addProperty(propertiesNode, requiredNode, t));
+		}
 		
 		parametersNode.put("type", "object");
 		parametersNode.set("properties", propertiesNode);
 		parametersNode.set("required", requiredNode);
 		
 		return parametersNode;
-	}		
+	}
+			
 	// END EXTRA CODE
 }
