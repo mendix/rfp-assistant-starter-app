@@ -24,7 +24,6 @@ import java.util.Set;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import org.apache.commons.io.IOUtils;
-import org.bouncycastle.asn1.x9.DHValidationParms;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -50,7 +49,6 @@ import genaicommons.impl.FunctionMappingImpl;
 import genaicommons.proxies.ENUM_FileType;
 import genaicommons.proxies.ENUM_MessageRole;
 import genaicommons.proxies.ENUM_ToolChoice;
-import genaicommons.proxies.Argument;
 import genaicommons.proxies.Computer;
 import genaicommons.proxies.FileCollection;
 import genaicommons.proxies.FileContent;
@@ -146,7 +144,7 @@ public class Converse extends UserAction<IMendixObject>
 			
 		} catch (Exception e) {
 			LOGGER.error(e);
-			return null;
+			throw e;
 		}
 		
 		// END USER CODE
@@ -371,14 +369,32 @@ public class Converse extends UserAction<IMendixObject>
 				continue;
 			}
 			
-			Message awsMsg = getAwsMessage(mxMsg, mxMessages, i);
-			awsMessages.add(awsMsg);
+			// Handle multiple consecutive tool result messages by combining them
+			if (isToolResultMessage(mxMsg)) {
+				List<ContentBlock> toolResultContents = new ArrayList<>();
+				toolResultContents.add(getToolResultContent(mxMsg));
+				
+				// Collect all subsequent tool result messages
+				while ((i+1) < mxMessages.size() && isToolResultMessage(mxMessages.get(i+1))) {
+					i++;
+					toolResultContents.add(getToolResultContent(mxMessages.get(i)));
+				}
+				
+				Message awsMsg = Message.builder()
+						.role(getAwsMessageRole(mxMsg))
+						.content(toolResultContents)
+						.build();
+				awsMessages.add(awsMsg);
+			} else {
+				Message awsMsg = getAwsMessage(mxMsg, mxMessages, i);
+				awsMessages.add(awsMsg);
+			}
 		}
 		
 		return awsMessages;
 	}
 	
-	// Sorting the Mendix Messages by Created-Date to ensure they are mapped in the correct order
+	// Use the existing association order to keep tool-use/tool-result sequencing intact
 	private List<genaicommons.proxies.Message> getMxMessagesSorted(Request commonRequest) throws CoreException {
 		return Core.retrieveByPath(getContext(), commonRequest.getMendixObject(), Request.MemberNames.Request_Message.toString())
 				.stream().map(mxObj -> genaicommons.proxies.Message.initialize(getContext(), mxObj))
@@ -402,33 +418,14 @@ public class Converse extends UserAction<IMendixObject>
 		return skip;
 	}
 	
-	// Method to map a Mx Message to the correct type of aws message
+// Method to map a Mx Message to the correct type of aws message
 	private Message getAwsMessage(genaicommons.proxies.Message mxMsg, List<genaicommons.proxies.Message> mxMessages, int i) throws CoreException, MalformedURLException, URISyntaxException, IOException {
 		software.amazon.awssdk.services.bedrockruntime.model.Message.Builder msgBuilder = Message.builder()
 				.role(getAwsMessageRole(mxMsg));
 		
 		List<ContentBlock> contentBlockList = new ArrayList<>();
 		
-		// Case 1: After a Function Call, a Tool Result message is being sent	
-		if (isToolResultMessage(mxMsg)) {
-					LOGGER.debug("Tool Result Message found");
-					ContentBlock toolResultContent = getToolResultContent(mxMsg);
-					contentBlockList.add(toolResultContent);
-					
-					// Bedrock expects all subsequent tool results as part of a single message
-					// Looking for subsequent tool results and adding them to this message until a different message type is found
-					while ((i+1) < mxMessages.size()) {
-						genaicommons.proxies.Message next = mxMessages.get(i+1);
-						if (!isToolResultMessage(next)) {
-							break;
-						}
-						ContentBlock nextToolResultContent = getToolResultContent(next);
-						contentBlockList.add(nextToolResultContent);
-						i++;
-					}
-		}
-		
-		// Case 2: Message has a FileCollection with FileContent(s). Note: Computer Use Tool messages can also contain a file collection
+		// Message has a FileCollection with FileContent(s). Note: Computer Use Tool messages can also contain a file collection
 		if (hasFiles(mxMsg)) {
 			LOGGER.debug("Message with Files found");
 			
@@ -483,7 +480,7 @@ public class Converse extends UserAction<IMendixObject>
 		
 		
 			
-		// Case 3: A Message requesting the use of tool (function call)
+		// A Message requesting the use of tool (function call)
 		} else if (hasToolUse(mxMsg)) {
 			LOGGER.debug("Tool Use message found");
 			// If content is present, this contains the reasoning process
@@ -499,7 +496,7 @@ public class Converse extends UserAction<IMendixObject>
 				contentBlockList.add(toolUseContent);
 			}
 			
-		// Case 4: Normal text message
+		// Normal text message
 		} else {
 			LOGGER.debug("Standard Text message found");
 			ContentBlock textContent = getTextContent(mxMsg.getContent());
@@ -672,21 +669,19 @@ public class Converse extends UserAction<IMendixObject>
 		Builder builder = ToolUseBlock.builder()
 				.name(mxToolCall.getName())
 				.toolUseId(mxToolCall.getToolCallId());
-		java.util.List<genaicommons.proxies.Argument> args = mxToolCall.getToolCall_Argument();
-		
-		if (args.isEmpty()) {
-			builder.input(Document.mapBuilder().build());
-			
-		} else {
-			// Arguments must be build by Document.mapBuilder()
-			for (Argument arg : args) {
-				Document input = Document.mapBuilder()
-					.putString(arg.getKey(), arg.getValue())
-					.build();
-				builder.input(input);
+
+		String toolInput = mxToolCall.getInput();
+		if (toolInput != null && !toolInput.isBlank()) {
+			try {
+				builder.input(jsonNodeToDocument(MAPPER.readTree(toolInput)));
+			} catch (Exception e) {
+				LOGGER.warn("Invalid tool input JSON for tool call '" + mxToolCall.getToolCallId() + "'. Falling back to empty input. Error: " + e.getMessage());
+				builder.input(Document.mapBuilder().build());
 			}
+		} else {
+			builder.input(Document.mapBuilder().build());
 		}
-		
+
 		return ContentBlock.builder().toolUse(builder.build()).build();
 	}
 	
@@ -792,7 +787,7 @@ public class Converse extends UserAction<IMendixObject>
 		//Add a dummy tool so that a toolconfig is created and the API does not return errors about a missing toolconfig in the agent loop
 		//This is only needed when a computer tool is added while no other tools are present
 		if (awsTools.size() == 0 && hasComputerTool) {
-			var toolSpecBuilder = ToolSpecification.builder()
+			software.amazon.awssdk.services.bedrockruntime.model.ToolSpecification.Builder toolSpecBuilder = ToolSpecification.builder()
 					.name("Dummy")
 					.description("Do not use this tool.")
 					.inputSchema(createEmptyToolInputSchema());
@@ -805,28 +800,82 @@ public class Converse extends UserAction<IMendixObject>
 	}
 	
 	// Mapping Mendix Tool to aws tool
-	private software.amazon.awssdk.services.bedrockruntime.model.Tool getAwsTool(Tool mxTool) throws JsonProcessingException{
-		var toolSpecBuilder = ToolSpecification.builder()
+	private software.amazon.awssdk.services.bedrockruntime.model.Tool getAwsTool(Tool mxTool) throws JsonProcessingException, CoreException{
+		ToolInputSchema inputSchema = getToolInputSchema(mxTool);
+		
+		software.amazon.awssdk.services.bedrockruntime.model.ToolSpecification toolSpec = ToolSpecification.builder()
 				.name(mxTool.getName())
 				.description(mxTool.getDescription())
-				.inputSchema(getToolInputSchema(mxTool));
-				
-		return software.amazon.awssdk.services.bedrockruntime.model.Tool.builder().toolSpec(toolSpecBuilder.build()).build();
+				.inputSchema(inputSchema)
+				.build();
+		
+		LOGGER.debug("Built ToolSpecification for '" + mxTool.getName() + "': " + toolSpec.toString());
+		
+		return software.amazon.awssdk.services.bedrockruntime.model.Tool.builder().toolSpec(toolSpec).build();
 	}
 	
 	// Getting the Input Schema of a Tool
-	private ToolInputSchema getToolInputSchema(Tool mxTool) throws JsonProcessingException {
+	private ToolInputSchema getToolInputSchema(Tool mxTool) throws JsonProcessingException, CoreException {
+		// Check if the tool has a pre-defined JSON schema, otherwise automatic generation
+		String jsonSchemaString = mxTool.getSchema();
+		if (jsonSchemaString != null && !jsonSchemaString.trim().isEmpty()) {
+			// Quick check: valid JSON objects/arrays must start with '{' or '['
+			if (jsonSchemaString.startsWith("{") || jsonSchemaString.startsWith("[")) {
+				try {
+					// First validate it's valid JSON and parse it with Jackson
+					JsonNode jsonNode = MAPPER.readTree(jsonSchemaString);
+					
+					// For tool schemas, we need an object (not array or primitive)
+					if (!jsonNode.isObject()) {
+						LOGGER.warn("Tool schema must be a JSON object, not array or primitive. Tool: " + mxTool.getName());
+						// Fall through to automatic schema generation
+					} else {
+						// Convert JsonNode to AWS Document structure
+						Document json = jsonNodeToDocument(jsonNode);
+						return ToolInputSchema.builder().json(json).build();
+					}
+				} catch (Exception e) {
+					LOGGER.warn("Failed to parse tool JSON schema for tool '" + mxTool.getName() + "', falling back to automatic generation. Error: " + e.getMessage());
+					LOGGER.debug("Invalid schema content: " + jsonSchemaString);
+					// Fall through to automatic schema generation
+				}
+			} else {
+				LOGGER.warn("Schema field for tool '" + mxTool.getName() + "' is not valid JSON (must start with '{' or '['). It appears to be a Java object toString(). Please serialize the schema to JSON before storing it.");
+				LOGGER.debug("Non-JSON schema content: " + jsonSchemaString);
+				// Fall through to automatic schema generation
+			}
+		}
+		
+		// Fallback to automatic schema generation
 		// All Tools to be called are function objects
 		Map<String, IDataType> parameterList = genaicommons.impl.FunctionMappingImpl.getInputParametersForModel(mxTool.getMicroflow());
-		if (parameterList == null) {
+		if (parameterList == null || parameterList.entrySet().isEmpty()) {
 			LOGGER.debug("Function Microflow without input parameter");
-			
 			return createEmptyToolInputSchema();
 		}
 		
 		// Must be created using Document.mapBuilder()		
 		Document.MapBuilder propertiesBuilder = Document.mapBuilder();
 		Document.ListBuilder requiredBuilder = Document.listBuilder();
+		
+		setPropertiesForMicroflowTool(parameterList, propertiesBuilder, requiredBuilder);
+
+		//Build both outside of loop to be added to final json field
+		Document properties = propertiesBuilder.build();
+		Document required = requiredBuilder.build();
+		
+		Document json = Document.mapBuilder()
+				.putString("type", "object")
+				.putDocument("properties", properties)
+				.putDocument("required", required)
+				.build();
+		
+		return ToolInputSchema.builder().json(json).build();
+	}
+	
+	// If the microflow is the actual tool microflow
+	private void setPropertiesForMicroflowTool(Map<String, IDataType> parameterList, 
+			Document.MapBuilder propertiesBuilder, Document.ListBuilder requiredBuilder){
 		
 		//Loop over parameters of microflow to add properties and required Document
 		for(Entry<String, IDataType> param : parameterList.entrySet()) {	
@@ -851,19 +900,7 @@ public class Converse extends UserAction<IMendixObject>
 
 		    propertiesBuilder.putDocument(paramName, input);
 		    requiredBuilder.addString(paramName);
-		
 		}
-		//Build both outside of loop to be added to final json field
-		Document properties = propertiesBuilder.build();
-		Document required = requiredBuilder.build();
-		
-		Document json = Document.mapBuilder()
-				.putString("type", "object")
-				.putDocument("properties", properties)
-				.putDocument("required", required)
-				.build();
-		
-		return ToolInputSchema.builder().json(json).build();
 	}
 
 	private ToolInputSchema createEmptyToolInputSchema() {
@@ -872,6 +909,73 @@ public class Converse extends UserAction<IMendixObject>
 				.build();
 		
 		return ToolInputSchema.builder().json(json).build();
+	}
+	
+	// Convert Jackson JsonNode to AWS SDK Document
+	// This handles any valid JSON structure including nested objects/arrays
+	private Document jsonNodeToDocument(JsonNode node) {
+		if (node.isObject()) {
+			Document.MapBuilder mapBuilder = Document.mapBuilder();
+			node.fields().forEachRemaining(entry -> {
+				String key = entry.getKey();
+				JsonNode value = entry.getValue();
+				
+				if (value.isTextual()) {
+					mapBuilder.putString(key, value.asText());
+				} else if (value.isIntegralNumber()) {
+					// Preserve integers (important for JSON Schema minimum/maximum)
+					mapBuilder.putNumber(key, value.asLong());
+				} else if (value.isNumber()) {
+					// Floating point numbers
+					mapBuilder.putNumber(key, value.asDouble());
+				} else if (value.isBoolean()) {
+					mapBuilder.putBoolean(key, value.asBoolean());
+				} else if (value.isNull()) {
+					mapBuilder.putNull(key);
+				} else if (value.isArray() || value.isObject()) {
+					mapBuilder.putDocument(key, jsonNodeToDocument(value));
+				} else {
+					// Fallback: convert unknown types to string
+					LOGGER.warn("Unknown JSON node type for key '" + key + "', converting to string: " + value.getNodeType());
+					mapBuilder.putString(key, value.toString());
+				}
+			});
+			return mapBuilder.build();
+		} else if (node.isArray()) {
+			Document.ListBuilder listBuilder = Document.listBuilder();
+			node.elements().forEachRemaining(element -> {
+				if (element.isTextual()) {
+					listBuilder.addString(element.asText());
+				} else if (element.isIntegralNumber()) {
+					listBuilder.addNumber(element.asLong());
+				} else if (element.isNumber()) {
+					listBuilder.addNumber(element.asDouble());
+				} else if (element.isBoolean()) {
+					listBuilder.addBoolean(element.asBoolean());
+				} else if (element.isNull()) {
+					listBuilder.addNull();
+				} else if (element.isArray() || element.isObject()) {
+					listBuilder.addDocument(jsonNodeToDocument(element));
+				} else {
+					// Fallback for unknown types
+					listBuilder.addString(element.toString());
+				}
+			});
+			return listBuilder.build();
+		} else if (node.isTextual()) {
+			return Document.fromString(node.asText());
+		} else if (node.isIntegralNumber()) {
+			return Document.fromNumber(node.asLong());
+		} else if (node.isNumber()) {
+			return Document.fromNumber(node.asDouble());
+		} else if (node.isBoolean()) {
+			return Document.fromBoolean(node.asBoolean());
+		} else if (node.isNull()) {
+			return Document.fromNull();
+		} else {
+			// Fallback for any other type
+			return Document.fromString(node.toString());
+		}
 	}
 	
 	// Check if a tool has already been called to decide whether Tool Choice should be set or not
@@ -1055,37 +1159,17 @@ public class Converse extends UserAction<IMendixObject>
 	// Setting tool use content
 	private void setMessageToolUseContent(List<ToolCall> toolCallList, ToolUseBlock awsToolUse) throws JsonProcessingException {
 		ToolCall mxToolCall = new ToolCall(getContext());
-		
-		toolCallSetArguments(mxToolCall, awsToolUse);
+
+		Document awsToolDocument = awsToolUse.input();
+		if (awsToolDocument != null) {
+			String inputJson = awsToolDocument.toString();
+			mxToolCall.setInput(inputJson);
+		}
+
 		mxToolCall.setName(awsToolUse.name());
 		mxToolCall.setToolCallId(awsToolUse.toolUseId());
 		
 		toolCallList.add(mxToolCall);
-	}
-	
-	private void toolCallSetArguments(ToolCall mxToolCall, ToolUseBlock awsToolUse) {
-		Document awsToolDocument = awsToolUse.input();
-		if (!awsToolDocument.isMap() || awsToolDocument.asMap().isEmpty()) {
-			LOGGER.debug("Tool without parameter called");
-			return;
-		}
-
-		 List<Argument> argumentList = new ArrayList<>();
-		
-	    for (Map.Entry<String, Document> entry : awsToolDocument.asMap().entrySet()) {
-	        String key = entry.getKey();
-	        String value;
-	        if (entry.getValue().isString()) {
-	            value = entry.getValue().asString();
-	        } else {
-	            value = entry.getValue().toString();
-	        }
-	        genaicommons.proxies.Argument mxArgument = new genaicommons.proxies.Argument(getContext());
-	        mxArgument.setKey(key);
-	        mxArgument.setValue(value);
-	        argumentList.add(mxArgument);
-	    }
-	    mxToolCall.setToolCall_Argument(argumentList);
 	}
 	
 	private void setMxResponseExtension(Document awsDoc, ChatCompletionsResponse mxResponse) {

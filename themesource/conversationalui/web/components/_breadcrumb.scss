@@ -1,0 +1,68 @@
+@use '../../../../theme/web/custom-variables' as *;
+
+.convui-breadcrumb {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 91vw;
+    max-width: 1800px;
+    margin-top: $spacing-small;
+    margin-bottom: $spacing-smaller;
+    z-index: 10;
+}
+
+.convui-breadcrumb-clickable {
+    &:hover,
+    &:active,
+    &:focus {
+        font-weight: 600;
+        line-height: 150%;
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+    }
+}
+
+.convui-breadcrumb-active {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $line-height-base;
+    border-radius: $btn-border-radius;
+    transition: all 0.2s ease-in-out;
+
+    .btn-wrapper {
+        min-width: 8em;
+        display: flex;
+        align-items: center;
+        padding: $spacing-smaller 0;
+        margin-left: $spacing-small;
+    }
+
+    .convui-breadcrumb-text {
+        margin: 0;
+        line-height: $line-height-base;
+    }
+
+    .mx-button.btn {
+        transition: all 0.2s ease-in-out;
+        border: none;
+        background-color: transparent;
+        color: $font-color-default;
+        padding: 0;
+        height: $font-size-small;
+        display: flex;
+        align-items: center;
+
+        &.btn-hover {
+            visibility: hidden;
+        }
+    }
+
+    &:hover {
+        .btn.btn-hover {
+            visibility: visible;
+        }
+    }
+}

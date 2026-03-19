@@ -10,6 +10,8 @@
 package myfirstrfpassistant.actions;
 
 import java.io.InputStream;
+import org.apache.pdfbox.Loader;
+import org.apache.pdfbox.io.RandomAccessReadBuffer;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import com.mendix.core.Core;
@@ -74,10 +76,11 @@ public class FileDocument_ExtractContents extends UserAction<java.lang.String>
 	}
 	
 	private String extractContents() throws Exception {
-		InputStream inputStream = Core.getFileDocumentContent(getContext(), FileDocument.getMendixObject());
-		PDDocument pdfdocument = PDDocument.load(inputStream);
-		PDFTextStripper pdfTextStripper = new PDFTextStripper();
-		return pdfTextStripper.getText(pdfdocument);
+		try (InputStream inputStream = Core.getFileDocumentContent(getContext(), FileDocument.getMendixObject());
+         PDDocument pdfDocument = Loader.loadPDF(new RandomAccessReadBuffer(inputStream))) {
+        PDFTextStripper pdfTextStripper = new PDFTextStripper();
+        return pdfTextStripper.getText(pdfDocument);
+    }
 	}
 
 	// END EXTRA CODE
